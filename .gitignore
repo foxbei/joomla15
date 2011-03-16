@@ -1,0 +1,7 @@
+sync.sh
+sync1.sh
+logs/*
+cache/*
+tmp/*
+administrator/cache/*
+*.swp
