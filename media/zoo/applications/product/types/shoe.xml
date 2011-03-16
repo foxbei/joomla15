@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Shoe">
+  <params>
+    <param type="textarea" identifier="beab45eb-b32a-4766-822d-b3fb72b5b1d4" name="Teaser Description" description="" default="" jplugins="0" repeatable="0"/>
+    <param type="textarea" identifier="83ba7366-d126-40f0-923e-3e7a94f0e773" name="Description" description="" default="" jplugins="1" repeatable="1"/>
+    <param type="image" identifier="c0794696-a5d2-4df9-b20f-f23b0f94a41b" name="Teaser Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="image" identifier="246e955a-5a57-4ad0-ad8c-c15fc7bfccb6" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="gallery" identifier="08416e3c-059f-4f0c-bbb1-82b871d1c021" name="Gallery" description="" directory="images" cache_time="1440" load_lightbox="0" rel=""/>
+    <param type="text" identifier="ab07976c-3a7f-4806-8c5d-38269754bb3a" name="Label" description="" default="" repeatable="0"/>
+    <param type="text" identifier="9204989e-6ede-4ed9-9343-533d9b3d06e5" name="Color" description="" default="" repeatable="1"/>
+    <param type="select" identifier="9eaa432f-ec82-45a0-a542-4c6b72c6a2c6" name="Size" description="" default="" multiple="1">
+      <option name="40" value="40"/>
+      <option name="41" value="41"/>
+      <option name="42" value="42"/>
+      <option name="43" value="43"/>
+      <option name="44" value="44"/>
+    </param>
+    <param type="rating" identifier="fff9519f-3b36-4df5-8722-17db9f2ea31c" name="Rating" description="" stars="5" allow_vote="0"/>
+    <param type="socialbookmarks" identifier="00e1df62-828d-42f5-a1a6-a89d553d4934" name="Social Bookmarks" description="" google="1" technorati="1" yahoo="1" delicious="1" stumbleupon="1" digg="1" facebook="1" reddit="1" myspace="1" live="1" twitter="1" email="1"/>
+    <param type="relateditems" identifier="64c188a6-cf2f-4895-8879-8b67a58b6780" name="Related Products" description=""/>
+  </params>
+</type>

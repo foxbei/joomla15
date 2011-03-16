@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Employee">
+  <params>
+    <param type="image" identifier="96624fe5-ff5a-4f1b-800e-a125e3980d43" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="text" identifier="507fbea1-7974-4a67-aec8-3649cc41a067" name="Position" description="" default="" repeatable="0"/>
+    <param type="textarea" identifier="241905cc-36d4-4611-a1d5-fadfe280f70e" name="Description" description="" default="" jplugins="1" repeatable="1"/>
+    <param type="text" identifier="59788cf7-338f-47b4-8eb2-9a9e8eb36fbf" name="Telephone" description="" default="" repeatable="0"/>
+    <param type="email" identifier="b05cdf78-0375-457f-897a-f68f7ce0a776" name="E-Mail" description="" repeatable="0"/>
+    <param type="link" identifier="3adbf326-7845-4e0d-8a11-cd631a829e96" name="Website" description="" repeatable="1"/>
+    <param type="relateditems" identifier="9f6a2113-ff5b-4974-9c19-5cb8eafb41ef" name="Company" description="">
+      <selectable_type value="company"/>
+    </param>
+  </params>
+</type>

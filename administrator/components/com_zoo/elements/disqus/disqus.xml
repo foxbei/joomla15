@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="disqus" group="Web Service" trusted="true">
+	<name>Disqus</name>
+	<author>YOOtheme</author>
+	<creationDate>March 2009</creationDate>
+	<copyright>Copyright (C) 2007 - 2009 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Disqus Comment System (http://www.disqus.com/)</description>
+	<params>
+		<param name="name" type="text" default="" label="Name" description="Name used in item editor" />
+		<param name="description" type="text" default="" label="Description" description="DESCRIPTION_TOOLTIP_ITEM_EDITOR" />
+		<param name="website" type="text" default="" label="Disqus Website" description="Short name of your Disqus website, Get one at: http://www.disqus.com/" />
+		<param name="developer" type="radio" default="0" label="Developer Mode" description="If you are trying to use Disqus on website that is not online or accessible">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+	</params>
+    <params group="submission">
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="required" type="radio" default="0" label="Required" description="Required Field">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</element>

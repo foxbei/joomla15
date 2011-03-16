@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemname" group="Core" hidden="true">
+	<name>Item Print</name>
+	<author>YOOtheme</author>
+	<creationDate>September 2010</creationDate>
+	<copyright>Copyright (C) 2007 - 2010 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Item Print Layout</description>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="showicon" type="radio" default="0" label="Show Icon" description="Show/Hide print icon">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</element>

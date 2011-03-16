@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="textarea" group="Form">
+	<name>Textarea</name>
+	<author>YOOtheme</author>
+	<creationDate>March 2009</creationDate>
+	<copyright>Copyright (C) 2007 - 2009 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>HTML Textarea</description>
+	<params>
+		<param name="name" type="text" default="" label="Name" description="Name used in item editor" />
+		<param name="description" type="text" default="" label="Description" description="DESCRIPTION_TOOLTIP_ITEM_EDITOR" />
+		<param name="default" type="text" default="" label="Default" description="" />
+		<param name="jplugins" type="radio" default="0" label="Load Plugins" description="JOOMLA_CONTENT_COMPONENT">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="repeatable" type="radio" default="0" label="Repeatable" description="Add multiple text areas.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="separated_by" type="zoolist" default="Div" label="Separated by" description="CHOOSE_SEPARATOR_REPEATED_ELEMENTS">
+			<option name="Paragraph"><![CDATA[tag=[<p>%s</p>]]]></option>
+			<option name="Div"><![CDATA[tag=[<div>%s</div>]]]></option>
+			<option name="List Item"><![CDATA[tag=[<li>%s</li>]]]></option>
+			<option name="Unordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul>%s</ul>]]]></option>
+			<option name="Ordered List"><![CDATA[tag=[<li><div>%s</div></li>] enclosing_tag=[<ol>%s</ol>]]]></option>
+		</param>
+		<param name="display" type="list" default="all" label="Display" description="CHOOSE_RENDERING_MODE_ELEMENT_POSITION">
+			<option value="all">all</option>
+			<option value="first">first</option>
+			<option value="all_without_first">all without first</option>
+		</param>
+	</params>
+	<params group="submission">
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="required" type="radio" default="0" label="Required" description="Required Field">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>		
+</element>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemname" group="Core" hidden="true">
+	<name>Item Name</name>
+	<author>YOOtheme</author>
+	<creationDate>December 2009</creationDate>
+	<copyright>Copyright (C) 2007 - 2009 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Item Name Core System</description>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="link_to_item" type="radio" default="1" label="Link to item" description="Wrap name in link to item">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>	
+	</params>
+</element>

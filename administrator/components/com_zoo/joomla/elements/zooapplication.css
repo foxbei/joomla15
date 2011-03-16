@@ -1,0 +1,23 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * zooapplication
+ */
+
+div.zoo-application select.application {
+	margin-right: 10px;
+}
+
+div.zoo-application div.categories,
+div.zoo-application div.types,
+div.zoo-application div.item {
+	margin-top: 5px;
+}
+
+div.zoo-application .hidden {
+	display: none;
+}
+
+div.zoo-application div.item input[type="text"] {
+	background: #ffffff;
+}

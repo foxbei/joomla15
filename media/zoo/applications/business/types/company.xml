@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Company">
+  <params>
+    <param type="text" identifier="ed9cdd4c-ae8b-4ecb-bca7-e12a5153bc02" name="Subtitle" description="" default="" repeatable="0"/>
+    <param type="textarea" identifier="a77f06fc-1561-453c-a429-8dd05cdc29f5" name="Teaser Description" description="" default="" jplugins="0" repeatable="0"/>
+    <param type="textarea" identifier="1a85a7a6-2aba-4480-925b-6b97d311ee6c" name="Description" description="" default="" jplugins="1" repeatable="1"/>
+    <param type="image" identifier="ffcc1c50-8dbd-4115-b463-b43bdcd44a57" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="text" identifier="4339a108-f907-4661-9aab-d6f3f00e736e" name="Street" description="" default="" repeatable="0"/>
+    <param type="text" identifier="ea0666d7-51e3-4e52-8617-25e3ad61f8b8" name="Postcode" description="" default="" repeatable="0"/>
+    <param type="text" identifier="90a18889-884b-4d53-a302-4e6e4595efa0" name="City" description="" default="" repeatable="0"/>
+    <param type="text" identifier="6a20c005-7bd3-4014-919a-6edfd2239284" name="State" description="" default="" repeatable="0"/>
+    <param type="country" identifier="81c5f642-2f7f-491f-b1c2-ce32ec688125" name="Country" description="" multiselect="1">
+      <selectable_country value="DE"/>
+      <selectable_country value="GB"/>
+      <selectable_country value="US"/>
+    </param>
+    <param type="text" identifier="b870164b-fe78-45b0-b840-8ebceb9b9cb6" name="Telephone" description="" default="" repeatable="0"/>
+    <param type="text" identifier="8a91aab2-7862-4a04-bd28-07f1ff4acce5" name="Fax" description="" default="" repeatable="0"/>
+    <param type="email" identifier="3f15b5e4-0dea-4114-a870-1106b85248de" name="E-Mail" description="" repeatable="0"/>
+    <param type="link" identifier="0b3d983e-b2fa-4728-afa0-a0b640fa34dc" name="Website" description="" repeatable="0"/>
+    <param type="relateditems" identifier="7056f1d2-5253-40b6-8efd-d289b10a8c69" name="Employee" description="">
+      <selectable_type value="employee"/>
+    </param>
+    <param type="rating" identifier="cf6dd846-5774-47aa-8ca7-c1623c06e130" name="Rating" description="" stars="5" allow_vote="0"/>
+    <param type="googlemaps" identifier="160bd40a-3e0e-48de-b6cd-56cdcc9db892" name="Maps" description="" google_api_key="ABQIAAAA2u6VGRnq68BKZyF5BisgghQbadBmKcUIPHxSF0F5bD4xQY6ODhSeS9As9v-ogciqHsd4GS7PWWlt2Q" locale="en"/>
+  </params>
+</type>

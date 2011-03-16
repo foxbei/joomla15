@@ -1,0 +1,4 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+Zoo.EditElement=new Class({Implements:[Options],initialize:function(e){this.setOptions({element:""},e);var d=this;this.element=$(this.options.element);(this.more_options=this.element.getElement("div.more-options"))&&this.more_options.getElement("div.trigger").getElements("div.button").each(function(b){var a="show-"+b.getProperty("class").split(" ").shift();b.removeEvents().addEvent("click",function(){d.more_options.hasClass(a)?d.more_options.setProperty("class","more-options"):d.more_options.setProperty("class",
+"more-options "+a)})});this.element.getElements("div.row").each(function(b){var a=b.getElement("input[type=text]"),c=b.getElement("label");if(c&&a){a.value?c.setStyle("opacity","0"):c.setStyle("opacity","1");new Observer(a,function(){a.value?c.setStyle("opacity","0"):c.setStyle("opacity","1")},{periodical:100,delay:0})}})}});

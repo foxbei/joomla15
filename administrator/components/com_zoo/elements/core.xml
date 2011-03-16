@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<type version="1.0.0" name="Core">
+	<params>
+		<param type="itemauthor" identifier="_itemauthor" name="Author" description="" default="" />
+		<param type="itemcategory" identifier="_itemcategory" name="Categories" description="" default="" />
+		<param type="itemcommentslink" identifier="_itemcommentslink" name="Comments Link" description="" default="" />		
+		<param type="itemcreated" identifier="_itemcreated" name="Creation Date" description="" default="" />
+		<param type="itemhits" identifier="_itemhits" name="Hits" description="" default="" />
+		<param type="itemlink" identifier="_itemlink" name="Item Link" description="" default="" />
+		<param type="itemname" identifier="_itemname" name="Name" description="" default="" />
+		<param type="itemmodified" identifier="_itemmodified" name="Modification Date" description="" default="" />
+		<param type="itemprint" identifier="_itemprint" name="Print" description="" default="" />
+		<param type="itemtag" identifier="_itemtag" name="Tags" description="" default="" />
+	</params>
+</type>

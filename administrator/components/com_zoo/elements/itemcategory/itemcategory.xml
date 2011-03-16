@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="itemcategory" group="Core" hidden="true">
+	<name>Item Category</name>
+	<author>YOOtheme</author>
+	<creationDate>December 2009</creationDate>
+	<copyright>Copyright (C) 2007 - 2009 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>Item Category Core System</description>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="linked" type="radio" default="1" label="Link Category" description="Wrap category in with a link">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="separated_by" type="zoolist" default="Space" label="Separated by" description="CHOOSE_SEPARATOR_REPEATED_ELEMENTS">
+			<option name="Space"><![CDATA[separator=[ ]]]></option>
+			<option name="Comma"><![CDATA[separator=[, ]]]></option>
+			<option name="Hyphen"><![CDATA[separator=[ - ]]]></option>
+			<option name="Pipe"><![CDATA[separator=[ | ]]]></option>
+			<option name="Break"><![CDATA[separator=[<br />]]]></option>
+			<option name="Span"><![CDATA[tag=[<span>%s</span>]]]></option>
+			<option name="Paragraph"><![CDATA[tag=[<p>%s</p>]]]></option>
+			<option name="Div"><![CDATA[tag=[<div>%s</div>]]]></option>
+			<option name="List Item"><![CDATA[tag=[<li>%s</li>]]]></option>
+			<option name="Unordered List"><![CDATA[tag=[<li>%s</li>] enclosing_tag=[<ul>%s</ul>]]]></option>
+			<option name="Ordered List"><![CDATA[tag=[<li><div>%s</div></li>] enclosing_tag=[<ol>%s</ol>]]]></option>
+		</param>
+	</params>	
+</element>

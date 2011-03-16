@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Recipe">
+  <params>
+    <param type="image" identifier="ff94e00f-5055-439f-8c3e-fe5bef815ad1" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="textarea" identifier="35155961-b9ae-48d4-b4aa-1a569ec7930c" name="Description" description="" default="" jplugins="0" repeatable="1"/>
+    <param type="text" identifier="23bacf33-73b5-4cd7-89cf-0302981d9f7a" name="Time" description="" default="" repeatable="0"/>
+    <param type="select" identifier="65930fe3-b0ff-435d-b95f-77189e6152cd" name="Serves" description="" default="" multiple="0">
+      <option name="1" value="1"/>
+      <option name="2" value="2"/>
+      <option name="3" value="3"/>
+      <option name="4" value="4"/>
+      <option name="5" value="5"/>
+      <option name="6" value="6"/>
+      <option name="7" value="7"/>
+      <option name="8" value="8"/>
+      <option name="9" value="9"/>
+      <option name="10" value="10"/>
+      <option name="11" value="11"/>
+      <option name="12" value="12"/>
+    </param>
+    <param type="select" identifier="242ce9a3-38b5-4190-b309-32779145e3f3" name="Complexity" description="" default="" multiple="0">
+      <option name="very easy" value="very easy"/>
+      <option name="easy" value="easy"/>
+      <option name="medium" value="medium"/>
+      <option name="advanced" value="advanced"/>
+      <option name="difficult" value="difficult"/>
+    </param>
+    <param type="text" identifier="9644cbe8-a679-4513-903e-f14ad22f0203" name="kcal" description="" default="" repeatable="0"/>
+    <param type="relatedcategories" identifier="aeccb029-0040-43f4-b485-65835745b508" name="Origin" description="" multiselect="1"/>
+    <param type="relatedcategories" identifier="26a171d9-8d80-4358-9536-ddcece403382" name="Diet" description="" multiselect="1"/>
+    <param type="text" identifier="0f21e4c9-1beb-4365-8a1d-1f7e8b9a793c" name="Ingredients" description="" default="" repeatable="1"/>
+    <param type="textarea" identifier="b14dbe99-8da7-4257-806e-38c48c884381" name="Directions" description="" default="" jplugins="0" repeatable="1"/>
+    <param type="socialbookmarks" identifier="9a1fbd9d-1106-4f2a-8bfc-14f3c6ecdc1a" name="Share this recipe" description="" google="0" technorati="0" yahoo="0" delicious="0" stumbleupon="0" digg="0" facebook="1" reddit="0" myspace="1" live="0" twitter="1" email="1"/>
+    <param type="select" identifier="2b4054aa-d50c-4312-a132-fc104db7dd36" name="Suitable Drinks" description="" default="" multiple="1">
+      <option name="White Wine" value="white-wine"/>
+      <option name="Red Wine" value="red-wine"/>
+      <option name="Coffee &amp; Tee" value="coffee"/>
+      <option name="Soft Drinks" value="soft-drinks"/>
+    </param>
+    <param type="relateditems" identifier="c9114a01-e0eb-4aea-96e0-6bc4ea20112c" name="Suitable Meals" description=""/>
+    <param type="relateditems" identifier="0d31fd39-fae1-4aa9-b016-a0f3e0c56d15" name="Similar recipes" description=""/>
+    <param type="rating" identifier="3194f2e2-b29e-4a6b-8555-17c58b42ed6c" name="Rating" description="" stars="5" allow_vote="0"/>
+  </params>
+</type>

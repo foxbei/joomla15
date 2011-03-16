@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Page">
+  <params>
+    <param type="image" identifier="6cb20a9f-27fa-4d98-ac2e-e959eb3f0f63" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="textarea" identifier="43aa1b15-986e-4303-afcf-628b835f10e5" name="Text" description="" default="" jplugins="1" repeatable="1"/>
+  </params>
+</type>

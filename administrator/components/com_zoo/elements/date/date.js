@@ -1,0 +1,4 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+if(Browser.Engine.trident){Calendar.prototype.showAtElement=function(c){this.tmp_element=$(c);var a=Calendar.getAbsolutePos(c);this.showAt(a.x,a.y+c.offsetHeight)};Calendar.prototype.hideShowCovered=function(){var c=["applet","iframe","select"],a=$(this.element),b=Calendar.getAbsolutePos(a);a.setStyle("top",b.y-a.getSize().y-this.tmp_element.getSize().y);a.setStyle("left",b.x-a.getSize().x+this.tmp_element.getSize().x);var e=b.x,k=a.offsetWidth+e,f=b.y;a=a.offsetHeight+f;for(var g=c.length;g>0;)for(var h=
+document.getElementsByTagName(c[--g]),d=null,i=h.length;i>0;){d=h[--i];b=Calendar.getAbsolutePos(d);var j=b.x,l=d.offsetWidth+j;b=b.y;var m=d.offsetHeight+b;d.style.visibility=this.hidden||j>k||l<e||b>a||m<f?"visible":"hidden"}}};

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<type version="1.0.0" name="Author">
+  <params>
+    <param type="image" identifier="ffefb4ed-8d5d-452a-8794-ea82c013384e" name="Image" description="" load_lightbox="0" upload_directory="images/stories/zoo/uploads/" max_upload_size="512"/>
+    <param type="textarea" identifier="14c0dd9f-ae3c-4eb2-8e22-4e9294ad3120" name="Description" description="" default="" jplugins="0" repeatable="1"/>
+    <param type="email" identifier="ac84af6f-ec56-4228-b421-ba3981399abe" name="E-Mail" description="" repeatable="0"/>
+    <param type="link" identifier="4d431350-4f70-45cc-9922-a973ce0fa61f" name="Website" description="" repeatable="1"/>
+    <param type="relateditems" identifier="d6540bb8-d194-4bb0-879f-86e07c3f7a17" name="Article" description="">
+      <selectable_type value="article"/>
+    </param>
+  </params>
+</type>

@@ -1,0 +1,4 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+Zoo.EditSubmission=new Class({initialize:function(){["apply","save"].each(function(a){$("toolbar-"+a).getElement("a").removeProperty("onclick").addEvent("click",function(){this.submit(a)}.bind(this))}.bind(this));$("access").addEvent("change",function(){this.setTrustedMode()}.bind(this));this.setTrustedMode()},setTrustedMode:function(){var a=$("submission-edit").getElement("input.trusted");if($("access").get("value")=="0"){a.setProperty("disabled","disabled");a.removeProperty("checked")}else a.removeProperty("disabled")},
+submit:function(a){$("name-edit").getElement('input[name="name"]').get("value")==""?$("name-edit").getElement("span.message-name").setStyle("display","inline"):submitbutton(a)}});

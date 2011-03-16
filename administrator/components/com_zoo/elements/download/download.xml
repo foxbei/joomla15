@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<element type="download" group="Media">
+	<name>Download</name>
+	<author>YOOtheme</author>
+	<creationDate>March 2009</creationDate>
+	<copyright>Copyright (C) 2007 - 2009 YOOtheme GmbH</copyright>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>1.0.0</version>
+	<description>File Download</description>
+	<params>
+		<param name="name" type="text" default="" label="Name" description="Name used in item editor" />
+		<param name="description" type="text" default="" label="Description" description="DESCRIPTION_TOOLTIP_ITEM_EDITOR" />
+		<param name="directory" type="text" default="" label="Source Directory" description="The base directory to choose files from" />
+		<param name="download_mode" type="list" default="1" label="Download Mode" description="The download mode">
+			<option value="0">Direct</option>
+			<option value="1">Attachment</option>
+			<option value="2">Protected</option>
+		</param>
+		<param name="upload_extensions" type="text" default="png,jpg,doc,mp3,mov,avi,mpg,zip,rar,gz" label="Legal Extensions" description="UPLOAD_EXTENSION_DESCRIPTION" />
+        <param name="upload_directory" type="text" default="images/stories/zoo/uploads/" label="Upload Directory" description="UPLOAD_DIR_DESCRIPTION" />
+		<param name="max_upload_size" type="text" default="512" label="Max Upload Size (KB)" description="UPLOAD_MAX_SIZE_DESCRIPTION" />
+	</params>
+	<params group="render">
+		<param name="showlabel" type="radio" default="0" label="Show Label" description="Show/Hide element label">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="display" type="list" default="full" label="Display" description="CHOOSE_RENDERING_MODE_ELEMENT_POSITION">
+			<option value="default">Text link</option>
+			<option value="imagelink">Image link</option>
+			<option value="buttonlink">Button link</option>
+			<option value="filesize">File size</option>
+			<option value="filehits">File hits</option>
+			<option value="download_limit">Download limit</option>
+		</param>
+		<param name="download_name" type="text" default="Download {filename}" label="Download Name" description="DISPLAY_TEXT_LINK" />
+	</params>
+	<params group="submission">
+		<param name="altlabel" type="text" default="" label="Alternative Label" description="CUSTOM_LABEL" />
+		<param name="required" type="radio" default="0" label="Required" description="Required Field">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+	</params>
+</element>
