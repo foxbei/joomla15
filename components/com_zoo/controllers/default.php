@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      default.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -101,24 +101,24 @@ class DefaultController extends YController {
 
 		// get request vars
 		$item_id = (int) YRequest::getInt('item_id', $this->params->get('item_id', 0));	
-		
+
 		// get item
 		$this->item = YTable::getInstance('item')->get($item_id);
-
-		// add canonical
-		$document = JFactory::getDocument();
-		if ($document instanceof JDocumentHTML) {
-			$document->addHeadLink(JRoute::_(RouteHelper::getItemRoute($this->item)), 'canonical');
-		}
-
-		// get category_id
-		$category_id = (int) YRequest::getInt('category_id', $this->item->getPrimaryCategoryId());
 
 		// raise warning when item can not be accessed
 		if (empty($this->item->id) || !$this->item->canAccess($this->user)) {
 			JError::raiseError(500, JText::_('Unable to access item'));
 			return;
 		}
+
+		// add canonical
+		$document = JFactory::getDocument();
+		if ($document instanceof JDocumentHTML) {
+			$document->addHeadLink(JRoute::_(RouteHelper::getItemRoute($this->item)), 'canonical');
+		}	
+
+		// get category_id
+		$category_id = (int) YRequest::getInt('category_id', $this->item->getPrimaryCategoryId());	
 
 		// raise warning when item is not published
 		$nulldate     = JFactory::getDBO()->getNullDate();
@@ -213,10 +213,14 @@ class DefaultController extends YController {
 		$params	          = $this->category ? $this->category->getParams('site') : $this->application->getParams('frontpage');
 		$this->item_order = $this->_getItemOrder($params->get('config.item_order'));
 		$layout 		  = $category_id == 0 ? 'frontpage' : 'category';
+		$items_per_page   = $params->get('config.items_per_page', 15);
+		$offset			  = ($page - 1) * $items_per_page;
+		$table			  = YTable::getInstance('item');
 
 		// get categories and items
 		$this->categories = $this->application->getCategoryTree(true, $this->user, true);
-		$this->items      = YTable::getInstance('item')->getFromCategory($this->application->id, $category_id, true, null, $this->item_order);
+		$this->items      = $table->getFromCategory($this->application->id, $category_id, true, null, $this->item_order, $offset, $items_per_page);
+		$item_count		  = $table->getItemCountFromCategory($this->application->id, $category_id, true);
 
 		// raise warning when category can not be accessed
 		if (!isset($this->categories[$category_id])) {
@@ -229,18 +233,12 @@ class DefaultController extends YController {
 		$this->selected_categories = $this->categories[$category_id]->getChildren();
 
 		// get item pagination
-		$items_per_page   = $params->get('config.items_per_page', 15);
-		$this->pagination = new YPagination('page', count($this->items), $page, $items_per_page);
+		$this->pagination = new YPagination('page', $item_count, $page, $items_per_page);
 		$this->pagination->setShowAll($items_per_page == 0);
 		if ($layout == 'category') {
 			$this->pagination_link = RouteHelper::getCategoryRoute($this->category);
 		} else {
 			$this->pagination_link = RouteHelper::getFrontpageRoute($this->application->id);
-		}
-
-		// slice out items
-		if (!$this->pagination->getShowAll()) {
-			$this->items = array_slice($this->items, $this->pagination->limitStart(), $items_per_page);
 		}
 
 		// create pathway
@@ -473,7 +471,7 @@ class DefaultController extends YController {
 		$add_alpha_index = $this->application->getParams('site')->get('config.alpha_index', 0);
 		
 		if ($add_alpha_index == 1 || $add_alpha_index == 3) {
-			$alpha_index->addObjects(array_filter($this->categories, create_function('$category', 'return $category->id != 0 && $category->itemCount();')), 'name');
+			$alpha_index->addObjects(array_filter($this->categories, create_function('$category', 'return $category->id != 0 && $category->totalItemCount();')), 'name');
 		}
 		// add items
 		if ($add_alpha_index == 2 || $add_alpha_index == 3) {
@@ -487,7 +485,7 @@ class DefaultController extends YController {
 			$now  = $db->Quote($date->toMySQL());
 			$null = $db->Quote($db->getNullDate());
 
-			$query = 'SELECT DISTINCT LOWER(LEFT(name, 1)) letter'
+			$query = 'SELECT DISTINCT BINARY CONVERT(LOWER(LEFT(name, 1)) USING utf8) letter'
 					.' FROM ' . ZOO_TABLE_ITEM . ' AS ci'
 					.' WHERE id IN (SELECT item_id FROM ' . ZOO_TABLE_CATEGORY_ITEM . ')'
 					.' AND application_id = '.(int) $this->application->id

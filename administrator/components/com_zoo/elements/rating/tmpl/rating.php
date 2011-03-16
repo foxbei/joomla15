@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      rating.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -15,8 +15,10 @@ defined('_JEXEC') or die('Restricted access');
 JHTML::script('rating.js', 'administrator/components/com_zoo/elements/rating/assets/js/');
 JHTML::stylesheet('rating.css', 'administrator/components/com_zoo/elements/rating/assets/css/');
 
+$id = 'rating-' . $instance;
+
 ?>
-<div id ="rating-<?php echo $instance; ?>" class="yoo-zoo rating">
+<div id="<?php echo $id; ?>" class="yoo-zoo rating">
 
 	<div class="rating-container star<?php echo $stars; ?>">
 		<div class="previous-rating" style="width: <?php echo intval($rating / $stars * 100); ?>%;"></div>
@@ -40,6 +42,8 @@ JHTML::stylesheet('rating.css', 'administrator/components/com_zoo/elements/ratin
 </div>
 <?php if (!$disabled) : ?>
 	<script type="text/javascript">
-		new ElementRating('rating-<?php echo $instance; ?>', '<?php echo JRoute::_($link); ?>');
+		jQuery(function($){
+			$('#<?php echo $id; ?>').ElementRating({ url: '<?php echo JRoute::_($link, false); ?>' });
+		});
 	</script>
 <?php endif; ?>

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      category.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -265,9 +265,11 @@ class CategoryController extends YController {
 		// check for request forgeries
 		YRequest::checkToken() or jexit('Invalid Token');
 		
-		// init vars
-		$parent   = YRequest::getArray('parent', array(), 'int');
-		$ordering = YRequest::getArray('ordering', array(), 'int');
+		// group categories by parent
+		$category_ordering = array();
+		foreach (YRequest::getArray('category', array(), 'int') as $id => $parent) {
+			$category_ordering[$parent][] = $id;
+		}
 
 		try {
 
@@ -276,14 +278,14 @@ class CategoryController extends YController {
 			$categories = $table->all();
 
 			// update category parent & ordering
-			foreach ($categories as $id => $category) {
-				if (isset($parent[$id]) && isset($ordering[$id])) {
-
+			foreach ($category_ordering as $parent => $cat_ids) {
+				$parent = $parent == 'root' ? 0 : $parent;
+				foreach ($cat_ids as $ordering => $id) {
 					// only update, if changed
-					if ($category->parent != $parent[$id] || $category->ordering != $ordering[$id]) {
-						$category->parent = $parent[$id];
-						$category->ordering = $ordering[$id];
-						$table->save($category);
+					if (isset($categories[$id]) && ($categories[$id]->parent != $parent || $categories[$id]->ordering != $ordering)) {
+						$categories[$id]->parent = $parent;
+						$categories[$id]->ordering = $ordering;
+						$table->save($categories[$id]);
 					}
 				}
 			}

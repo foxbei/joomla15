@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      xml.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -171,6 +171,22 @@ class YXMLElement extends SimpleXMLElement{
 		$newChild = simplexml_import_dom($_newChild);
 		return $this;
 	} 	
+
+	/*
+		Function: removeChild
+			Removes a YXMLElement child.
+
+		Parameters:
+			$child - YXMLElement child to remove
+
+		Returns:
+			YXMLElement
+	*/
+	public function removeChild(SimpleXmlElement $child) {
+		$dom = dom_import_simplexml($child);
+		$dom->parentNode->removeChild($dom);
+		return $this;
+	}
 
 	/*
 		Function: insertBefore

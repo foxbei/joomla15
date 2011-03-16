@@ -2,18 +2,16 @@
 /**
 * @package   ZOO Component
 * @file      _administration.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-JHTML::script('observer.js', ZOO_ADMIN_URI . 'assets/js/');
-JHTML::script('autocompleter.js', ZOO_ADMIN_URI . 'assets/js/');
-JHTML::script('autocompleter.request.js', ZOO_ADMIN_URI . 'assets/js/');
+JHTML::script('autosuggest.js', ZOO_ADMIN_URI . 'assets/js/');
 JHTML::script('tag.js', ZOO_ADMIN_URI . 'assets/js/');
 
 $tags = $this->form->hasError('tags') ? $this->form->getTaintedValue('tags') : $this->form->getValue('tags');
@@ -54,7 +52,7 @@ $tags = $tags ? $tags : array();
 
 			<div class="element element-publish_up<?php echo ($this->form->hasError('publish_up') ? ' error' : ''); ?>">
 				<strong><?php echo JText::_('Start Publishing'); ?></strong>
-				<?php echo JHTML::_('element.calendar', $this->form->getTaintedValue('publish_up'), 'publish_up', 'publish_up', SubmissionController::CALENDAR_DATE_FORMAT, array('class' => 'calendar-element')); ?>
+				<?php echo JHTML::_('zoo.calendar', $this->form->getTaintedValue('publish_up'), 'publish_up', 'publish_up', array('class' => 'calendar-element')); ?>
 				<?php if ($this->form->hasError('publish_up')) : ?><div class="error-message"><?php echo $this->form->getError('publish_up'); ?></div><?php endif; ?>
 			</div>
 
@@ -65,7 +63,7 @@ $tags = $tags ? $tags : array();
 					}
 				?>
 				<strong><?php echo JText::_('Finish Publishing'); ?></strong>
-				<?php echo JHTML::_('element.calendar', $publish_down, 'publish_down', 'publish_down', SubmissionController::CALENDAR_DATE_FORMAT, array('class' => 'calendar-element')); ?>
+				<?php echo JHTML::_('zoo.calendar', $publish_down, 'publish_down', 'publish_down', array('class' => 'calendar-element')); ?>
 				<?php if ($this->form->hasError('publish_down')) : ?><div class="error-message"><?php echo $this->form->getError('publish_down'); ?></div><?php endif; ?>
 			</div>
 
@@ -84,27 +82,12 @@ $tags = $tags ? $tags : array();
 	</div>
 
 	<div id="tag-area">
-		<div class="input">
-			<div class="hint"><?php echo JText::_('Add new tag');?></div>
-			<input type="text" value="" autocomplete="off" />
-			<button class="button-grey" type="button"><?php echo JText::_('Add tag')?></button>
-			<div class="icon"></div>
-		</div>
-		<p><?php echo JText::_('Seperate multiple tags through commas'); ?>.</p>
-		<div class="tag-list">
-		<?php foreach ($tags as $tag) :?>
-			<div>
-				<a></a>
-				<?php echo $tag; ?>
-				<input type="hidden" value="<?php echo $tag; ?>" name="tags[]" />
-			</div>
-		<?php endforeach;?>
-		</div>
+		<input type="text" value="<?php echo implode(', ', $tags); ?>" placeholder="<?php echo JText::_('Add tag'); ?>" />
+		<p><?php echo JText::_('Choose from the most used tags');?>:</p>
 		<?php if (count($this->lists['most_used_tags'])) : ?>
-		<p><?php echo JText::_('Choose from the most used tags');?>.</p>
 		<div class="tag-cloud">
 			<?php foreach ($this->lists['most_used_tags'] as $tag) :?>
-				<a class="button-grey" title="<?php echo $tag->items . ' ' . ($tag->items == 1 ? JText::_('submission') : JText::_('submissions')); ?>"><?php echo $tag->name; ?></a>
+				<a title="<?php echo $tag->items . ' ' . ($tag->items == 1 ? JText::_('item') : JText::_('items')); ?>"><?php echo $tag->name; ?></a>
 			<?php endforeach;?>
 		</div>
 		<?php endif; ?>
@@ -113,7 +96,7 @@ $tags = $tags ? $tags : array();
 </fieldset>
 
 <script type="text/javascript">
-    window.addEvent('domready', function() {
-        new Zoo.Tag({url: '<?php echo JRoute::_($this->link_base.'&controller=submission', false); ?>'});
-    });
+	jQuery(function($){
+		$('#yoo-zoo #tag-area').Tag({ url: '<?php echo JRoute::_($this->link_base.'&controller=submission', false); ?>' });
+	});
 </script>

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      relateditems.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -137,77 +137,15 @@ class ElementRelatedItems extends Element implements iSubmittable {
 	*/
 	public function edit() {
 
-		$id = 'a' . str_replace('-','_',$this->identifier);
-
-		$type_filter = '';
-		$selectable_types = $this->_config->get('selectable_types', array());
-		foreach ($selectable_types as $selectable_type) {
-			$type_filter .= '&type_filter[]=' . $selectable_type;
-		}
-
-		$item_filter = '';
-		if ($this->_item) {
-			$item_filter = '&item_filter='.$this->_item->id;
-		}
-
-		// init vars
-		$link = 'index.php?option=com_zoo&controller=item&task=element&tmpl=component&func=selectRelateditem&object='.$id.$type_filter.$item_filter;
-
-		// create html
-		$html[] = '<div id="'.$this->identifier.'" class="select-relateditems">';
-		$html[] = '<ul>';
-
-		// get item table
-		$table = YTable::getInstance('item');
-		foreach($this->_data->get('item', array()) as $item_id){	
-			$item = $table->get($item_id);
-			if (!empty($item->id)){
-				$html[] = '<li><div class="item-name">'.$item->name.'</div>';
-				$html[] = '<div class="item-sort" title="'.JText::_('Sort Item').'"></div>';
-				$html[] = '<div class="item-delete" title="'.JText::_('Delete Item').'"></div>';
-				$html[] = '<input type="hidden" name="elements[' . $this->identifier . '][item][]" value="'.$item_id.'"/></li>';
-			}
-		}
-
-		$html[] = '</ul>';
-		$html[] = '<a class="item-add modal" rel="{handler: \'iframe\', size: {x: 850, y: 500}}" title="'.JText::_('Add Item').'" href="'.JRoute::_($link).'" >'.JText::_('Add Item').'</a>';
-		$html[] = '</div>';
-
-		// create js
-		$javascript  = "window.relateditems.".$id." = new ElementRelateditems('".$this->identifier."', { variable: 'elements[".$this->identifier."][item][]', msgDeleteItem: '".JText::_('Delete Item')."', msgSortItem: '".JText::_('Sort Item')."'});";
-		$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
-
-		return implode("\n", $html).$javascript;
-	}
-
-	/*
-		Function: renderSubmission
-			Renders the element in submission.
-
-	   Parameters:
-            $params - submission parameters
-
-		Returns:
-			String - html
-	*/
-	public function renderSubmission($params = array()) {
-
 		// filter state and access
 		$data = array();
 		$table = YTable::getInstance('item');
 		foreach ($this->_data->get('item', array()) as $id) {
-			if ($id) {
-				$item = $table->get($id);
-				if ($item->isPublished() && $item->canAccess()) {
-					$data[$id] = $item;
-				}
+			if ($id && ($item = $table->get($id)) && $item->isPublished() && $item->canAccess()) {
+				$data[$id] = $item;
 			}
-		}
-
-		// load assets
-		JHTML::_('behavior.modal', 'a.modal');
-		JHTML::script('relateditems.js', 'administrator/components/com_zoo/elements/relateditems/');
-
+		}		
+		
 		// build element id
         $id = 'a' . str_replace('-','_',$this->identifier);
 
@@ -227,7 +165,7 @@ class ElementRelatedItems extends Element implements iSubmittable {
 		// init vars
 		$link = 'index.php?option=com_zoo&controller=item&task=element&tmpl=component&func=selectRelateditem&object='.$id.$type_filter.$item_filter;
 
-        if ($layout = $this->getLayout('submission.php')) {
+		if ($layout = $this->getLayout('edit.php')) {
             return self::renderLayout($layout,
                 array(
                     'element' => $this->identifier,
@@ -238,6 +176,26 @@ class ElementRelatedItems extends Element implements iSubmittable {
             );
         }
 
+	}
+
+	/*
+		Function: renderSubmission
+			Renders the element in submission.
+
+	   Parameters:
+            $params - submission parameters
+
+		Returns:
+			String - html
+	*/
+	public function renderSubmission($params = array()) {
+
+		// load assets
+		JHTML::_('behavior.modal', 'a.modal');
+		JHTML::script('relateditems.js', 'administrator/components/com_zoo/elements/relateditems/');
+
+		return $this->edit();
+		
 	}
 
 	/*

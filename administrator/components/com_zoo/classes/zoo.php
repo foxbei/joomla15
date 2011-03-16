@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zoo.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -57,29 +57,28 @@ class Zoo {
 			$params = $joomla->getParams();
 						
 			// create application from menu item params / request
-			if ($item_id = YRequest::getInt('item_id')) {
+			if ($item_id = YRequest::getInt('item_id')) {				
 				if ($item = YTable::getInstance('item')->get($item_id)) {
 					self::$_application = $item->getApplication();
 				}
-			} else if ($category_id = YRequest::getInt('category_id')) { 
+			} else if ($category_id = YRequest::getInt('category_id')) {				
 				if ($category = YTable::getInstance('category')->get($category_id)) {
 					self::$_application = $category->getApplication();
 				}
 			} else if ($id = YRequest::getInt('app_id')) {
 				self::$_application = $table->get($id);
-			} else if ($id = $params->get('application')) {
+			} else if ($id = $params->get('application')) {				
 				self::$_application = $table->get($id);
 			} else {
 				// try to get application from default menu item
 				$menu    = JSite::getMenu(true);
 				$default = $menu->getDefault();
 				if (isset($default->component) && $default->component == 'com_zoo') {
-					if ($app_id = $menu->getParams($default->id)->get('application')) {
+					if ($app_id = $menu->getParams($default->id)->get('application')) {						
 						self::$_application = $table->get($app_id);
 					}
 				}
 			}
-
 			return self::$_application;
 		}
 		

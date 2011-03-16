@@ -1,0 +1,104 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-comment.bubble-angled-v > ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.zoo-comment.bubble-angled-v > ul > li {
+	margin: 15px 0px 0px 0px;
+	padding: 0px;
+}
+.zoo-comment.bubble-angled-v > ul > li:first-child { margin: 0px; }
+.zoo-comment.bubble-angled-v > ul > li.odd {}
+.zoo-comment.bubble-angled-v > ul > li.even {}
+
+/* bubble */
+.zoo-comment.bubble-angled-v div.bubble {
+	position: relative;
+	padding-bottom: 7px;
+	overflow: hidden;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-arrow {
+	position: absolute;
+	left: 25px;
+	bottom: 2px;
+	width: 12px;
+	height: 9px;
+	background: url(images/bubble_corners.png) 0 -60px no-repeat;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-t1 { background: url(images/bubble_corners.png) 0 0 no-repeat; }
+
+.zoo-comment.bubble-angled-v div.bubble-t2 {
+	padding: 0px 5px 0px 5px;	
+	background: url(images/bubble_corners.png) 100% -10px no-repeat;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-t3 {
+	height: 5px;
+	background: url(images/bubble_corners.png) 0 -20px repeat-x;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-1 { background: url(images/bubble_edges.png) 0 0 repeat-y; }
+
+.zoo-comment.bubble-angled-v div.bubble-2 { 
+	padding: 0px 5px 0px 5px;
+	background: url(images/bubble_edges.png) 100% 0 repeat-y;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-3 { 
+	padding: 10px;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-b1 { background: url(images/bubble_corners.png) 0 -30px no-repeat; }
+
+.zoo-comment.bubble-angled-v div.bubble-b2 {
+	padding: 0px 5px 0px 5px;	
+	background: url(images/bubble_corners.png) 100% -40px no-repeat;
+}
+
+.zoo-comment.bubble-angled-v div.bubble-b3 {
+	height: 5px;
+	background: url(images/bubble_corners.png) 0 -50px repeat-x;
+}
+
+/* speaker */
+.zoo-comment.bubble-angled-v div.speaker {
+	padding-left: 5px;
+	overflow: hidden;
+}
+
+/* avatar */
+.zoo-comment.bubble-angled-v div.avatar {
+	display: block;
+	margin-right: 5px;
+	padding: 3px;
+	border: 1px solid #c8c8c8;
+	background: #ffffff;
+	float: left;
+}
+
+.zoo-comment.bubble-angled-v div.avatar > * { display: inline-block; }
+
+
+/* author */
+.zoo-comment.bubble-angled-v h3.author {
+	margin: 5px 0px 0px 0px;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.zoo-comment.bubble-angled-v h3.author a {}
+
+/* meta */
+.zoo-comment.bubble-angled-v p.meta {
+	margin: 0px;
+	font-size: 10px;
+	color: #969696;
+	font-style: italic;
+}

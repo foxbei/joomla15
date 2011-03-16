@@ -1,9 +1,165 @@
-/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
 
-Zoo.Comment=new Class({Implements:[Events,Options],initialize:function(a){this.setOptions({url:"index.php?option=com_zoo&controller=comment",id:"edit-comment-editor"},a);this.form=$("comments-default");this.form.getElements("tr.comment-row").each(function(b){this.attachEvents(b)}.bind(this))},attachEvents:function(a){a.getElement(".actions-links .edit").addEvent("click",function(c){(new Event(c)).stop();this.editEvent(a)}.bind(this));a.getElement(".actions-links .reply").addEvent("click",function(c){(new Event(c)).stop();
-this.replyEvent(a)}.bind(this));a.getElement(".actions-links .delete a").addEvent("click",function(c){(new Event(c)).stop();this.stateEvent(a,"remove")}.bind(this));var b=a.getElement(".actions-links .approve a"),d=a.getElement(".actions-links .unapprove a"),e=a.getElement(".actions-links .spam a"),f=a.getElement(".actions-links .no-spam a");b&&b.addEvent("click",function(c){(new Event(c)).stop();this.stateEvent(a,"approve")}.bind(this));d&&d.addEvent("click",function(c){(new Event(c)).stop();this.stateEvent(a,
-"unapprove")}.bind(this));e&&e.addEvent("click",function(c){(new Event(c)).stop();this.stateEvent(a,"spam")}.bind(this));f&&f.addEvent("click",function(c){(new Event(c)).stop();this.stateEvent(a,"approve")}.bind(this))},editEvent:function(a){var b=this,d=a.getElement("input[name^=cid]").getProperty("value");(new Request.HTML({url:b.options.url,data:"task=edit&format=raw&cid="+d,onComplete:function(e){b.removeEditor();b.insertEditor(a,e);a.setStyle("display","none");b.form.removeEvents();b.form.addEvents({save:function(f,
-c){if(JSON.decode(c,true))Message.show(c);else{var g=(new Element("table")).set("html",c).getElement("tr");b.removeEditor();b.attachEvents(g);g.replaces(f);b.stripe()}},cancel:function(){b.removeEditor()}})}})).post()},replyEvent:function(a){var b=this,d=a.getElement("input[name^=cid]").getProperty("value");(new Request.HTML({url:b.options.url,data:"task=reply&format=raw&cid="+d,onComplete:function(e){b.removeEditor();b.insertEditor(a,e);b.form.removeEvents();b.form.addEvents({save:function(f,c){if(JSON.decode(c,
-true))Message.show(c);else{var g=(new Element("table")).set("html",c).getElement("tr");b.removeEditor();b.attachEvents(g);g.injectAfter(f);b.stripe()}},cancel:function(){b.removeEditor()}})}})).post()},stateEvent:function(a,b){var d=a.getElement("input[name^=cid]").getProperty("value");(new Element("input",{type:"hidden",name:"cid",value:d})).injectInside(this.form);this.form.getElement("input[name=task]").setProperty("value",b);this.form.submit()},insertEditor:function(a,b){var d=this,e=(new Element("tr",
-{id:this.options.id})).injectAfter(a);(new Element("td",{colspan:"4"})).empty().adopt(b).injectInside(e);e.getElement(".content textarea").focus();e.getElement(".actions .save").addEvent("click",function(f){(new Event(f)).stop();var c=new Hash;d.form.getElements("input, textarea").each(function(g){var i=g.name,h=g.get("value");h===false||!i||g.disabled||c.set(i,h)});(new Request.HTML({url:d.options.url,data:(new Hash({task:"save",format:"raw"})).combine(c),onComplete:function(g,i,h){d.form.fireEvent("save",
-[a,h])}})).post()});e.getElement(".actions .cancel").addEvent("click",function(f){(new Event(f)).stop();d.form.fireEvent("cancel")})},removeEditor:function(){var a=$(this.options.id);if(a){a.getPrevious().setStyle("display","");a.dispose()}},stripe:function(){$$("table.stripe tbody tr").each(function(a,b){a.removeClass("even");a.removeClass("odd");a.addClass(b%2?"even":"odd")})}});
+// controller: comment task: default (browse)
+(function($){
+
+    var Plugin = function(){};
+
+    $.extend(Plugin.prototype, {
+
+		name: 'Comment',
+
+		options: {
+			url: 'index.php?option=com_zoo&controller=comment',
+			id: 'edit-comment-editor'
+		},
+
+		initialize: function(form, options) {
+			this.options = $.extend({}, this.options, options);
+
+			var $this = this;
+			this.form = form;
+
+			form.delegate('tr.comment-row .actions-links .edit, tr.comment-row .actions-links .reply', 'click', function(event) {
+				event.stopPropagation();
+				var task = $(this).attr('class');
+				$this.modifyEvent($(this).closest('tr.comment-row'), task);
+			});
+
+			form.delegate('tr.comment-row .actions-links span', 'click', function(event) {
+				event.stopPropagation();
+				switch ($(this).attr('class')) {
+					case 'no-spam':
+						var task = 'approve';
+						break;
+					case 'delete':
+						var task = 'remove';
+						break;
+					default:
+						var task = $(this).attr('class');
+						break;
+				}
+				$this.stateEvent($(this).closest('tr.comment-row'), task);
+			});
+
+		},
+
+		modifyEvent: function(row, task) {
+			$this = this;
+
+			$.ajax({
+				url: this.options.url,
+				data: {
+					task: task,
+					format: 'raw',
+					cid: row.find('input[name^="cid["]').val()
+				},
+				success: function(data){
+
+					// insert editor
+					$this.removeEditor();
+					$this.insertEditor(row, data);
+
+					// hide row on edit comment
+					if (task == 'edit') row.hide();
+
+					// set events
+					$this.form
+						.unbind('save')
+						.unbind('cancel')
+						.bind('save', function(event, data) {
+//							if ($.parseJSON(data)) {
+//								Message.show(data);
+//							} else {
+								$this.removeEditor();
+								if (task == 'edit') {
+									row.replaceWith(data);
+								} else {
+									$(data).insertAfter(row);
+								}
+								$this.stripe();
+//							}
+						})
+						.bind('cancel', function() {
+							$this.removeEditor();
+						});
+				}
+			});
+		},
+
+		stateEvent: function(row, task) {
+			$('<input type="hidden" name="cid">').val(row.find('input[name^="cid["]').val()).appendTo(this.form);
+			this.form.find('input[name=task]').val(task);
+			this.form.submit();
+		},
+
+		insertEditor: function(row, data) {
+			var editor = row.after(data).next();
+
+			editor.find('.actions .save').bind('click', function(event) {
+				event.stopPropagation();
+
+				var post = {};
+
+				$.each($this.form.serializeArray(), function(i, field){
+					post[field.name] = field.value;
+		      	});
+
+				$.ajax({
+					type: "POST",
+					url: $this.options.url,
+					data: $.extend(post, {'task': 'save', 'format': 'raw'}),
+					success: function(data){
+						$this.form.triggerHandler('save', data);
+					}
+				});
+			});
+
+			editor.find('.actions .cancel').bind('click', function(event) {
+				event.stopPropagation();
+				$this.form.triggerHandler('cancel');
+			});
+
+			editor.find('.content textarea').focus();
+		},
+
+		removeEditor: function() {
+			$('#'+this.options.id, this.form).prev('tr').show();
+			$('#'+this.options.id, this.form).remove();
+		},
+
+		stripe: function() {
+			$('table.stripe tbody tr').removeClass('odd even').each(function() {
+				$(this).addClass($(this).is('tr:odd') ? 'odd' : 'even');
+			});
+		}
+
+	});
+
+    // Don't touch
+	$.fn[Plugin.prototype.name] = function() {
+
+		var args   = arguments;
+		var method = args[0] ? args[0] : null;
+
+		return this.each(function() {
+			var element = $(this);
+
+			if (Plugin.prototype[method] && element.data(Plugin.prototype.name) && method != 'initialize') {
+				element.data(Plugin.prototype.name)[method].apply(element.data(Plugin.prototype.name), Array.prototype.slice.call(args, 1));
+			} else if (!method || $.isPlainObject(method)) {
+				var plugin = new Plugin();
+
+				if (Plugin.prototype['initialize']) {
+					plugin.initialize.apply(plugin, $.merge([element], args));
+				}
+
+				element.data(Plugin.prototype.name, plugin);
+			} else {
+				$.error('Method ' +  method + ' does not exist on jQuery.' + Plugin.name);
+			}
+
+		});
+	};
+
+})(jQuery);

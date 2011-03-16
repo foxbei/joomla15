@@ -1,0 +1,66 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* panel */
+.yootools-black div.default-h div.yoo-scroller .panel-container-t {
+	background: #282828 url(tmpl/default-h/black/images/panel_t.png) 0 0 repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-b {
+	background: url(tmpl/default-h/black/images/panel_b.png) 0 100% repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-l {
+	background: url(tmpl/default-h/black/images/panel_l.png) 0 0 repeat-y;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-r {
+	background: url(tmpl/default-h/black/images/panel_r.png) 100% 0 repeat-y;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-tl {
+	background: url(tmpl/default-h/black/images/panel_tl.png) 0 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-tr {
+	background: url(tmpl/default-h/black/images/panel_tr.png) 100% 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-bl {
+	background: url(tmpl/default-h/black/images/panel_bl.png) 0 100% no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller .panel-container-br {
+	background: url(tmpl/default-h/black/images/panel_br.png) 100% 100% no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollarea {
+	background: url(tmpl/default-h/black/images/scrollarea_m.png) 0 0 repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollarea-l {
+	background: url(tmpl/default-h/black/images/scrollarea_l.png) 0 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollarea-r {
+	background: url(tmpl/default-h/black/images/scrollarea_r.png) 100% 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollknob {
+	background: url(tmpl/default-h/black/images/scrollknob_l.png) 0 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollknob-r {
+	background: url(tmpl/default-h/black/images/scrollknob_r.png) 100% 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.scrollknob-m {
+	background: url(tmpl/default-h/black/images/scrollknob_m.png) 0 0 repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.forward {
+	background: url(tmpl/default-h/black/images/scroll_forward.png) 0 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-scroller div.back {
+	background: url(tmpl/default-h/black/images/scroll_back.png) 0 0 no-repeat;
+}

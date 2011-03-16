@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      tag.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -36,7 +36,7 @@ class TagTable extends YTable {
 		$null = $db->Quote($db->getNullDate());
 
 		$query = "SELECT a.name, COUNT(a.item_id) AS items"
-			." FROM ".$this->getTableName()." AS a".($application_id !== false ? ", ".ZOO_TABLE_ITEM." AS b" : "")
+			." FROM ".$this->getTableName()." AS a".($application_id !== false ? ", ".ZOO_TABLE_ITEM." AS b USE INDEX (ID_APPLICATION_INDEX)" : "")
 			." WHERE 1"
 			.($application_id !== false ? " AND a.item_id = b.id AND b.application_id = ".(int) $application_id : "")
 			.(!empty($search) ? " AND LOWER(a.name) LIKE ".$db->Quote('%'.$db->getEscaped($search, true).'%', false) : "")
@@ -49,6 +49,26 @@ class TagTable extends YTable {
 			.(($limit ? " LIMIT ".(int)$offset.",".(int)$limit : ""));
 
 		return $db->queryObjectList($query);
+	}
+
+	/*
+		Function: count
+			Returns number of tags of an application
+
+		Returns:
+			int
+	*/
+	public function count($application_id, $search = "") {
+
+		// get database
+		$db = $this->getDBO();
+
+		$select  = 'DISTINCT a.name';
+		$from = $this->getTableName()." AS a, ".ZOO_TABLE_ITEM." AS b USE INDEX (ID_APPLICATION_INDEX)";
+		$conditions = array("a.item_id = b.id AND b.application_id = ".(int) $application_id.(!empty($search) ? " AND LOWER(a.name) LIKE ".$db->Quote('%'.$db->getEscaped($search, true).'%', false) : ""));
+		$options = compact('select', 'from', 'conditions');
+
+		return parent::count($options);
 	}
 
 	/*
@@ -86,6 +106,10 @@ class TagTable extends YTable {
 
 		// insert new item tags
 		if (count($tags)) {
+
+			// remove duplicates case insensitive
+			$tags = array_intersect_key($tags,array_unique(array_map('strtolower',$tags)));
+
 			foreach ($tags as $tag) {
 				$tag = str_replace('.', '_', $tag);
 				$values[] = sprintf("(%s, %s)", (int) $item_id, $db->Quote($tag));
@@ -111,7 +135,7 @@ class TagTable extends YTable {
 
 		// get item ids
 		$query = "SELECT DISTINCT a.item_id FROM ".$this->getTableName()." AS a"
-		        ." LEFT JOIN ".ZOO_TABLE_ITEM." AS b ON a.item_id = b.id"
+		        ." LEFT JOIN ".ZOO_TABLE_ITEM." AS b USE INDEX (ID_APPLICATION_INDEX) ON a.item_id = b.id"
 			    ." WHERE (a.name = ".$db->Quote($new)
                 ." OR a.name = ".$db->Quote($old).")"
 			    ." AND b.application_id = ".(int) $application_id;
@@ -122,8 +146,7 @@ class TagTable extends YTable {
             // remove all item tags which have the new and the old tag
             $this->delete($application_id, array($new, $old));
 
-			foreach ($ids as $id) {
-				$tag = str_replace('.', '_', $tag);
+			foreach ($ids as $id) {				
 				$values[] = sprintf("(%s, %s)", (int) $id, $db->Quote($new));
 			}
 
@@ -159,7 +182,7 @@ class TagTable extends YTable {
 
 		// delete item tags
 		$query = "DELETE a"
-			    ." FROM ".$this->getTableName()." AS a, ".ZOO_TABLE_ITEM." AS b"
+			    ." FROM ".$this->getTableName()." AS a, ".ZOO_TABLE_ITEM." AS b USE INDEX (ID_APPLICATION_INDEX)"
 				." WHERE a.item_id = b.id AND b.application_id = ".(int) $application_id
 			    ." AND a.name ".(is_array($tags) ? "IN (".implode(",", $tags).")" : "= ".$db->Quote($tags));
 

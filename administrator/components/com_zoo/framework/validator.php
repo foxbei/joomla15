@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      validator.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -197,11 +197,13 @@ class YValidatorFile extends YValidator {
 
 		$this->addOption('max_size');
         $this->addOption('mime_types');
+		$this->addOption('mime_type_group');
 		$this->addOption('extension');
 
 		$this->addMessage('extension', 'This is not a valid extension.');
         $this->addMessage('max_size', 'File is too large (max %s KB).');
         $this->addMessage('mime_types', 'Invalid mime type.');
+		$this->addMessage('mime_type_group', 'Invalid mime type.');
         $this->addMessage('partial', 'The uploaded file was only partially uploaded.');
         $this->addMessage('no_file', 'No file was uploaded.');
         $this->addMessage('no_tmp_dir', 'Missing a temporary folder.');
@@ -258,6 +260,13 @@ class YValidatorFile extends YValidator {
             }
         }
 
+		// check mime type group
+		if ($this->hasOption('mime_type_group')) {
+			if (!in_array($value['type'], $this->_getGroupMimeTypes($this->getOption('mime_type_group')))) {
+                throw new YValidatorException($this->getMessage('mime_type_group'));
+            }
+		}
+
         // check file size
         if ($this->hasOption('max_size') && $this->getOption('max_size') < (int) $value['size']) {
 			throw new YValidatorException(sprintf($this->getMessage('max_size'), ($this->getOption('max_size') / 1024)));
@@ -270,6 +279,13 @@ class YValidatorFile extends YValidator {
 
         return $value;
     }
+
+	protected function _getGroupMimeTypes($group) {
+		$mime_types = new YArray(YFile::getMimeMapping());
+		$mime_types = $mime_types->flattenRecursive();
+		$mime_types = array_filter($mime_types, create_function('$a', 'return preg_match("/^'.$group.'\//i", $a);'));
+		return array_map('strtolower', $mime_types);
+	}
 
 }
 

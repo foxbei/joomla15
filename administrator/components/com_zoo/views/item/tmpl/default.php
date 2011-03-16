@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      default.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -55,7 +55,7 @@ $now	= JFactory::getDate();
 			<thead>
 				<tr>
 					<th class="checkbox">
-						<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($this->items); ?>);" />
+						<input type="checkbox" class="check-all" />
 					</th>
 					<th class="name" colspan="2">
 						<?php echo JHTML::_('grid.sort', 'Name', 'a.name', @$this->lists['order_Dir'], @$this->lists['order']); ?>
@@ -184,12 +184,11 @@ $now	= JFactory::getDate();
 					$color_access = 'style="color: black;"';
 					$task_access  = 'accesspublic';
 				}
-	
-				$access = '<a href="javascript:void(0);" onclick="return listItemTask(\'cb'. $i .'\',\''.$task_access .'\')" '.$color_access.'>'. JText::_($group_access) .'</a>';
+				
 			?>
 				<tr>				
 					<td class="checkbox">
-						<?php echo $checked; ?>
+						<input type="checkbox" name="cid[]" value="<?php echo $row->id; ?>" />
 					</td>
 					<td class="icon"></td>
 					<td class="name">
@@ -201,16 +200,19 @@ $now	= JFactory::getDate();
 						<?php echo Zoo::getApplication()->getType($row->type)->name; ?>
 					</td>
 					<td class="published">
-						<span class="editlinktip hasTip" title="<?php echo JText::_('Publish Information');?>::<?php echo $times; ?>"><a href="javascript:void(0);" onclick="return listItemTask('cb<?php echo $i;?>','<?php echo $row->state ? 'unpublish' : 'publish' ?>')">
-							<img src="images/<?php echo $img;?>" width="16" height="16" border="0" alt="<?php echo $alt; ?>" /></a></span>
+						<span class="editlinktip hasTip" title="<?php echo JText::_('Publish Information');?>::<?php echo $times; ?>">
+							<a href="#" rel="task-<?php echo $row->state ? 'unpublish' : 'publish'; ?>">
+								<img src="images/<?php echo $img;?>" width="16" height="16" border="0" alt="<?php echo $alt; ?>" />
+							</a>
+						</span>
 					</td>
 					<td class="searchable">
-						<a href="javascript:void(0);" title="<?php echo JText::_('Edit searchable state');?>" onclick="return listItemTask('cb<?php echo $i;?>','<?php echo $row->searchable ? 'makenonesearchable' : 'makesearchable' ?>')">
+						<a href="#" rel="task-<?php echo $row->searchable ? 'makenonesearchable' : 'makesearchable'; ?>" title="<?php echo JText::_('Edit searchable state');?>">
 							<img src="images/<?php echo $search_img;?>" width="16" height="16" border="0" alt="<?php echo $search_alt; ?>" />
 						</a>
 					</td>
 					<td class="comments">
-						<a href="javascript:void(0);" title="<?php echo JText::_('Enable/Disable comments');?>" onclick="return listItemTask('cb<?php echo $i;?>','<?php echo $comments_enabled ? 'disablecomments' : 'enablecomments' ?>')">
+						<a href="#" rel="task-<?php echo $comments_enabled ? 'disablecomments' : 'enablecomments'; ?>" title="<?php echo JText::_('Enable/Disable comments');?>">
 							<img src="images/<?php echo $comments_img;?>" width="16" height="16" border="0" alt="<?php echo $comments_alt; ?>" />
 						</a>
 					</td>										
@@ -220,7 +222,7 @@ $now	= JFactory::getDate();
 						<span class="plus"></span>
 					</td>
 					<td class="access">
-						<?php echo $access;?>
+						<a href="#" rel="task-<?php echo $task_access; ?>" title="<?php echo JText::_('Edit access level'); ?>" <?php echo $color_access; ?>><?php echo JText::_($group_access); ?></a>
 					</td>
 					<td class="author">
 						<?php echo $author; ?>
@@ -264,10 +266,8 @@ $now	= JFactory::getDate();
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-		
-		var app = new Zoo.BrowseItems();
-
+	jQuery(function($){
+		$('#items-default').BrowseItems();
 	});
 </script>
 

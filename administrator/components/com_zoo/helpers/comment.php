@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      comment.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -363,13 +363,27 @@ class CommentHelper {
 	public static function filterContentOutput($content) {
 
 		$content = ' '.$content.' ';
-	    $content = preg_replace("/\s([a-zA-Z]+:\/\/[a-z][a-z0-9\_\.\-]*[a-z]{2,6}[a-zA-Z0-9\/\*\-\?\&\%]*)([\s|\.|\,])/i"," <a href=\"$1\" rel=\"nofollow\">$1</a>$2", $content);
-	    $content = preg_replace("/\s(www\.[a-z][a-z0-9\_\.\-]*[a-z]{2,6}[a-zA-Z0-9\/\*\-\?\&\%]*)([\s|\.|\,])/i"," <a href=\"http://$1\" rel=\"nofollow\">$1</a>$2", $content);
+		$content = preg_replace_callback('/(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:;,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:;,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:;,.]*\)|[A-Z0-9+&@#\/%=~_|$])/ix', 'CommentHelper::_makeURLClickable', $content);
 	    $content = preg_replace("/\s([a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]*\@[a-zA-Z][a-zA-Z0-9\_\.\-]*[a-zA-Z]{2,6})([\s|\.|\,])/i"," <a href=\"mailto:$1\" rel=\"nofollow\">$1</a>$2", $content);
 		$content = JString::substr($content, 1);
 		$content = JString::substr($content, 0, -1);
 
 		return nl2br($content);
+	}
+
+	protected static function _makeURLClickable($matches) {
+		$url = $original_url = $matches[0];
+
+		if (empty($url)) {
+			return $url;
+		}
+
+		// Prepend scheme if URL appears to contain no scheme (unless a relative link starting with / or a php file).
+		if (strpos($url, ':') === false &&	substr($url, 0, 1) != '/' && substr($url, 0, 1) != '#' && !preg_match('/^[a-z0-9-]+?\.php/i', $url)) {
+			$url = 'http://' . $url;
+		}
+
+		return " <a href=\"$url\" rel=\"nofollow\">$original_url</a>";
 	}
 
 	/*

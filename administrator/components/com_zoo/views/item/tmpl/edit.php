@@ -2,24 +2,21 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 	defined('_JEXEC') or die('Restricted access');
 
 	JHTML::_('behavior.tooltip');
-		
+
 	// add script
-	JHTML::script('observer.js', 'administrator/components/com_zoo/assets/js/');
-	JHTML::script('autocompleter.js', 'administrator/components/com_zoo/assets/js/');
-	JHTML::script('autocompleter.request.js', 'administrator/components/com_zoo/assets/js/');
-	JHTML::script('tag.js', 'administrator/components/com_zoo/assets/js/');
-	JHTML::script('alias.js', 'administrator/components/com_zoo/assets/js/');
+	JHTML::script('autosuggest.js', 'administrator/components/com_zoo/assets/js/');
 	JHTML::script('item.js', 'administrator/components/com_zoo/assets/js/');
-	JHTML::script('element.js', 'administrator/components/com_zoo/assets/js/');
+	JHTML::script('alias.js', 'administrator/components/com_zoo/assets/js/');
+	JHTML::script('tag.js', 'administrator/components/com_zoo/assets/js/');
 
 	// filter output
 	JFilterOutput::objectHTMLSafe($this->item, ENT_QUOTES, array('params', 'elements')); 
@@ -39,14 +36,14 @@
 					<strong><?php echo JText::_('Name'); ?></strong>
 					<div id="name-edit">
 						<div class="row">
-							<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->item->name; ?>"></input>
+							<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->item->name; ?>" />
 							<span class="message-name"><?php echo JText::_('Please enter valid name.'); ?></span>
 						</div>
 						<div class="slug">
 							<span><?php echo JText::_('Slug'); ?>:</span>
 							<a class="trigger" href="#" title="<?php echo JText::_('Edit Item Slug');?>"><?php echo $this->item->alias; ?></a>
 							<div class="panel">
-								<input type="text" name="alias" value="<?php echo $this->item->alias; ?>"></input>
+								<input type="text" name="alias" value="<?php echo $this->item->alias; ?>" />
 								<input type="button" class="accept" value="<?php echo JText::_('Accept'); ?>"/>
 								<a href="#" class="cancel"><?php echo JText::_('Cancel'); ?></a>
 							</div>
@@ -120,7 +117,7 @@
 					</td>
 					<td>
 						<?php echo $this->item->getType()->name; ?>
-						<input type="hidden" name="type" value="<?php echo $this->item->type; ?>"></input>
+						<input type="hidden" name="type" value="<?php echo $this->item->type; ?>" />
 					</td>
 				</tr>					
 				<tr>
@@ -138,7 +135,7 @@
 					<td>
 						<?php echo $this->item->hits;?>
 						<span <?php echo !$this->item->hits ? 'style="display: none; visibility: hidden;"' : null; ?>>
-							<input name="reset_hits" type="button" class="button" value="<?php echo JText::_('Reset'); ?>" onclick="submitbutton('resethits');"></input>
+							<input name="reset_hits" type="button" class="button" value="<?php echo JText::_('Reset'); ?>" onclick="submitbutton('resethits');" />
 						</span>
 					</td>
 				</tr>
@@ -217,27 +214,12 @@
 				<h3 class="toggler"><?php echo JText::_('Tags'); ?></h3>
 				<div class="content">
 					<div id="tag-area">
-						<div class="input">
-							<div class="hint"><?php echo JText::_('Add new tag');?></div>
-							<input type="text" value="" autocomplete="off" />
-							<button class="button-grey" type="button"><?php echo JText::_('Add tag')?></button>
-							<div class="icon"></div>						
-						</div>
-						<p><?php echo JText::_('Seperate multiple tags through commas'); ?>.</p>
-						<div class="tag-list">
-						<?php foreach ($this->item->getTags() as $tag) :?>
-							<div>
-								<a></a>
-								<?php echo $tag; ?>
-								<input type="hidden" value="<?php echo $tag; ?>" name="tags[]" />
-							</div>
-						<?php endforeach;?>	
-						</div>
-						<?php if (count($this->lists['most_used_tags'])) : ?>
-						<p><?php echo JText::_('Choose from the most used tags');?>.</p>
+						<input type="text" value="<?php echo implode(', ', $this->item->getTags()); ?>" placeholder="<?php echo JText::_('Add new tag'); ?>" />
+						<p><?php echo JText::_('Choose from the most used tags');?>:</p>
+						<?php if (count($this->lists['most_used_tags'])) : ?>						
 						<div class="tag-cloud">
 							<?php foreach ($this->lists['most_used_tags'] as $tag) :?>
-								<a class="button-grey" title="<?php echo $tag->items . ' ' . ($tag->items == 1 ? JText::_('item') : JText::_('items')); ?>"><?php echo $tag->name; ?></a>
+								<a title="<?php echo $tag->items . ' ' . ($tag->items == 1 ? JText::_('item') : JText::_('items')); ?>"><?php echo $tag->name; ?></a>
 							<?php endforeach;?>
 						</div>
 						<?php endif; ?>
@@ -258,11 +240,11 @@
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function() {
-		new Zoo.AliasEdit({ edit: <?php echo (int) $this->item->id; ?> });
-		new Zoo.EditItem();
-		$('name-edit').getElement('input[name="name"]').focus();
-		new Zoo.Tag();
+	jQuery(function($){
+		$('#item-edit').EditItem();
+		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->item->id; ?> });
+		$('#name-edit').find('input[name="name"]').focus();
+		$('#tag-area').Tag({ addButtonText: '<?php echo JText::_('Add Tag'); ?>' });
 	});
 </script>
 

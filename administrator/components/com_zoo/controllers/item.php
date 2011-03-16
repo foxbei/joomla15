@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      item.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -127,12 +127,11 @@ class ItemController extends YController {
 			'conditions' => array(implode(' AND ', $where)),
 			'order' => $filter_order.' '.$filter_order_Dir);
 
+		$count = $table->count($options);
+		$limitstart = $limitstart > $count ? floor($count / $limit) * $limit : $limitstart;
+
 		$this->items = $table->all($limit > 0 ? array_merge($options, array('offset' => $limitstart, 'limit' => $limit)) : $options);
 		$this->items = array_merge($this->items);
-
-		// $table->count($options)
-		$query = sprintf('SELECT count(*) FROM %s WHERE %s', $from, implode(' AND ', $where));
-		$count = (int) YDatabase::getInstance()->queryResult($query);
 
 		$this->pagination = new JPagination($count, $limitstart, $limit);
 
@@ -367,7 +366,7 @@ class ItemController extends YController {
 			if ($frontpage) {
 				$categories[] = 0;
 			}
-			CategoryHelper::saveCategoryItemRelations($item, $categories);
+			CategoryHelper::saveCategoryItemRelations($item->id, $categories);
 
 			// set redirect message
 			$msg = JText::_('Item Saved');
@@ -442,7 +441,7 @@ class ItemController extends YController {
 				$item_table->save($item);
 				
 				// save category relations
-				CategoryHelper::saveCategoryItemRelations($item, $categories);
+				CategoryHelper::saveCategoryItemRelations($item->id, $categories);
 			}
 
 			// set redirect message

@@ -2,19 +2,19 @@
 /**
 * @package   ZOO Component
 * @file      assignsubmission.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
+JHTML::_('behavior.tooltip');
+
 // add script
 JHTML::script('type.js', 'administrator/components/com_zoo/assets/js/');
-
-JHTML::_('behavior.tooltip');
 
 ?>
 
@@ -102,9 +102,10 @@ JHTML::_('behavior.tooltip');
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-		var app = new Zoo.AssignSubmission();
+	jQuery(function($){
+		$('#assign-elements').AssignSubmission();
 	});
 </script>
+
 
 <?php echo ZOO_COPYRIGHT; ?>

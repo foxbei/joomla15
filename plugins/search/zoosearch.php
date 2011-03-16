@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Search
 * @file      zoosearch.php
-* @version   2.1.0
+* @version   2.3.0
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -28,10 +28,10 @@ class plgSearchZoosearch extends JPlugin {
 		Parameters:
 	      $subject - Array
 	      $params - Array
-	
+
 	   Returns:
 	      Void
-	*/    
+	*/
 	function plgSearchZoosearch($subject, $params) {
 		parent::__construct($subject, $params);
 	}
@@ -39,10 +39,10 @@ class plgSearchZoosearch extends JPlugin {
 	/*
 		Function: onSearchAreas
 		  Get search areas.
-	
+
 	   Returns:
 	      Array - Search areas
-	*/	
+	*/
 	function onSearchAreas() {
 		static $areas = array();
 		return $areas;
@@ -57,7 +57,7 @@ class plgSearchZoosearch extends JPlugin {
 	      $phrase - Matching option, exact|any|all
 	      $ordering - Ordering option, newest|oldest|popular|alpha|category
 	      $areas - An array if the search it to be restricted to areas, null if search all
-	
+
 	   Returns:
 	      Array - Search results
 	*/
@@ -72,9 +72,9 @@ class plgSearchZoosearch extends JPlugin {
 
 		// init vars
 		$now  = $db->Quote($date->toMySQL());
-		$null = $db->Quote($db->getNullDate());		
+		$null = $db->Quote($db->getNullDate());
 		$text = trim($text);
-		
+
 		// return empty array, if no search text provided
 		if (empty($text)) {
 			return array();
@@ -83,7 +83,7 @@ class plgSearchZoosearch extends JPlugin {
 		// get plugin info
 	 	$plugin   = JPluginHelper::getPlugin('search', 'zoosearch');
 	 	$params   = new JParameter($plugin->params);
-		$fulltext = $params->get('search_fulltext', 1) && strlen($text) > 3 && intval($db->getVersion()) >= 4;
+		$fulltext = $params->get('search_fulltext', 0) && strlen($text) > 3 && intval($db->getVersion()) >= 4;
 		$limit    = $params->get('search_limit', 50);
 
 		// prepare search query
@@ -92,9 +92,9 @@ class plgSearchZoosearch extends JPlugin {
 
 				if ($fulltext) {
 					$text    = $db->getEscaped($text);
-					$where[] = "MATCH(a.name) AGAINST ('{$text}' IN BOOLEAN MODE)";
-					$where[] = "MATCH(b.value) AGAINST ('{$text}' IN BOOLEAN MODE)";
-					$where[] = "MATCH(c.name) AGAINST ('{$text}' IN BOOLEAN MODE)";
+					$where[] = "MATCH(a.name) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
+					$where[] = "MATCH(b.value) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
+					$where[] = "MATCH(c.name) AGAINST ('\"{$text}\"' IN BOOLEAN MODE)";
 					$where   = implode(" OR ", $where);
 				} else {
 					$text	= $db->Quote('%'.$db->getEscaped($text, true).'%', false);
@@ -191,5 +191,5 @@ class plgSearchZoosearch extends JPlugin {
 
 		return $rows;
 	}
-	
+
 }

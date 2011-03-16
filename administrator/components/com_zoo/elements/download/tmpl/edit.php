@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -13,14 +13,13 @@ defined('_JEXEC') or die('Restricted access');
 
 $hide_path = $hide_path ? ' style="display: none;"' : '';
 
-$id = 'elements['.$element.']';
+$id = 'elements'.$element;
 
 ?>
 
 <div id="<?php echo $id; ?>">
 
     <div class="row"<?php echo $hide_path; ?>>
-        <label for="elements[<?php echo $element; ?>][file]"><?php echo JText::_('Path'); ?></label>
         <?php echo JHTML::_('control.input', 'text', 'elements[' . $element . '][file]', $file, 'readonly="readonly" size="60" title="'.JText::_('Path').'"'); ?>
     </div>
 
@@ -44,16 +43,15 @@ $id = 'elements['.$element.']';
 		<div class="advanced options">
 			<div class="row short download-limit">
 				<label for="elements[<?php echo $element; ?>][download_limit]"><?php echo JText::_('Download limit'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements[' . $this->identifier . '][download_limit]', $this->_data->get('download_limit'), 'size="6" maxlength="255" title="'.JText::_('Download limit').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements[' . $this->identifier . '][download_limit]', $this->_data->get('download_limit'), 'size="6" maxlength="255" title="'.JText::_('Download limit').'" placeholder="'.JText::_('Download Limit').'"'); ?>
 			</div>
 		</div>
 	</div>
-	
+
     <script type="text/javascript">
-        window.addEvent('domready', function(){
-			new Zoo.EditElement({element: '<?php echo $id; ?>'});
-            new Zoo.ElementDownload({element: "<?php echo $id ?>", url: "<?php echo JRoute::_('index.php?option=com_zoo&controller=item&format=raw&type='.$this->getType()->id.'&elm_id='.$element.'&item_id='.$this->getItem()->id, false); ?>", directory: "<?php echo $directory; ?>"});
-        });
+		jQuery(function($){
+			$('#<?php echo $id; ?>').ElementDownload( {url: "<?php echo JRoute::_('index.php?option=com_zoo&controller=item&format=raw&type='.$this->getType()->id.'&elm_id='.$element.'&item_id='.$this->getItem()->id, false); ?>", directory: "<?php echo $directory; ?>"} );
+		});
     </script>
 
 </div>

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      googlemaps.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -120,9 +120,8 @@ class ElementGooglemaps extends Element implements iSubmittable {
 		$address_not_found = ', ' . JText::_('not found!');
 		
 		// js parameters
-		$maps_var    = 'map'.$this->_item->id;
-		$javascript  = "new Googlemaps('" . $maps_id . "', { lat:" . $center['lat'] . ", lng:" . $center['lng'] . ", popup: " . $marker_popup . ", text: '" . GooglemapsHelper::stripText($marker_text) . "', zoom: " . $zoom_level . ", mapCtrl: " . $map_controls . ", zoomWhl: " . $scroll_wheel_zoom . ", mapType: " . $map_type . ", typeCtrl: " . $type_controls . ", directions: " . $directions . ", locale: '" . $locale . "', mainIcon:'" . $main_icon . "', msgFromAddress: '" . $from_address . "', msgGetDirections: '" . $get_directions . "', msgEmpty: '" . $empty . "', msgNotFound: '" . $not_found . "', msgAddressNotFound: '" . $address_not_found . "' });";
-		$javascript = "window.addEvent('load', function() { ".$javascript." });";
+		$javascript  = "$('#$maps_id').Googlemaps({ lat:" . $center['lat'] . ", lng:" . $center['lng'] . ", popup: " . $marker_popup . ", text: '" . GooglemapsHelper::stripText($marker_text) . "', zoom: " . $zoom_level . ", mapCtrl: " . $map_controls . ", zoomWhl: " . $scroll_wheel_zoom . ", mapType: " . $map_type . ", typeCtrl: " . $type_controls . ", directions: " . $directions . ", locale: '" . $locale . "', mainIcon:'" . $main_icon . "', msgFromAddress: '" . $from_address . "', msgGetDirections: '" . $get_directions . "', msgEmpty: '" . $empty . "', msgNotFound: '" . $not_found . "', msgAddressNotFound: '" . $address_not_found . "' });";
+		$javascript = "jQuery(function($) { $javascript });";
 
 		// render layout
 		if ($layout = $this->getLayout()) {

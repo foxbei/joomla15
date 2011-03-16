@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      image.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -50,18 +50,6 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
 	}	
 
 	/*
-		Function: getTitle
-			Gets the link title.
-
-		Returns:
-			String - title
-	*/
-	public function getTitle() {
-		$title = $this->_data->get('title');
-		return empty($title) ? $this->_item->name : $title;
-	}
-
-	/*
 		Function: render
 			Renders the element.
 
@@ -74,7 +62,7 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
 	public function render($params = array()) {
 			
 		// init vars
-		$title  	  = $this->getTitle();
+		$title  	  = $this->_data->get('title');
 		$params		  = new YArray($params);
 		$file  		  = ZooHelper::resizeImage(JPATH_ROOT.DS.$this->_data->get('file'), $params->get('width', 0), $params->get('height', 0));
 		$link   	  = JURI::root() . trim(str_replace('\\', '/', preg_replace('/^'.preg_quote(JPATH_ROOT, '/').'/i', '', $file)), '/');
@@ -85,7 +73,7 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
                 $url	   = RouteHelper::getItemRoute($this->_item);
                 $target	   = false;
                 $rel  	   = '';
-                $title 	   = $this->_item->name;
+                $title 	   = empty($title) ? $this->_item->name : $title;
             } else {
 
                 $url = $target = $rel = '';
@@ -116,13 +104,17 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
 			$url = $target = $rel = '';	
 					
 		}
-		
+
+		// get alt
+		$alt = empty($title) ? $this->_item->name : $title;
+
 		// render layout
 		if ($layout = $this->getLayout()) {
 			return self::renderLayout($layout, 
 				array(
 					'file' => $file,
 					'title' => $title,
+					'alt' => $alt,
 					'link' => $link,
 					'link_enabled' => !empty($url),
 					'url' => $url,
@@ -161,17 +153,6 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
         }
 
 	}
-			
-	/*
-		Function: loadAssets
-			Load elements css/js assets.
-
-		Returns:
-			Void
-	*/
-	public function loadAssets() {
-		JHTML::script('image.js', 'administrator/components/com_zoo/elements/image/assets/js/');
-	}
 
 	/*
 		Function: renderSubmission
@@ -184,6 +165,9 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
 			String - html
 	*/
 	public function renderSubmission($params = array()) {
+
+		// load js
+		JHTML::script('image.js', 'administrator/components/com_zoo/elements/image/assets/js/');
 
         // init vars
         $image        = $this->_data->get('file');
@@ -264,13 +248,11 @@ class ElementImage extends Element implements iSubmittable, iSubmissionUpload {
 
                 // get the uploaded file information
                 $userfile = JRequest::getVar('elements_'.$this->identifier, array(), 'files', 'array');
-
-                $image_mime_types = array_filter(YFile::getMimeMapping(), create_function('$a', 'return preg_match("/^image\//i", $a);'));
-
+                
 				$max_upload_size = $this->_config->get('max_upload_size', '512') * 1024;
 				$max_upload_size = empty($max_upload_size) ? null : $max_upload_size;
-                $validator = new YValidatorFile(array('mime_types' => $image_mime_types, 'max_size' => $max_upload_size));
-                $file = $validator->addMessage('mime_types', 'Uploaded file is not an image.')->clean($userfile);
+                $validator = new YValidatorFile(array('mime_type_group' => 'image', 'max_size' => $max_upload_size));
+                $file = $validator->addMessage('mime_type_group', 'Uploaded file is not an image.')->clean($userfile);
 
             } catch (YValidatorException $e) {
                 if ($e->getCode() != UPLOAD_ERR_NO_FILE) {

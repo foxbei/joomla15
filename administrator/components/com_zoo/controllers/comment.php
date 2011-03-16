@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      comment.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -25,7 +25,7 @@ class CommentController extends YController {
 		$db            = YDatabase::getInstance();
 		$state_prefix  = $this->option.'_'.$app->id.'.comment.';			
 		$limit		   = $this->joomla->getUserStateFromRequest('global.list.limit', 'limit', $this->joomla->getCfg('list_limit'), 'int');
-		$offset	       = $this->joomla->getUserStateFromRequest($state_prefix.'limitstart', 'limitstart', 0, 'int');
+		$limitstart    = $this->joomla->getUserStateFromRequest($state_prefix.'limitstart', 'limitstart', 0, 'int');
 		$filter_state  = $this->joomla->getUserStateFromRequest($state_prefix.'filter-state', 'filter-state', '', 'string');
 		$filter_item   = $this->joomla->getUserStateFromRequest($state_prefix.'filter-item', 'filter-item', 0, 'int');
 		$filter_author = $this->joomla->getUserStateFromRequest($state_prefix.'filter-author', 'filter-author', '', 'string');
@@ -35,8 +35,8 @@ class CommentController extends YController {
 		// is filtered ?
 		$this->is_filtered = $filter_state <> '' || !empty($filter_item) || !empty($filter_author) || !empty($search);		
 		
-		// in case limit has been changed, adjust offset accordingly
-		$offset = $limit != 0 ? (floor($offset / $limit) * $limit) : 0;
+		// in case limit has been changed, adjust limitstart accordingly
+		$limitstart = $limit != 0 ? (floor($limitstart / $limit) * $limit) : 0;
 
 		// set toolbar items
 		if ($filter_item && $item_object = YTable::getInstance('item')->get($filter_item)) {
@@ -81,8 +81,10 @@ class CommentController extends YController {
 
 		// query comment table
 		$table = YTable::getInstance('comment');
-		$this->comments = $table->all($limit > 0 ? array_merge($options, compact('offset', 'limit')) : $options);
-		$this->pagination = new JPagination($table->count($options), $offset, $limit);
+		$count = $table->count($options);
+		$limitstart = $limitstart > $count ? floor($count / $limit) * $limit : $limitstart;
+		$this->comments = $table->all($limit > 0 ? array_merge($options, array('offset' => $limitstart, 'limit' => $limit)) : $options);
+		$this->pagination = new JPagination($count, $limitstart, $limit);
 		
 		// search filter
 		$this->lists['search'] = $search;

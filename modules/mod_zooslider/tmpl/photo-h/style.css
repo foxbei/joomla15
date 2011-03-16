@@ -1,0 +1,16 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.photo-h div.yoo-slider ul.list li .slide {
+	border-right: 10px solid #ffffff;
+	display: block;
+}
+
+div.photo-h div.yoo-slider ul.list li.last .slide {
+	border-right: none;
+}
+
+/* item */
+div.photo-h div.yoo-slider div.item {
+	margin: 0px;
+	padding: 0px;
+}

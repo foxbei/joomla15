@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      options.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -35,7 +35,7 @@ class JElementOptions extends JElement {
 		$options .= '</div>';
 				
 		// create js
-		$javascript  = "var sel = new ElementSelect({element: '$id', variable: '$control_name' });";
+		$javascript  = "jQuery('#$id').ElementSelect({variable: '$control_name' });";
 		$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
 
 		return $options.$javascript;

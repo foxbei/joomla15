@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      date.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -45,16 +45,9 @@ class ElementDate extends ElementRepeatable implements iRepeatSubmittable {
 	*/		
 	protected function _edit(){
 		$value = $this->_data->get('value', '');
-		if (!empty($value)) {
-			$tzoffset = JFactory::getConfig()->getValue('config.offset');
-			$date     = JFactory::getDate($value, -$tzoffset);
-			$value	  = $date->toMySQL();
-		}
-		$html = JHTML::_('element.calendar', $value, 'elements[' . $this->identifier . ']['.$this->index().'][value]', 'elements[' . $this->identifier . ']['.$this->index().']value', self::EDIT_DATE_FORMAT, array('class' => 'calendar-element'));
+		$value = !empty($value) ? JHTML::_('date', $value, self::EDIT_DATE_FORMAT) : '';
 
-		JHTML::script('date.js', 'administrator/components/com_zoo/elements/date/');
-
-		return $html;
+		return JHTML::_('zoo.calendar', $value, 'elements[' . $this->identifier . ']['.$this->index().'][value]', 'elements[' . $this->identifier . ']['.$this->index().']value', array('class' => 'calendar-element'));
 	}
 	
 	/*
@@ -68,7 +61,7 @@ class ElementDate extends ElementRepeatable implements iRepeatSubmittable {
 			String - html
 	*/
 	public function _renderSubmission($params = array()) {
-		return JHTML::_('element.calendar', $this->_data->get('value', ''), 'elements[' . $this->identifier . ']['.$this->index().'][value]', 'elements[' . $this->identifier . ']['.$this->index().']value', self::EDIT_DATE_FORMAT, array('class' => 'calendar-element'));
+		return JHTML::_('zoo.calendar', $this->_data->get('value', ''), 'elements[' . $this->identifier . ']['.$this->index().'][value]', 'elements[' . $this->identifier . ']['.$this->index().']value', array('class' => 'calendar-element'));
 	}
 
 	/*
@@ -83,7 +76,6 @@ class ElementDate extends ElementRepeatable implements iRepeatSubmittable {
 			Array - cleaned value
 	*/
 	public function _validateSubmission($value, $params) {
-
         $validator = new YValidatorDate(array('required' => $params->get('required')), array('required' => 'Please choose a date.'));
 		$validator->addOption('date_format', self::EDIT_DATE_FORMAT);
         $clean = $validator->clean($value->get('value'));

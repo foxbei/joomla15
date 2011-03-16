@@ -1,0 +1,49 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-comment.list-v > ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.zoo-comment.list-v > ul > li {
+	margin: 5px 0px 0px 0px;
+	padding: 6px 0px 0px 0px;
+	background: url(images/line_dotted_h.png) 0 0 repeat-x;
+	overflow: hidden;
+}
+.zoo-comment.list-v > ul > li:first-child {
+	margin: 0px;
+	padding: 0px;
+	background: none;
+}
+.zoo-comment.list-v > ul > li.odd {}
+.zoo-comment.list-v > ul > li.even {}
+
+/* avatar */
+.zoo-comment.list-v div.avatar {
+	margin: 4px 10px 0px 0px;
+	float: left;
+}
+.zoo-comment.list-v div.avatar > * { display: inline-block; }
+
+/* author */
+.zoo-comment.list-v h3.author {
+	margin: 0px;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.zoo-comment.list-v h3.author a {}
+
+/* meta */
+.zoo-comment.list-v p.meta {
+	margin: 0px;
+	font-size: 11px;
+	color: #969696;
+	line-height: 13px;
+	font-style: italic;
+}
+
+/* content */
+.zoo-comment.list-v p.content { margin: 5px 0px 0px 0px; }

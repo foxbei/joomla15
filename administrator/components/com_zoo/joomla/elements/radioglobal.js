@@ -1,3 +1,3 @@
-/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
 
-window.addEvent("domready",function(){$$("div.radio-global").each(function(c){var d=c.getElement("input[name=_global]"),a=c.getElement("div.input"),b=new Fx.Slide(a,{duration:150});d.getProperty("checked")&&b.hide();d.addEvent("change",function(){if(this.getProperty("checked")){a.getElements("input[type=radio]").setProperty("name",this.getProperty("id"));b.slideOut()}else{a.getElements("input[type=radio]").setProperty("name",this.getProperty("value"));b.slideIn()}})})});
+jQuery(function(a){a("div.radio-global").each(function(){var b=a(this).find("input:checkbox"),c=a(this).find("div.input");b.is(":checked")&&c.hide();b.change(function(){c.slideToggle().find("input[type=radio]").attr("name",a(this).is(":checked")?a(this).attr("id"):a(this).val())})})});

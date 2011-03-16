@@ -1,0 +1,60 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.plain div.yoo-carousel {
+	background: #ffffff;
+}
+
+/* tabs */
+div.plain div.yoo-carousel div.top ul.tabs {
+	height: 30px;
+	background: url(tmpl/plain/images/tab_separator.png) 0 0 no-repeat;
+}
+
+div.plain div.yoo-carousel div.top ul.tabs li.item1 {
+	margin: 0px 0px 0px 1px;
+}
+
+div.plain div.yoo-carousel div.top ul.tabs li {
+	background: url(tmpl/plain/images/tab_bg.png) 0 0 repeat-x;
+}
+
+
+div.plain div.yoo-carousel div.top ul.tabs li.selected {
+	background: url(tmpl/plain/images/tab_bg.png) 0 -30px repeat-x;
+}
+
+div.plain div.yoo-carousel div.top ul.tabs li a span {
+	height: 30px;
+	padding: 0px 10px 0px 10px;
+	background: url(tmpl/plain/images/tab_separator.png) 100% 0 no-repeat;
+	line-height: 35px;
+	font-weight: bold;
+	font-size: 110%;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+/* links */
+div.plain div.yoo-carousel li a:link,
+div.plain div.yoo-carousel li a:visited {
+	color: #969696;
+	text-decoration: none;
+}
+
+div.plain div.yoo-carousel li a:hover,
+div.plain div.yoo-carousel li.selected a:link,
+div.plain div.yoo-carousel li.selected a:visited {
+	color: #646464;
+	text-decoration: none;
+}
+
+/* scroller */
+div.plain div.yoo-carousel .panel-container {
+	margin: auto;
+}
+
+/* item */
+div.plain div.yoo-carousel div.item {
+	margin: 0px;
+	padding: 10px 0px 25px 0px;
+}

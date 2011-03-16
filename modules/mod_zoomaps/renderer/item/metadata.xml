@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout name="default">
+		<name>Default</name>
+		<description>This is the default layout to render an item in the Google Maps popup.</description>
+	</layout>
+</metadata>

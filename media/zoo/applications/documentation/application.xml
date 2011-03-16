@@ -2,18 +2,18 @@
 <application>
 	<name>Documentation</name>
 	<group>documentation</group>
-	<version>2.2.0</version>
-	<creationDate>November 2010</creationDate>
+	<version>2.3.0</version>
+	<creationDate>December 2010</creationDate>
 	<author>YOOtheme</author>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-    <copyright>Copyright (C) 2007 - 2010 YOOtheme GmbH</copyright>
+    <copyright>Copyright (C) 2007 - 2011 YOOtheme GmbH</copyright>
     <license><![CDATA[
 			YOOtheme License (<a href="http://www.yootheme.com/license" target="_blank">http://www.yootheme.com/license</a>)
 			]]>
 	</license>
 	<description><![CDATA[
-				This is the documentation app for ZOO 2.2 developed by YOOtheme.
+				This is the documentation app for ZOO 2.0 developed by YOOtheme.
 				<br /><strong>NOTE:</strong> The icon of this app is copyrighted by YOOtheme. Re-use is strictly prohibited.
 				]]>
 	</description>

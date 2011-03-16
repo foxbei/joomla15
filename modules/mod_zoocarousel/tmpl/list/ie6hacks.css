@@ -1,0 +1,9 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.list div.yoo-carousel div.left div.tabs {
+	margin-right: -3px; /* 3-Pixel-Jog Bug IE6 */
+}
+
+div.list div.yoo-carousel div.left div.frame {
+	margin-right: -3px; /* 3-Pixel-Jog Bug IE6 */
+}

@@ -1,0 +1,37 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.yootools-black div.default-h div.yoo-slider ul.list li.first {
+	background: url(tmpl/default-h/black/images/item_l.png) 0 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li:hover.first {
+	background: url(tmpl/default-h/black/images/item_l.png) 0 -153px no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li {
+	background: url(tmpl/default-h/black/images/item_m.png) 0 0 repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li:hover {
+	background: url(tmpl/default-h/black/images/item_m.png) 0 -153px repeat-x;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li.last {
+	background: url(tmpl/default-h/black/images/item_r.png) 100% 0 no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li:hover.last {
+	background: url(tmpl/default-h/black/images/item_r.png) 100% -153px no-repeat;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list div.slide {
+	border-left: 1px solid #323232;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list li.first div.slide {
+	border-left: none;
+}
+
+.yootools-black div.default-h div.yoo-slider ul.list .article h3 {
+	color: #747474;
+}

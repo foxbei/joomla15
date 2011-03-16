@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      type.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -49,6 +49,12 @@ class Type {
          Element objects.
     */
 	protected $_elements;
+
+    /*
+       Variable: _core_elements
+         Core element objects.
+    */
+	protected $_core_elements;
 
     /*
        Variable: _xml
@@ -165,16 +171,25 @@ class Type {
  	*/
 	public function getCoreElements($item = null) {
 
-		$corexml  = JFile::read(ZOO_ADMIN_PATH.'/elements/core.xml');
-		$elements = ElementHelper::createElementsFromXML($corexml, $this);
+		$elements = array();
 
-		foreach ($elements as $element) {
+		// init elements from type xml
+		if (empty($this->_core_elements)) {
+			$corexml  = JFile::read(ZOO_ADMIN_PATH.'/elements/core.xml');
+			$this->_core_elements = ElementHelper::createElementsFromXML($corexml, $this);
+		}
+
+		// set type and item object
+		foreach ($this->_core_elements as $identifier => $element) {
+			$elements[$identifier] = clone($this->_core_elements[$identifier]);
+			$elements[$identifier]->setType($this);
 			if ($item != null) {
-				$element->setItem($item);
+				$elements[$identifier]->setItem($item);
 			}
 		}
-		
+
 		return $elements;
+
 	}
 
 	/*

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      importxml.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -34,7 +34,7 @@ JHTML::script('import.js', 'administrator/components/com_zoo/assets/js/');
 					echo sprintf(JText::_('Import frontpage'), 1);
 				?>
 			</span>
-			<input type="checkbox" name="import-frontpage" checked="checked"></input>
+			<input type="checkbox" name="import-frontpage" checked="checked" />
 			
 			<?php if (count($this->info['frontpage_params_to_assign']) && count($this->info['frontpage_params'])) : ?>
 				<div class="assign-group">
@@ -84,7 +84,7 @@ JHTML::script('import.js', 'administrator/components/com_zoo/assets/js/');
 					}
 				?>
 			</span>
-			<input type="checkbox" name="import-categories" checked="checked"></input>
+			<input type="checkbox" name="import-categories" checked="checked" />
 			
 			<?php if (count($this->info['category_params_to_assign']) && count($this->info['category_params'])) : ?>
 				<div class="assign-group">
@@ -156,9 +156,14 @@ JHTML::script('import.js', 'administrator/components/com_zoo/assets/js/');
 			</div>
 		</fieldset>
 		<?php endforeach; ?>
-		
-		<button class="button-grey" id="submit-button" type="button"><?php echo JText::_('Import'); ?></button>
-	
+
+		<?php if (!$this->info['frontpage_count'] && !$this->info['category_count'] && empty($this->info['items'])) : ?>
+			<div class="creation-form infobox">
+				<?php echo JText::_('No content to import!'); ?>
+			</div>
+		<?php else : ?>
+			<button class="button-grey" id="submit-button" type="button"><?php echo JText::_('Import'); ?></button>
+		<?php endif; ?>
 	</div>
 </div>
 
@@ -169,10 +174,8 @@ JHTML::script('import.js', 'administrator/components/com_zoo/assets/js/');
 <?php echo JHTML::_('form.token'); ?>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-
-		new Zoo.Import({msgSelectWarning: "<?php echo JText::_("MSG_ASSIGN_WARNING"); ?>", msgWarningDuplicate: "<?php echo JText::_("There are duplicate assignments."); ?>"});
-
+	jQuery(function($){
+		$('#configuration-import').Import( {msgSelectWarning: "<?php echo JText::_("MSG_ASSIGN_WARNING"); ?>", msgWarningDuplicate: "<?php echo JText::_("There are duplicate assignments."); ?>"} );
 	});
 </script>
 

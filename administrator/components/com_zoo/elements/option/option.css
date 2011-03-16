@@ -1,4 +1,4 @@
-/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
 
 /*
  * options
@@ -10,6 +10,7 @@ div.options ul {
 	margin: 0px 0px 10px 0px;
 	padding: 0;
 	list-style-type: none;
+	position: relative;
 }
 
 div.options li {

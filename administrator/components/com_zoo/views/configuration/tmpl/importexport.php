@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      importexport.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -103,10 +103,8 @@ $app_item_count 	= (int) $this->application->getItemCount();
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-
-		new Zoo.ImportExport({ msgImportWarning: '<?php echo JText::_('SELECT_FILE_FIRST');?>'});
-		
+	jQuery(function($){
+		$('#configuration-importexport').ImportExport({ msgImportWarning: '<?php echo JText::_('SELECT_FILE_FIRST');?>'});
 	});
 </script>
 

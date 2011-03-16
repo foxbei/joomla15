@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      export.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -14,7 +14,7 @@ abstract class ExportHelper {
 	protected $_item_groups;
 	protected $_name;
 	
-	public static $category_attributes = array('parent', 'published', 'description');
+	public static $category_attributes = array('parent', 'published', 'description', 'ordering');
 	public static $item_attributes = array('searchable', 'state', 'created', 
 										'modified', 'hits', 'author', 
 										'access', 'priority', 'metakey', 
@@ -287,14 +287,14 @@ abstract class ExportHelper {
 		return $elem_xml;
 	}
 	
-	private function _keyExists($array, $key) {
-		foreach ($array as $array_key => $value) {
+	private function _keyExists($haystack, $needle) {
+		foreach ($haystack as $key => $value) {
 			if (is_array($value)) {
-				if ($this->_keyExists($value, $key)) {
+				if ($this->_keyExists($value, $needle)) {
 					return true;
 				}
 			}
-			if ($array_key == $key) {
+			if ($key === $needle) {
 				return true;
 			}
 		}

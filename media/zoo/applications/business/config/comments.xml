@@ -55,7 +55,11 @@
 		</param>
 		<param name="twitter_consumer_key" type="text" size="55" default="" label="Twitter Consumer Key" description="TWITTER_CONSUMER_KEY" />
 		<param name="twitter_consumer_secret" type="text" size="55" default="" label="Twitter Consumer Secret" description="TWITTER_CONSUMER_SECRET" />
-		<param name="@spacer" type="spacer" default="" label="" description="" />		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="akismet_enable" type="radio" default="0" label="Enable Akismet" description="CHECK_AKISMET">
+			<option value="1">yes</option>
+			<option value="0">no</option>
+		</param>
 		<param name="akismet_api_key" type="text" size="55" default="" label="Wordpress API Key" description="WORDPRESS_APPLICATION_KEY" />
 		<param name="@spacer" type="spacer" default="" label="" description="" />			
 		<param name="mollom_enable" type="radio" default="0" label="Enable Mollom" description="CHECK_MOLLOM">

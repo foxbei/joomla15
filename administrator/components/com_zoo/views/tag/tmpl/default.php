@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      default.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -50,6 +50,13 @@ JHTML::script('tag.js', 'administrator/components/com_zoo/assets/js/');
 				</th>
 			</tr>
 		</thead>
+		<tfoot>
+			<tr>
+				<td colspan="4">
+					<?php echo $this->pagination->getListFooter(); ?>
+				</td>
+			</tr>
+		</tfoot>
 		<tbody>
 		<?php foreach ($this->tags as $tag) : ?>
 			<tr>				
@@ -96,9 +103,9 @@ JHTML::script('tag.js', 'administrator/components/com_zoo/assets/js/');
 <?php echo JHTML::_('form.token'); ?>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-		var app = new Zoo.BrowseTags({ msgSave: '<?php echo JText::_('Save'); ?>', msgCancel: '<?php echo JText::_('Cancel'); ?>' });
-	});
+	jQuery(function($){
+		$('#tags-default').BrowseTags({ msgSave: '<?php echo JText::_('Save'); ?>', msgCancel: '<?php echo JText::_('Cancel'); ?>' });
+	});	
 </script>
 
 </form>

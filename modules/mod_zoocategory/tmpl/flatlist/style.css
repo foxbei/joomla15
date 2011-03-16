@@ -1,0 +1,19 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-category.flatlist a { display: block; }
+
+.zoo-category.flatlist ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.zoo-category.flatlist  ul  li  a {
+	padding: 6px 0px 5px 0px;
+	background: url(images/line_dotted_h.png) 0 0 repeat-x;
+	overflow: hidden;
+}
+.zoo-category.flatlist > ul > li:first-child > a {
+	padding-top: 5px;
+	background: none;
+}

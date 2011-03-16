@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      category.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -133,22 +133,18 @@ class CategoryHelper {
 		Returns:
 			Boolean - true on succes
 	*/
-	public static function saveCategoryItemRelations($item, $categories){
+	public static function saveCategoryItemRelations($item_id, $categories){
 
-		if (!is_array($categories)) {
-			$categories = array($categories);
-		}
-
-		$categories = array_unique($categories);
+		$categories = array_unique((array) $categories);
 
 		// delete category to item relations
 		$query = "DELETE FROM ".ZOO_TABLE_CATEGORY_ITEM
-			    ." WHERE item_id=".(int) $item->id;
+			    ." WHERE item_id=".(int) $item_id;
 
 		// execute database query
 		YDatabase::getInstance()->query($query);	
 
-		$query_string = '(%s,' . (int) $item->id.')';
+		$query_string = '(%s,' . (int) $item_id.')';
 		$category_strings = array();
 		foreach ($categories as $category) {
 			if ($category !== '' && $category !== null) {

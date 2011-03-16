@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      repeatable.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -63,6 +63,19 @@ abstract class ElementRepeatable extends Element implements Iterator {
 		}
 
 		$this->_data = $this->_data_array[0];
+	}
+
+	/*
+    	Function: unsetData
+    	  Unsets element data
+
+	   Returns:
+	      Void
+ 	*/
+	public function unsetData() {
+		foreach ($this->_data_array as $data) {
+			$data->unsetData();
+		}
 	}
 
 	/*
@@ -335,8 +348,7 @@ abstract class ElementRepeatable extends Element implements Iterator {
 			$html[] = '</div>';
 
 			// create js
-
-			$javascript  = "var rep = new Zoo.ElementRepeatable({ element : '".$this->identifier."', msgDeleteElement : '".JText::_('Delete Element')."', msgSortElement : '".JText::_('Sort Element')."' });";
+			$javascript  = "jQuery('#$this->identifier').ElementRepeatable({ msgDeleteElement : '".JText::_('Delete Element')."', msgSortElement : '".JText::_('Sort Element')."' });";
 			$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
 
 			return implode("\n", $html).$javascript;

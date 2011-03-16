@@ -1,0 +1,75 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-item.list-v > ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.zoo-item.list-v > ul > li {
+	margin: 5px 0px 0px 0px;
+	padding: 6px 0px 0px 0px;
+	background: url(images/line_dotted_h.png) 0 0 repeat-x;
+	overflow: hidden;
+}
+.zoo-item.list-v > ul > li:first-child {
+	margin: 0px;
+	padding: 0px;
+	background: none;
+}
+.zoo-item.list-v > ul > li.odd {}
+.zoo-item.list-v > ul > li.even {}
+
+/* position: media */
+.zoo-item.list-v div.media-top { margin-bottom: 10px; }
+
+.zoo-item.list-v div.media-left {
+	margin: 4px 10px 0px 0px;
+	float: left;
+}
+
+.zoo-item.list-v div.media-right {
+	margin: 4px 0px 0px 10px;
+	float: right;
+}
+
+.zoo-item.list-v div.media-middle,
+.zoo-item.list-v div.media-bottom { margin-top: 10px; }
+
+.zoo-item.list-v div.media > img,
+.zoo-item.list-v div.media > object,
+.zoo-item.list-v div.media > embed { display: inline-block; }
+
+/* position: title */
+.zoo-item.list-v h3.title {
+	margin: 0px;
+	font-size: 12px;
+	line-height: 18px;
+	font-weight: normal;
+	letter-spacing: 0px;
+}
+
+.zoo-item.list-v h3.title a {}
+
+/* position: meta */
+.zoo-item.list-v p.meta {
+	margin: 0px;
+	font-size: 11px;
+	color: #969696;
+	line-height: 13px;
+	font-style: italic;
+}
+
+/* position: description */
+.zoo-item.list-v div.description { margin: 5px 0px 0px 0px; }
+
+.zoo-item.list-v div.description > div { margin-top: 5px; }
+.zoo-item.list-v div.description > div:first-child { margin-top: 0px; }
+
+/* position: links */
+.zoo-item.list-v p.links { margin: 5px 0px 0px 0px; }
+
+.zoo-item.list-v p.links span a:after {
+	content: " »";
+	font-size: 14px;
+}

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      video.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -46,16 +46,14 @@ class ElementVideo extends ElementFile implements iSubmittable {
 		Returns:
 			String - the video format, if found
 	*/
-	public function getVideoFormat($source) {
+	public function getVideoFormat($source) {		
 		foreach ($this->_getVideoFormats() as $key => $tmp) {
 		   if (isset($tmp['regex'])) {
 			   if (preg_match($tmp['regex'], $source, $matches) && isset($matches[1])) {
 				   return $key;
 			   }
-		   } else {
-			   if (YFile::getExtension($source) == $key) {
-				   return $key;
-			   }
+		   } else if (YFile::getExtension($source) == $key) {
+			   return $key;
 		   }
 		}
 		return null;
@@ -277,7 +275,7 @@ class ElementVideo extends ElementFile implements iSubmittable {
 		// Windows Media Video
 		$formats['wmv']['name'] = 'Windows Media Video (.wmv)';
 		$formats['wmv']['html'] = '
-			<object id="{ID}" width="320" height="286" classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components..." type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
+			<object id="{ID}" width="{WIDTH}" height="{HEIGHT}" classid="CLSID:22D6f312-B0F6-11D0-94AB-0080C74C7E95" standby="Loading Windows Media Player components..." type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
 				<param name="filename" value="{SOURCE}">
 				<param name="Showcontrols" value="True">
 				<param name="autoStart" value="{AUTOPLAY}">

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      com_zoo.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -55,8 +55,10 @@ $query = $uri->getQuery(true);
 // if task is empty get task from view parameter
 $task = !empty($task) ? $task : (isset($query['view']) ? $query['view'] : null);
 
+$controller = isset($query['controller']) ? $query['controller'] : null;
+
 // ignore ajax requests
-if (in_array($task, array('remove', 'callelement', 'element'))) {
+if (in_array($task, array('remove', 'callelement', 'element')) || in_array($controller, array('comment'))) {
 	$dosef = false;
 }
 

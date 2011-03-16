@@ -2,15 +2,13 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 	defined('_JEXEC') or die('Restricted access');
-
-	JHTML::_('behavior.tooltip');
 
 	// add script
 	JHTML::script('alias.js', 'administrator/components/com_zoo/assets/js/');
@@ -34,14 +32,14 @@
 					<strong><?php echo JText::_('Name'); ?></strong>
 					<div id="name-edit">
 						<div class="row">
-							<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->submission->name; ?>"></input>
+							<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->submission->name; ?>" />
 							<span class="message-name"><?php echo JText::_('Please enter valid name.'); ?></span>
 						</div>
 						<div class="slug">
 							<span><?php echo JText::_('Slug'); ?>:</span>
 							<a class="trigger" href="#" title="<?php echo JText::_('Edit Submission Slug');?>"><?php echo $this->submission->alias; ?></a>
 							<div class="panel">
-								<input type="text" name="alias" value="<?php echo $this->submission->alias; ?>"></input>
+								<input type="text" name="alias" value="<?php echo $this->submission->alias; ?>" />
 								<input type="button" class="accept" value="<?php echo JText::_('Accept'); ?>"/>
 								<a href="#" class="cancel"><?php echo JText::_('Cancel'); ?></a>
 							</div>
@@ -119,13 +117,11 @@
 </form>
 
 <script type="text/javascript">
-
-	window.addEvent('domready', function(){
-		new Zoo.AliasEdit({ edit: <?php echo (int)$this->submission->id; ?> });
-		new Zoo.EditSubmission();
-		$('name-edit').getElement('input[name="name"]').focus();
+	jQuery(function($){
+		$('#submission-edit').EditSubmission();
+		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->submission->id; ?> });
+		$('#name-edit').find('input[name="name"]').focus();
 	});
-
 </script>
 
 <?php echo ZOO_COPYRIGHT; ?>

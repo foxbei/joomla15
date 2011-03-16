@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      download.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -252,11 +252,9 @@ class ElementDownload extends Element implements iSubmittable, iSubmissionUpload
 			Void
 	*/
 	public function loadAssets() {
-		JHTML::script('element.js', 'administrator/components/com_zoo/assets/js/');
 		JHTML::script('download.js', 'administrator/components/com_zoo/elements/download/assets/js/');
-
 		return $this;
-	}	
+	}
 	
 	public function reset() {
 		
@@ -387,11 +385,12 @@ class ElementDownload extends Element implements iSubmittable, iSubmissionUpload
                 // get the uploaded file information
                 $userfile = JRequest::getVar('elements_'.$this->identifier, array(), 'files', 'array');
 
-				// get legal mime types
-				$extensions = $this->_config->get('upload_extensions', 'png,jpg,doc,mp3,mov,avi,mpg,zip,rar,gz');
-				$extensions = explode(',', $extensions);
+				// get legal extensions
+				$extensions = explode(',', $this->_config->get('upload_extensions', 'png,jpg,doc,mp3,mov,avi,mpg,zip,rar,gz'));
 				$extensions = array_map(create_function('$ext', 'return strtolower(trim($ext));'), $extensions);
-				$legal_mime_types = array_intersect_key(YFile::getMimeMapping(), array_flip($extensions));
+				//get legal mime types
+				$legal_mime_types = new YArray(array_intersect_key(YFile::getMimeMapping(), array_flip($extensions)));
+				$legal_mime_types = $legal_mime_types->flattenRecursive();
 
 				// get max upload size
 				$max_upload_size = $this->_config->get('max_upload_size', '512') * 1024;
@@ -402,6 +401,7 @@ class ElementDownload extends Element implements iSubmittable, iSubmissionUpload
                 $file = $validator->addMessage('mime_types', 'Uploaded file is not of a permitted type.')->clean($userfile);
 
             } catch (YValidatorException $e) {
+				
                 if ($e->getCode() != UPLOAD_ERR_NO_FILE) {
                     throw $e;
                 }

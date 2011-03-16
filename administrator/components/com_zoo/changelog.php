@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      changelog.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -16,7 +16,109 @@ defined('_JEXEC') or die('Restricted access');
 Changelog
 ------------
 
-2.2
+2.3.6
+^ updated jQuery UI to 1.8.10
++ fixed app tabs now scale in administration area
+# fixed bug in comments admin area
+# fixed spelling bug in Italian language file
+
+2.3.5
+# fixed bug with category import (csv)
+# fixed problem with mysql strict mode and submissions
+
+2.3.4
+^ updated jQuery 1.4.4 to jQuery 1.5.1
+# fixed rare problem with setting data on elements
+# fixed bug with catgories not showing in alpha index
+# fixed bug with video element - incorrect size in IE (contributed by daniel.y.balsam - Thanks!)
+# fixed bug with category import (csv)
+
+2.3.3
+# fixed problem with replying to a comment
+# fixed minor bug with tag renaming
+^ improved error message in pages app (category, frontpage, alphaindex, tag view)
+# fixed spelling bug in German language file
++ added zoo quick icons module (admin control panel icons)
+# import/export of zoo articles now stores category ordering
++ added collapsible categories (contributed by Miljan Aleksic - Thanks!)
+# fixed bug with csv import (line endings are recognized across OSs)
+# fix to admin category view
+
+2.3.2
+# fixed bug with selecting submission while editing menu item
+# fixed bug with pagination on comment, item and tag view (administration)
+# fixed bug with excact search in zoo search plugin
+^ performance optimization with showing items on category/frontpage view
+^ performance optimization in category view
+# fixed spelling bug in German language file
+# fixed bug with radio buttons on assign core elements
+# fixed sorting bug in Webkit browsers (Chrome/Safari)
+# fixed the Digg icon in socialbookmarks element
+^ updated jQuery-ui to 1.8.7
+
+2.3.1
+^ refactored function for detecting URLs in comments
++ added some Turkish characters to sluggify function
+# fixed bug, where deleting an item would cause a fatal error upon editing a related item
+# fixed akismet param in business app
+# after editing submissions in untrusted mode, they'll be unpublished again
+^ if submitting too fast, form will stay populated now
+^ reintroduced the "Add tag" button to item edit view
+# fixed bug with inserting images in IE 8
+# fixed bug with download element
+
+2.3.0
+^ changed syntaxhighlighter in documentation app
+^ improved performance with tags
++ added pagination to the tags default view
+# fixed typos in language files
+
+2.3 BETA3
+# minor bugfix to reordering categories
+# fixed alpha index special character handling
+# quick pulish/unpublish categories working now
+# fixed bug where loadmodule plugin causes error on feedview
+# fixed bug where expired item would be shown in modules
+# fixed bug with height setting in menu item configuration
+# fixed bug with missing submission values
+# fixed typos in language files
+# fixed bug with saving related items
+
+2.3 BETA2
+# fixed typo in language files
+# fixed tooltips in types view
+# fixed bug that prevented saving in the manager
+
+2.3 BETA
+^ migrated to jQuery
+
+2.2.5
+# fixed order of category tree in item edit view
+# fixed MySQL Database Error Disclosure Vulnerability
+# fixed bug with choosing ZOO items in menu item
+# fixed bug with table prefix
+
+2.2.4
++ csv import: fixed bug with name column
++ csv import: added gallery element
+^ image element - "link to item" will use custom title if specified
+# fixed category item count
+^ improved import/export performance
++ added new expo template to blog app
+
+2.2.3
+# fixed import of categories into ZOO
+
+2.2.2
+# fixed: added MIME types for IE images jpg, png
+# fixed import of categories into ZOO
+
+2.2.1
+^ fixed memory leak in csv import (works with PHP 5.3 only)
+# fixed issue with sh404SEF and comments
+# fixed issue with autocompleter.request.js filename
+
+2.2.0
 # fixed bug with saving item/category relations on import
 + added mp4 to mime types in framework/file.php
 # fixed issue with sh404SEF
@@ -57,7 +159,7 @@ Changelog
 2.1.1
 # fixed directions not showing in google maps element
 
-2.1
+2.1.0
 # fixed bug with download element, where filesize would not be stored correctly
 # items in modules are ordered by their priority first now.
 # csv import into existing category (name match)

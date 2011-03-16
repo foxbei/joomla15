@@ -1,0 +1,50 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.plainlist div.yoo-carousel {
+	background: #F0F0F0;
+}
+
+/* tabs */
+div.plainlist div.yoo-carousel ul.tabs li a {
+	background: url(tmpl/plainlist/images/tab_bg.png) 0 0 repeat-x;
+}
+
+div.plainlist div.yoo-carousel ul.tabs li.selected a {
+	background: url(tmpl/plainlist/images/tab_bg.png) 0 -40px repeat-x;
+}
+
+div.plainlist div.yoo-carousel ul.tabs li a span {
+	padding: 5px 5px 0px 10px;
+	height: 35px;
+	line-height: 15px;
+	font-size: 12px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+div.plainlist div.yoo-carousel ul.tabs li.selected a span {
+	color: #ffffff;
+}
+
+div.plainlist div.yoo-carousel li a:link,
+div.plainlist div.yoo-carousel li a:visited {
+	color: #969696;
+	text-decoration: none;
+}
+
+div.plainlist div.yoo-carousel li a:hover,
+div.plainlist div.yoo-carousel li.selected a:link,
+div.plainlist div.yoo-carousel li.selected a:visited {
+	color: #646464;
+	text-decoration: none;
+}
+
+/* scroller */
+div.plainlist div.yoo-carousel div.frame {
+	float: left;
+}
+
+/* item */
+div.plainlist div.yoo-carousel div.item {
+	margin: 0px;
+}

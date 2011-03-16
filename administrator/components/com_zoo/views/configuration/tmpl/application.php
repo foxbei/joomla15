@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      application.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 JHTML::script('configuration.js', 'administrator/components/com_zoo/assets/js/');
 JHTML::script('alias.js', 'administrator/components/com_zoo/assets/js/');
 
-JHTML::_('behavior.tooltip');	
+JHTML::_('behavior.tooltip');
 
 // filter output
 JFilterOutput::objectHTMLSafe($this->application, ENT_QUOTES, array('params')); 
@@ -34,14 +34,14 @@ JFilterOutput::objectHTMLSafe($this->application, ENT_QUOTES, array('params'));
 			<strong><?php echo JText::_('Name'); ?></strong>
 			<div id="name-edit">
 				<div class="row">
-					<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->application->name; ?>"></input>
+					<input class="inputbox" type="text" name="name" id="name" size="60" value="<?php echo $this->application->name; ?>"/>
 					<span class="message-name"><?php echo JText::_('Please enter valid name.'); ?></span>
 				</div>
 				<div class="slug">
 					<span><?php echo JText::_('Slug'); ?>:</span>
 					<a class="trigger" href="#" title="<?php echo JText::_('Edit Application Slug');?>"><?php echo (empty($this->application->alias) ? 42 : $this->application->alias); ?></a>
 					<div class="panel">
-						<input type="text" name="alias" value="<?php echo $this->application->alias; ?>"></input>
+						<input type="text" name="alias" value="<?php echo $this->application->alias; ?>"/>
 						<input type="button" class="accept" value="<?php echo JText::_('Accept'); ?>"/>
 						<a href="#" class="cancel"><?php echo JText::_('Cancel'); ?></a>
 					</div>
@@ -74,10 +74,10 @@ JFilterOutput::objectHTMLSafe($this->application, ENT_QUOTES, array('params'));
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-		new Zoo.ApplicationEdit({application_id: '<?php echo $this->application->id;?>', application_group: '<?php echo $this->application->getGroup();?>'});
-		new Zoo.AliasEdit({ edit: <?php echo (int) $this->application->id; ?> });
-		$('name-edit').getElement('input[name="name"]').focus();
+	jQuery(function($){
+		$('#configuration-application').ApplicationEdit({ application_id: '<?php echo $this->application->id;?>', application_group: '<?php echo $this->application->getGroup();?>' });
+		$('#name-edit').AliasEdit({ edit: <?php echo (int) $this->application->id; ?> });
+		$('#name-edit').find('input[name="name"]').focus();
 	});
 </script>
 

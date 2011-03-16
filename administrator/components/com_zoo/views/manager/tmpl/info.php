@@ -12,7 +12,7 @@
 		<?php $metadata = $this->application->getMetaData(); ?>
 		
 		<?php if($info_image = $this->application->getInfoImage()) : ?>
-		<img class="application-image" src="<?php echo $info_image;?>">
+		<img class="application-image" src="<?php echo $info_image;?>" alt="application-image" />
 		<?php endif; ?>
 
 		<div class="application-details">
@@ -54,7 +54,7 @@
 				<input type="checkbox" name="cid[]" value="<?php echo $application->id; ?>" />
 			</td>
 			<td class="icon">
-				<img src="<?php echo ZOO_ADMIN_URI; ?>assets/images/application.png" border="0" />
+				<img src="<?php echo ZOO_ADMIN_URI; ?>assets/images/application.png" border="0" alt="icon" />
 			</td>
 			<td class="name">
 				<?php echo $application->name; ?>

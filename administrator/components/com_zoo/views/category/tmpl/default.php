@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      default.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -19,7 +19,7 @@ if (!$enable_category_sorting = count($this->categories) <= 1000) {
 // add js
 JHTML::script('category.js', 'administrator/components/com_zoo/assets/js/');
 if ($enable_category_sorting) {
-	JHTML::script('sortabletree.js', 'administrator/components/com_zoo/assets/js/');
+	JHTML::script('jquery.ui.nestedSortable.js', 'administrator/components/com_zoo/libraries/jquery/plugins/nestedsortable/');
 }
 
 ?>
@@ -38,10 +38,13 @@ if ($enable_category_sorting) {
 				<thead>
 					<tr>
 						<th class="checkbox">
-							<input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($this->categories); ?>);" />
+							<input type="checkbox" class="check-all" />
 						</th>
 						<th class="name">
 							<?php echo JText::_('Name'); ?>
+							<span class="small">
+								<span class="collapse-all"><?php echo JText::_('Collapse All'); ?></span> / <span class="expand-all"><?php echo JText::_('Expand All'); ?></span>
+							</span>
 						</th>
 						<th class="items">
 							<?php echo JText::_('Items'); ?>
@@ -85,8 +88,8 @@ if ($enable_category_sorting) {
 <?php if ($enable_category_sorting) : ?>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-		new Zoo.BrowseCategories();
+	jQuery(function($){
+		$('#categories-default').BrowseCategories();
 	});
 </script>
 
@@ -129,42 +132,37 @@ class CategoryRenderer {
 		$alt 	= $category->published ? $this->_texts['published'] : $this->_texts['unpublished'];
 		$action = $category->published ? $this->_texts['unpublish_item'] : $this->_texts['publish_item'];
 
-		$published = '<a href="javascript:void(0);" onclick="return listItemTask(\'cb'. $this->_i .'\',\''. $task .'\')" title="'. $action .'"><img src="images/'. $img .'" border="0" alt="'. $alt .'" /></a>';
-
 		// $checked = JHTML::_('grid.id', $this->i, $category->id);
-		$checked   = '<input type="checkbox" id="cb'.$this->_i.'" name="cid[]" value="'.$category->id.'" onclick="isChecked(this.checked);" />';
-
 		$this->_i++;
 
 ?>
-		<li>
-			<table>
-				<tbody>
-					<tr>
-						<td class="handle"></td>
-						<td class="checkbox">
-							<?php echo $checked; ?>
-						</td>
-						<td class="icon"></td>
-						<td class="name">
-							<span class="editlinktip hasTip" title="<?php echo $this->_texts['edit_category'] . '::' . $category->name; ?>">
-								<a href="<?php echo $link  ?>"><?php echo $category->name; ?></a>
-							</span>
-						</td>
-						<td class="items">
-							<a href="<?php echo $link_items; ?>"><?php
-							echo $category->itemCount();
-							?></a>
-						</td>
-						<td class="published">
-							<?php echo $published;?>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<input type="hidden" name="category[<?php echo $category->id; ?>]" value="<?php echo $category->id; ?>" />
-			<input type="hidden" name="parent[<?php echo $category->id; ?>]" value="<?php echo $category->parent; ?>" />
-			<input type="hidden" name="ordering[<?php echo $category->id; ?>]" value="<?php echo $category->ordering; ?>" />
+		<li id="category-<?php echo $category->id; ?>">
+			<div>
+				<table>
+					<tbody>
+						<tr>
+							<td class="handle"></td>
+							<td class="checkbox">
+								<input type="checkbox" name="cid[]" value="<?php echo $category->id; ?>" />
+							</td>
+							<td class="icon"></td>
+							<td class="name">
+								<span class="editlinktip hasTip" title="<?php echo $this->_texts['edit_category'] . '::' . $category->name; ?>">
+									<a href="<?php echo $link  ?>"><?php echo $category->name; ?></a>
+								</span>
+							</td>
+							<td class="items">
+								<a href="<?php echo $link_items; ?>"><?php echo $category->itemCount(); ?></a>
+							</td>
+							<td class="published">
+								<a href="#" rel="task-<?php echo $task; ?>" title="<?php echo $action; ?>">
+									<img src="images/<?php echo $img; ?>" border="0" alt="<?php echo $alt; ?>" />
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<?php if ($children = $category->getChildren()) : ?>
 				<ul>
 					<?php

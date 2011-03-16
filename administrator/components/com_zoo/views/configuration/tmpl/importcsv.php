@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      importcsv.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -93,10 +93,8 @@ JHTML::script('import.js', 'administrator/components/com_zoo/assets/js/');
 <?php echo JHTML::_('form.token'); ?>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-
-		new Zoo.Import({msgNameWarning: "<?php echo JText::_("Please choose a name column."); ?>", msgSelectWarning: "<?php echo JText::_("MSG_ASSIGN_WARNING"); ?>", msgWarningDuplicate: "<?php echo JText::_("There are duplicate assignments."); ?>", task: "doimportcsv"});
-
+	jQuery(function($){
+		$('#configuration-import').Import({ msgNameWarning: "<?php echo JText::_("Please choose a name column."); ?>", msgSelectWarning: "<?php echo JText::_("MSG_ASSIGN_WARNING"); ?>", msgWarningDuplicate: "<?php echo JText::_("There are duplicate assignments."); ?>", task: "doimportcsv" });
 	});
 </script>
 

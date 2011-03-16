@@ -1,0 +1,51 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.default-v div.yoo-slider ul.list {
+	border-bottom: 1px solid #DCDCDC;
+}
+
+div.default-v div.yoo-slider ul.list div.item-b {
+	background: url(tmpl/default-v/images/item_b.png) 0 100% repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list div.item-t {
+	background: url(tmpl/default-v/images/item_t.png) 0 0 repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list li:hover.item1 div.item-t {
+	background: url(tmpl/default-v/images/item1_t_hover.png) 0 0 repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list li:hover.item2 div.item-t {
+	background: url(tmpl/default-v/images/item2_t_hover.png) 0 0 repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list li:hover.item3 div.item-t {
+	background: url(tmpl/default-v/images/item3_t_hover.png) 0 0 repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list li:hover.item4 div.item-t {
+	background: url(tmpl/default-v/images/item4_t_hover.png) 0 0 repeat-x;
+}
+
+div.default-v div.yoo-slider ul.list .article h3 {
+	margin: 12px 0px 5px 0px;
+	padding-bottom: 0px;
+	line-height: 100%;
+	font-size: 150%;
+	font-weight: bold;
+	color: #323232;
+}
+
+div.default-v div.yoo-slider ul.list .article {
+	font-size: 95%;
+	line-height: 125%;
+}
+
+/* item */
+div.default-v div.yoo-slider div.item {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.default-v div.yoo-slider .layout-default h3.title { padding-top: 10px; }

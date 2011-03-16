@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zoosubmission.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -87,8 +87,8 @@ class JElementZooSubmission extends JElement {
         }
 		
 		$html[] = '</div>';
-				
-		$javascript  = "var app = new ZooSubmission({ element:'".$name."' });";
+
+		$javascript  = 'jQuery("#'.$name.'").ZooSubmission();';
 		$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
 		
 		return implode("\n", $html).$javascript;

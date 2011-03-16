@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      textarea.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -240,8 +240,8 @@ class ElementTextarea extends ElementRepeatable implements iSubmittable {
 			$html[] = '</div>';
 
 			// create js
-			$javascript  = "var rep = new Zoo.ElementRepeatableTextarea({ element : '".$this->identifier."', msgDeleteElement : '".JText::_('Delete Element')."' });";
-			$javascript  = "<script type=\"text/javascript\">\n//window.addEvent('domready', function(){ <!--\n$javascript\n// -->});\n</script>\n";
+			$javascript  = "jQuery('#$this->identifier').ElementRepeatableTextarea({ msgDeleteElement : '".JText::_('Delete Element')."' });";
+			$javascript  = "<script type=\"text/javascript\">\n//<!--\n$javascript\n// -->\n</script>\n";
 
 			return implode("\n", $html).$javascript;
 

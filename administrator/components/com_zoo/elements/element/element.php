@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      element.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -113,8 +113,7 @@ abstract class Element {
 	public function setData($xml) {
 		$this->_data = ElementData::newInstance($this);
 
-		if (!empty($xml)) { 
-			$xml = YXML::loadString($xml);
+		if (!empty($xml) && ($xml = YXML::loadString($xml))) {
 			foreach ($xml->children() as $xml_element) {
 				if ((string) $xml_element->attributes()->identifier == $this->identifier) {
 					$this->_data->decodeXML($xml_element);
@@ -126,6 +125,20 @@ abstract class Element {
         return $this;
 	}
 
+	/*
+    	Function: unsetData
+    	  Unsets element data
+
+	   Returns:
+	      Void
+ 	*/
+	public function unsetData() {
+		if (isset($this->_data)) {
+			$this->_data->unsetData();
+		}
+		return $this;
+	}
+	
 	/*
 		Function: bindData
 			Set data through data array.
@@ -644,6 +657,13 @@ class ElementData {
 		return $this;
 	}	
 
+	public function unsetData() {
+		foreach($this->_params as $key => $data) {
+			unset($this->_params[$key]);
+		}
+		$this->_element = null;
+	}
+	
 }
 
 // Declare the interface 'iSubmittable'

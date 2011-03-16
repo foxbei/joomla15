@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      rating.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -99,7 +99,7 @@ class ElementRating extends Element {
 			$html .= '<input name="reset-rating" type="button" class="button" value="'.JText::_('Reset').'"/>';
 			
 			// create js
-			$javascript  = "var rating = new Zoo.EditElementRating('".$this->identifier."', '".JRoute::_('index.php?option='.$option.'&controller='.$controller.'&format=raw&type='.$this->getType()->identifier.'&elm_id='.$this->identifier.'&item_id='.$this->getItem()->id, false)."');";
+			$javascript  = "jQuery('#$this->identifier').EditElementRating({ url: '".JRoute::_('index.php?option='.$option.'&controller='.$controller.'&format=raw&type='.$this->getType()->identifier.'&elm_id='.$this->identifier.'&item_id='.$this->getItem()->id, false)."' });";
 			$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
 			
 		}
@@ -176,7 +176,10 @@ class ElementRating extends Element {
 		}
 
 		if ($allow_vote > $user->get('aid', 0)) {
-			return '0,'.JText::_('NOT_ALLOWED_TO_VOTE');
+			return json_encode(array(
+				'value' => 0,
+				'message' => JText::_('NOT_ALLOWED_TO_VOTE')
+			));
 		}
 
 		if (in_array($vote, $stars) && isset($_SERVER['REMOTE_ADDR']) && ($ip = $_SERVER['REMOTE_ADDR'])) {
@@ -192,7 +195,10 @@ class ElementRating extends Element {
 
 			// voted already
 			if ($db->getNumRows()) {
-				return '0,'.JText::_("You've already voted");
+				return json_encode(array(
+					'value' => 0,
+					'message' => JText::_("You've already voted")
+				));
 			}
 
 			// insert vote
@@ -225,9 +231,11 @@ class ElementRating extends Element {
 
 		//save item
 		YTable::getInstance('item')->save($this->getItem());
-		
-		echo intval($this->getRating() / $max_stars * 100).','.sprintf(JText::_('%s rating from %s votes'), $this->getRating(), $this->_data->get('votes'));;
 
+		return json_encode(array(
+			'value' => intval($this->getRating() / $max_stars * 100),
+			'message' => sprintf(JText::_('%s rating from %s votes'), $this->getRating(), $this->_data->get('votes'))
+		));
 	}
 	
 }

@@ -87,7 +87,7 @@
 					<?php echo $this->pagination->getRowOffset($i); ?>
 				</td>
 				<td align="center">
-					<img src="<?php echo ZOO_ADMIN_URI; ?>assets/images/page_white.png" border="0" />
+					<img src="<?php echo ZOO_ADMIN_URI; ?>assets/images/page_white.png" alt="page_white.png" border="0" />
 				</td>
 				<td>
 					<a style="cursor: pointer;" onclick="window.parent.<?php echo JRequest::getVar('func', 'jSelectArticle'); ?>('<?php echo $row->id; ?>', '<?php echo str_replace(array("'", "\""), array("\\'", ""),$row->name); ?>', '<?php echo JRequest::getVar('object'); ?>');">
@@ -95,7 +95,7 @@
 					</a>
 				</td>
 				<td>
-					<?php echo Zoo::getApplication()->getType($row->type)->name; ?>
+					<?php echo $this->application->getType($row->type)->name; ?>
 				</td>
 			<td align="center">
 				<?php echo $access;?>
@@ -129,7 +129,7 @@
 <input type="hidden" name="filter_order_Dir" value="<?php echo $this->lists['order_Dir']; ?>" />
 <input type="hidden" name="object" value="<?php echo JRequest::getVar('object'); ?>" />
 <input type="hidden" name="func" value="<?php echo JRequest::getVar('func', 'jSelectArticle'); ?>" />
-<input type="hidden" name="app_id" value="<?php echo Zoo::getApplication()->id; ?>" />
+<input type="hidden" name="app_id" value="<?php echo $this->application->id; ?>" />
 <?php foreach($this->type_filter as $type_filter) : ?>
 	<input type="hidden" name="type_filter[]" value="<?php echo $type_filter; ?>" />
 <?php endforeach; ?>

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      array.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -110,6 +110,49 @@ class YArray extends ArrayObject {
 		
 		// return existing value
 		return $data;
+	}
+
+	/*
+		Function: searchRecursive
+			Find a value also in nested arrays/objects
+
+		Parameters:
+			$needle - the value to search for
+
+		Returns:
+			Mixed
+	*/
+	public function searchRecursive($needle) {
+		$aIt = new RecursiveArrayIterator($this);
+		$it	 = new RecursiveIteratorIterator($aIt);
+
+		while ($it->valid()) {
+			if ($it->current() == $needle) {
+				return $aIt->key();
+			}
+
+			$it->next();
+		}
+
+		return false;
+	}
+
+		/*
+		Function: flattenRecursive
+			Return flattened array copy. Keys are NOT preserved.
+
+		Returns:
+			array
+	*/
+	public function flattenRecursive() {
+		$flat = array();
+		foreach (new RecursiveIteratorIterator(new RecursiveArrayIterator($this), RecursiveIteratorIterator::SELF_FIRST) as $key => $value) {
+			if (!is_array($value)) {
+				$flat[] = $value;
+			}
+		}
+
+		return $flat;
 	}
 
 }

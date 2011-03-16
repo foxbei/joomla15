@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      category.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -149,14 +149,35 @@ class CategoryTable extends YTable {
 			Array - Array of categories
 	*/
 	public function getAll($application_id, $published = false, $item_count = false){
-		
+
 		if ($item_count) {
 
-			$this->getDBO()->query('SET SESSION group_concat_max_len = 1048576');
+			$db = $this->getDBO();
+			$db->query('SET SESSION group_concat_max_len = 1048576');
 
 			$select = 'c.*, GROUP_CONCAT(DISTINCT ci.item_id) as item_ids';
-			$from	= '#__zoo_category as c LEFT JOIN #__zoo_category_item as ci ON ci.category_id = c.id';
-			$where = 'c.application_id = ?' . ($published == true ? " AND c.published = 1" : "");
+			$from	= $this->getTableName() . ' as c  USE INDEX (APPLICATIONID_ID_INDEX) LEFT JOIN '.ZOO_TABLE_CATEGORY_ITEM.' as ci ON ci.category_id = c.id';
+
+			if ($published) {
+
+				// get user access id
+				$access_id = JFactory::getUser()->get('aid', 0);
+
+				// get dates
+				$date = JFactory::getDate();
+				$now  = $db->Quote($date->toMySQL());
+				$null = $db->Quote($db->getNullDate());
+
+				$select = 'c.*, GROUP_CONCAT(DISTINCT i.id) as item_ids';
+
+				$from  .= ' LEFT JOIN '.ZOO_TABLE_ITEM.' AS i USE INDEX (MULTI_INDEX2) ON ci.item_id = i.id'
+						.' AND i.access <= '.(int) $access_id
+						.' AND i.state = 1'
+						.' AND (i.publish_up = '.$null.' OR i.publish_up <= '.$now.')'
+						.' AND (i.publish_down = '.$null.' OR i.publish_down >= '.$now.')';
+			}
+
+			$where  = 'c.application_id = ?' . ($published == true ? " AND c.published = 1" : "");
 			$conditions = array($where, $application_id);
 			$group = 'c.id';
 
@@ -177,7 +198,6 @@ class CategoryTable extends YTable {
 		}
 
 		return $categories;
-
 	}
 
 	/*

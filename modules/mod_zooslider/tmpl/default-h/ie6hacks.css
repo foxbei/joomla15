@@ -1,0 +1,25 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.default-h div.yoo-slider ul.list li.first {
+	background: url(tmpl/default-h/images/item_l_ie6.png) 0 0 no-repeat;
+}
+
+div.default-h div.yoo-slider ul.list li:hover.first {
+	background: url(tmpl/default-h/images/item_l_ie6.png) 0 -153px no-repeat;
+}
+
+div.default-h div.yoo-slider ul.list li {
+	background: url(tmpl/default-h/images/item_m_ie6.png) 0 0 repeat-x;
+}
+
+div.default-h div.yoo-slider ul.list li:hover {
+	background: url(tmpl/default-h/images/item_m_ie6.png) 0 -153px repeat-x;
+}
+
+div.default-h div.yoo-slider ul.list li.last {
+	background: url(tmpl/default-h/images/item_r_ie6.png) 100% 0 no-repeat;
+}
+
+div.default-h div.yoo-slider ul.list li:hover.last {
+	background: url(tmpl/default-h/images/item_r_ie6.png) 100% -153px no-repeat;
+}

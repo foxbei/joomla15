@@ -1,4 +1,4 @@
-/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
 
 /*
  * item
@@ -110,7 +110,7 @@
 #yoo-zoo .item div.pos-content .syntaxhighlighter .line .number,
 #yoo-zoo .item div.pos-content .syntaxhighlighter .line .content { color: #c8c8c8 !important; }
 
-#yoo-zoo .item div.pos-content .syntaxhighlighter .toolbar .about { display: none !important; }
+#yoo-zoo .item div.pos-content .syntaxhighlighter .toolbar .help { display: none !important; }
 
 #yoo-zoo .item div.pos-content code,
 #yoo-zoo .item div.pos-content em {

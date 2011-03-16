@@ -1,0 +1,105 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div.default-h div.yoo-scroller {
+}
+
+/* panel */
+div.default-h div.yoo-scroller .panel-container-t {
+	background: #FAFBFC url(tmpl/default-h/images/panel_t.png) 0 0 repeat-x;
+}
+
+div.default-h div.yoo-scroller .panel-container-b {
+	background: url(tmpl/default-h/images/panel_b.png) 0 100% repeat-x;
+}
+
+div.default-h div.yoo-scroller .panel-container-l {
+	background: url(tmpl/default-h/images/panel_l.png) 0 0 repeat-y;
+}
+
+div.default-h div.yoo-scroller .panel-container-r {
+	background: url(tmpl/default-h/images/panel_r.png) 100% 0 repeat-y;
+}
+
+div.default-h div.yoo-scroller .panel-container-tl {
+	background: url(tmpl/default-h/images/panel_tl.png) 0 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller .panel-container-tr {
+	background: url(tmpl/default-h/images/panel_tr.png) 100% 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller .panel-container-bl {
+	background: url(tmpl/default-h/images/panel_bl.png) 0 100% no-repeat;
+}
+
+div.default-h div.yoo-scroller .panel-container-br {
+	padding: 0px 2px 10px 2px;
+	background: url(tmpl/default-h/images/panel_br.png) 100% 100% no-repeat;
+}
+
+div.default-h div.yoo-scroller .panel-container-bg {
+	overflow: hidden;
+}
+
+div.default-h div.yoo-scroller div.panel {
+	overflow: hidden;
+}
+
+div.default-h div.yoo-scroller div.panel div.slide {
+	float: left;
+	overflow: hidden;
+}
+
+div.default-h div.yoo-scroller div.scrollarea {
+	margin: 0px 20px 0px 20px;
+	background: url(tmpl/default-h/images/scrollarea_m.png) 0 0 repeat-x;
+	cursor: pointer;
+}
+
+div.default-h div.yoo-scroller div.scrollarea-l {
+	background: url(tmpl/default-h/images/scrollarea_l.png) 0 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller div.scrollarea-r {
+	background: url(tmpl/default-h/images/scrollarea_r.png) 100% 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller div.scrollbar {
+	float: left;
+}
+
+div.default-h div.yoo-scroller div.scrollknob {
+	margin: 2px 0px 2px 0px;
+	min-width: 10px;
+	background: url(tmpl/default-h/images/scrollknob_l.png) 0 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller div.scrollknob-r {
+	padding: 0px 10px 0px 10px;
+	background: url(tmpl/default-h/images/scrollknob_r.png) 100% 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller div.scrollknob-m {
+	height: 14px;
+	background: url(tmpl/default-h/images/scrollknob_m.png) 0 0 repeat-x;
+}
+
+div.default-h div.yoo-scroller div.forward, div.default-h div.yoo-scroller div.back {
+	width: 21px;
+	height: 18px;
+	float: left;
+}
+
+div.default-h div.yoo-scroller div.forward {
+	background: url(tmpl/default-h/images/scroll_forward.png) 0 0 no-repeat;
+}
+
+div.default-h div.yoo-scroller div.back {
+	background: url(tmpl/default-h/images/scroll_back.png) 0 0 no-repeat;
+}
+
+/* item */
+div.default-h div.yoo-scroller div.item {
+	margin: 0px;
+	padding: 15px 0px 0px 0px;
+}

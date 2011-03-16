@@ -13,7 +13,7 @@
 		<?php foreach ($this->applications as $application) : ?>
 			<a href="<?php echo JRoute::_($this->baseurl.'&task=types&group='.$application->getGroup()); ?>">
 				<span>
-					<img src="<?php echo $application->getIcon();?>">					
+					<img src="<?php echo $application->getIcon();?>" alt="<?php $application->getGroup(); ?>" />
 					<?php $metadata = $application->getMetaData(); ?>
 					<?php echo $metadata['name']; ?>
 				</span>
@@ -45,16 +45,14 @@
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function(){
-
-		$E('button.upload', 'manager-default').addEvent('click', function () {
-			if ($('filename').getValue() == '') {
+	jQuery(function($) {
+		$('#manager-default button.upload').bind('click', function () {
+			if ($('#manager-default #filename').val() == '') {
 				alert('<?php echo JText::_('SELECT_FILE_FIRST');?>');
 			} else {
 				submitbutton('installapplication');
 			}
 		});
-		
 	});
 </script>
 

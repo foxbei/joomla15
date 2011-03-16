@@ -2,16 +2,15 @@
 /**
 * @package   ZOO Component
 * @file      types.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
 
-// load tooltips
 JHTML::_('behavior.tooltip');
 
 ?>
@@ -96,7 +95,7 @@ JHTML::_('behavior.tooltip');
 
                             // create tooltip
                             if ($description = $metadata->get('description')) {
-                                $link = '<span class="editlinktip hasTip" title="::'.$description.'">'.$link.'</span>';
+                                $link = '<span class="editlinktip hasTip" title="'.$metadata->get('name', $layout).'::'.$description.'">'.$link.'</span>';
                             }
 
                             $links[] = $link;
@@ -135,7 +134,7 @@ JHTML::_('behavior.tooltip');
 
 								// create tooltip
 								if ($description = $metadata->get('description')) {
-									$link = '<span class="editlinktip hasTip" title="'.$description.'">'.$link.'</span>';
+									$link = '<span class="editlinktip hasTip" title="'.$metadata->get('name', $layout).'::'.$description.'">'.$link.'</span>';
 								}
 
 								$links[] = $link;
@@ -170,7 +169,7 @@ JHTML::_('behavior.tooltip');
 						
 						// create tooltip
 						if ($description = $metadata->get('description')) {
-							$link = '<span class="editlinktip hasTip" title="'.$description.'">'.$link.'</span>';
+							$link = '<span class="editlinktip hasTip" title="'.$metadata->get('name', $layout).'::'.$description.'">'.$link.'</span>';
 						}
 						
 						$links[] = $link;
@@ -204,7 +203,7 @@ JHTML::_('behavior.tooltip');
 						
 								// create tooltip
 								if ($description = $metadata->get('description')) {
-									$link = '<span class="editlinktip hasTip" title="'.$description.'">'.$link.'</span>';
+									$link = '<span class="editlinktip hasTip" title="'.$metadata->get('name', $layout).'::'.$description.'">'.$link.'</span>';
 								}
 						
 								$links[] = $link;

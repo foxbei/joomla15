@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      import.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -56,26 +56,25 @@ class ImportHelper {
 				if ($import_categories) {
 					$categories = self::_importCategories($application, $xml->getElementsByPath('categories/category[not(@id="_root")]'), $category_params);
 				}
-				
+
 				// import items
 				$items = self::_importItems($application, $xml->items, $element_assignment, $types);
-												
+
 				// save item -> category relationship
 				if ($import_categories) {
-					$values = array();
 					foreach($items as $item) {
+						$values = array();
 						foreach ($item->categories as $category_alias) {
 							if (isset($categories[$category_alias]) || $category_alias == '_root') {
-								$values[] = '(' . ($category_alias == '_root' ? $category_id = 0 : (int)$categories[$category_alias]->id) . ',' . $item->id . ')';
+								$values[] = $category_alias == '_root' ? 0 : (int) $categories[$category_alias]->id;
 							}
 						}
+						if (!empty($values)) {
+							CategoryHelper::saveCategoryItemRelations($item->id, $values);
+						}
 					}
-	
-					if (!empty($values)) {	
-						YDatabase::getInstance()->query('INSERT INTO ' . ZOO_TABLE_CATEGORY_ITEM . ' VALUES ' . implode(',', $values));	
-					}
-				}		
-				
+				}
+
 				return true;
 				
 			}
@@ -140,7 +139,7 @@ class ImportHelper {
 		foreach ($categoriy_xml_array as $category_xml) {
 
 			$category 		 = new Category();
-
+			
             // store old alias
 			$category->old_alias = (string) $category_xml->attributes()->id;
 
@@ -157,16 +156,15 @@ class ImportHelper {
 			}
 
 			// set category values
-			$vars = get_object_vars($category);
-			foreach ($category_xml->children() as $child) {
-				$name = $child->getName();
-				if (in_array($name, $vars)) {
+			$vars = get_object_vars($category);		
+			foreach ($category_xml->children() as $name => $child) {
+				if (array_key_exists((string) $name, $vars)) {
 					$category->$name = (string) $child;
 				}
 			}
 			$category->parent = 0;
 			$category->application_id = $application->id;
-							
+
 			// set category params
 			$params = $category->getParams();
 			foreach ($category_params as $params_type => $assigned_params) {
@@ -197,7 +195,6 @@ class ImportHelper {
 
 			// save category, to get id
 			try {
-				
 				$table->save($category);
 				
 			} catch (YException $e) {
@@ -231,128 +228,129 @@ class ImportHelper {
 	}
 
 	private static function _importItems(Application $application, $items_xml_array = array(), $element_assignment = array(), $types = array()) {
-		
-		$table = YTable::getInstance('item');
-		
-		// get application types
+
+		// init vars
+		$db		   = YDatabase::getInstance();
+		$table     = YTable::getInstance('item');
+		$item_vars = array_keys(get_class_vars('Item'));
+		$user_id   = JFactory::getUser()->get('id');
 		$app_types = $application->getTypes();
-			
+		$authors   = new YArray(YDatabase::getInstance()->queryObjectList('SELECT id, username FROM #__users'));
+
 		$items = array();
-		foreach ($items_xml_array as $items_xml) {
+		foreach ($items_xml_array as $key => $items_xml) {
 			
 			$index = (string) $items_xml->attributes()->name;
 			if (isset($types[$index]) && !empty($types[$index]) && ($type = $app_types[$types[$index]])) {
 
-				foreach ($items_xml->item as $item_xml) {
-															
-					$item 		 	 = new Item();
-                    $item->old_alias = (string) $item_xml->attributes()->id;
-					$item->alias 	 = YString::sluggify($item->old_alias);
-					$item->type  	 = $type->id;
-													
-					// set a valid category alias
-					while (ItemHelper::checkAliasExists($item->alias)) {
-						$item->alias .= '-2';
-					}
+				$elements = $type->getElements();
+				$traverse = true;
+				while ($traverse) {
+
+					$traverse = false;
 					
-					// set item values
-					$vars = get_object_vars($item);
-					foreach ($item_xml->children() as $child) {
-						$name = $child->getName();
-						if (in_array($name, $vars)) {
-							$item->$name = (string) $child;
+					foreach ($items_xml->item as $item_xml) {
+
+						$traverse = true;
+
+						$item 		 	 = new Item();
+						$item->old_alias = (string) $item_xml->attributes()->id;
+						$item->alias 	 = YString::sluggify($item->old_alias);
+						$item->type  	 = $type->id;
+
+						// set a valid category alias
+						while (ItemHelper::checkAliasExists($item->alias)) {
+							$item->alias .= '-2';
 						}
-					}
-					
-					// store application id
-					$item->application_id = $application->id;
 
-					// store categories
-					$item->categories = array();
-					foreach ($item_xml->getElementsByPath('categories/category') as $category_xml) {
-						$item->categories[] = (string) $category_xml;
-					}						
-					
-					// store tags
-					$tags = array();
-					foreach ($item_xml->getElementsByPath('tags/tag') as $tag_xml) {
-						$tags[] = (string) $tag_xml;
-					}
-                    $item->setTags($tags);
+						$db->query('INSERT INTO '. ZOO_TABLE_ITEM . '(alias) VALUES ('.$db->quote($item->alias).')');
+						$item->id = $db->insertid();
 
-					// store author
-					$item->created_by_alias = "";
-					$user_id = JFactory::getUser()->get('id');
-					if ($item_xml->author) {
-						$author = (string) $item_xml->author;
-						$query = 'SELECT id'
-								.' FROM #__users'
-								.' WHERE username=' . YDatabase::getInstance()->quote($author);
-								
-						if ($author_id = (int) YDatabase::getInstance()->queryResult($query)) {
-							$item->created_by = $author_id;		
-						} else {
-							$item->created_by_alias = $author;
+						// set item values
+						foreach ($item_xml->children() as $child) {
+							$name = $child->getName();
+							if (in_array($name, $item_vars)) {
+								$item->$name = (string) $child;
+							}
 						}
-					}
-					// if author is unknown set current user as author
-					if (!$item->created_by) {
-						$item->created_by = $user_id;
-					}
-					
-					// store modified_by
-					$item->modified_by = $user_id;
-					
-					// store element_data
-					if ($data = $item_xml->data) {
-						$elements = $type->getElements();
-													
-						foreach ($data->children() as $element_xml) {
-							
-							$old_element_alias = (string) $element_xml->attributes()->identifier;
 
-							if (isset($element_assignment[$index][$old_element_alias][$type->id])) {
-								if ($element_alias = $element_assignment[$index][$old_element_alias][$type->id]) {
+						// store application id
+						$item->application_id = $application->id;
+
+						// store categories
+						$item->categories = array();
+						foreach ($item_xml->getElementsByPath('categories/category') as $category_xml) {
+							$item->categories[] = (string) $category_xml;
+						}
+
+						// store tags
+						$tags = array();
+						foreach ($item_xml->getElementsByPath('tags/tag') as $tag_xml) {
+							$tags[] = (string) $tag_xml;
+						}
+						$item->setTags($tags);
+
+						// store author
+						$item->created_by_alias = "";
+						if ($item_xml->author) {
+							$author = (string) $item_xml->author;
+							$key = $authors->searchRecursive($author);
+							if ($key !== false) {
+								$item->created_by = (int) $authors[$key]->id;
+							} else {
+								$item->created_by_alias = $author;
+							}
+						}
+						// if author is unknown set current user as author
+						if (!$item->created_by) {
+							$item->created_by = $user_id;
+						}
+
+						// store modified_by
+						$item->modified_by = $user_id;
+
+						// store element_data
+						if ($data = $item_xml->data) {
+							$elements_xml = YXMLElement::create('elements');
+							$nodes_to_delete = array();
+							foreach ($data->children() as $key => $element_xml) {
+
+								$old_element_alias = (string) $element_xml->attributes()->identifier;
+
+								if (isset($element_assignment[$index][$old_element_alias][$type->id])
+										&& ($element_alias = $element_assignment[$index][$old_element_alias][$type->id])) {
 									$element_xml->addAttribute('identifier', $element_alias);
-									$elements[$element_alias]->setData($data->asXML(true, true));
+									$elements_xml->appendChild($element_xml);
+								} else {
+									$nodes_to_delete[] = $element_xml;
 								}
 							}
+
+							foreach ($nodes_to_delete as $node) {
+								$data->removeChild($node);
+							}
+
+							$item->elements = $elements_xml->asXML(true, true);
 						}
-						
-						$elements_xml = YXMLElement::create('elements');
-						foreach ($elements as $id => $element) {
-							$xml = YXML::loadString('<wrapper>'.$element->toXML().'</wrapper>');
-							foreach ($xml->children() as $element_xml) {
-								$elements_xml->appendChild($element_xml);
+
+						// store metadata
+						$params = $item->getParams();
+						if ($metadata = $item_xml->metadata) {
+							foreach ($metadata->children() as $metadata_xml) {
+								$params->set('metadata.' . $metadata_xml->getName(), (string) $metadata_xml);
 							}
 						}
-													
-						$item->elements = $elements_xml->asXML(true, true);								
-					}
+						$item->params = $params->toString();
+						$items[$item->old_alias] = $item;
 					
-					// store metadata
-					$params = $item->getParams();
-					if ($metadata = $item_xml->metadata) {
-						foreach ($metadata->children() as $metadata_xml) {
-							$params->set('metadata.' . $metadata_xml->getName(), (string) $metadata_xml);
-						}
+						$items_xml->removeChild($item_xml);
 					}
-					$item->params = $params->toString();
-					
-					// save item
-					try {
-						$table->save($item);
-					} catch (YException $e) {
-						JError::raiseNotice(0, JText::_('Error Importing Item').' ('.$e.')');
-					}						
-					$items[$item->old_alias] = $item;
-				}
+				}				
 			}
 		}
 
-		// sanatize relateditems elements, save tags
-		$tag_table = YTable::getInstance('tag');
-		foreach ($items as $item) {
+		// sanatize relateditems elements
+		foreach ($items as $key => $item) {
 			foreach ($item->getElements() as $element) {
 				if ($element->getElementType() == 'relateditems') {
 					$relateditems = $element->getElementData()->get('item', array());
@@ -366,16 +364,21 @@ class ImportHelper {
 				}
 			}
 			try {
+
 				$table->save($item);
+				$item->unsetElementData();
+				
 			} catch (YException $e) {
+				
 				JError::raiseNotice(0, JText::_('Error Importing Item').' ('.$e.')');
+
 			}
 		}
 
 		return $items;
 		
 	}
-	
+
 	/*
 		Function: getImportInfo
 			Builds the assign element info from xml.
@@ -514,16 +517,22 @@ class ImportHelper {
 					throw new ImportHelperException('No item name was assigned.');
 				}
 
+				// make sure the line endings are recognized irrespective of the OS
+				ini_set('auto_detect_line_endings', true);
+
 				if (($handle = fopen($file, "r")) !== FALSE) {
 
-					$item_table   = YTable::getInstance('item');
-					$category_table = YTable::getInstance('category');
-					$user_id = JFactory::getUser()->get('id');
-					$now     = JFactory::getDate();
-					$row	 = 0;
-					
-					$categories = array();
+					$item_table			= YTable::getInstance('item');
+					$category_table		= YTable::getInstance('category');
+					$user_id			= JFactory::getUser()->get('id');
+					$now				= JFactory::getDate();
+					$row				= 0;
+					$app_categories		= $application->getCategories();
+					$app_categories		= array_map(create_function('$cat', 'return $cat->name;'), $app_categories);
+					$elements			= $type_obj->getElements();
+
 					while (($data = fgetcsv($handle, 0, $field_separator, $field_enclosure)) !== FALSE) {
+
 						if (!($contains_headers && $row == 0)) {
 
 							$item = new Item();
@@ -544,6 +553,7 @@ class ImportHelper {
 
 							// store element_data and item name
 							$item_categories = array();
+
 							foreach ($assignments as $assignment => $columns) {
 								$column = current($columns);
 								switch ($assignment) {
@@ -563,8 +573,9 @@ class ImportHelper {
 											foreach ($columns as $column) {
 												$item_categories[] = $data[$column];
 											}
-										} else if ($element = $item->getElement($assignment)) {
-											switch ($element->getElementType()) {
+										} else if (isset($elements[$assignment])) {
+											$elements[$assignment]->unsetData();
+											switch ($elements[$assignment]->getElementType()) {
 												case 'text':
 												case 'textarea':
 												case 'link':
@@ -576,20 +587,31 @@ class ImportHelper {
 															$element_data[$column] = array('value' => $data[$column]);
 														}
 													}
-													$element->bindData($element_data);
+													$elements[$assignment]->bindData($element_data);
+													break;
+												case 'gallery':
+													$data[$column] = trim($data[$column], '/\\');
+													$elements[$assignment]->bindData(array('value' => $data[$column]));
 													break;
 												case 'image':
 												case 'download':
-													$element->bindData(array('file' => $data[$column]));
+													$elements[$assignment]->bindData(array('file' => $data[$column]));
 													break;
 												case 'googlemaps':
-													$element->bindData(array('location' => $data[$column]));
+													$elements[$assignment]->bindData(array('location' => $data[$column]));
 													break;
-											}
+											}											
 										}
 										break;
 								}
 							}
+
+							$elements_string = '<?xml version="1.0" encoding="UTF-8"?><elements>';
+							foreach ($elements as $element) {
+								$elements_string .= $element->toXML();
+							}
+							$elements_string .= '</elements>';
+							$item->elements = $elements_string;
 
 							$item->alias = YString::sluggify($item->name);
 
@@ -603,15 +625,19 @@ class ImportHelper {
 							}
 
 							if (!empty($item->name)) {
+
 								try {
+
 									$item_table->save($item);
+									$item_id = $item->id;
+
+									$item->unsetElementData();
 									
 									// store categories
+									$related_categories = array();
 									foreach ($item_categories as $category_name) {
 
-										$related_categories = $category_table->getByName($application->id, $category_name);
-
-										if (empty($related_categories)) {
+										if (!in_array($category_name, $app_categories)) {
 
 											$category = new Category();
 											$category->application_id = $application->id;
@@ -628,35 +654,33 @@ class ImportHelper {
 											try {
 
 												$category_table->save($category);
-												$related_categories[] = $category;
-
+												$related_categories[] = $category->id;
+												$app_categories[$category->id] = $category->name;
+					
 											} catch (CategoryTableException $e) {}
+
+										} else {
+
+											$related_categories[] = array_search($category_name, $app_categories);
+
 										}
 
-										// add category to item relations
-										if (!empty($related_categories)) {
-											foreach($related_categories as $related_category){
+									}
 
-												// insert relation to database
-												$query = "INSERT IGNORE INTO ".ZOO_TABLE_CATEGORY_ITEM
-														." VALUES (".(int) $related_category->id.",".(int) $item->id.")";
+									// add category to item relations
+									if (!empty($related_categories)) {
 
-												// execute database query
-												YDatabase::getInstance()->query($query);
-											}
-										}
+										CategoryHelper::saveCategoryItemRelations($item_id, $related_categories);
+
 									}
 
 								} catch (ItemTableException $e) {}
 							}
 						}
-
-						// get max column count
-						$row++;
+						
+						$row++;						
 					}
-
 					fclose($handle);
-
 					return true;
 
 				} else {
@@ -693,7 +717,7 @@ class ImportHelper {
 			$info['types'][$type->id] = array();
 			foreach ($type->getElements() as $element) {
 				// filter elements
-				if (in_array($element->getElementType(), array('text', 'textarea', 'link', 'email', 'image', 'download', 'date', 'googlemaps'))) {
+				if (in_array($element->getElementType(), array('text', 'textarea', 'link', 'email', 'image', 'gallery', 'download', 'date', 'googlemaps'))) {
 					$info['types'][$type->id][$element->getElementType()][] = $element;
 				}
 			}
@@ -704,11 +728,14 @@ class ImportHelper {
 
 		$info['columns'] = array();
 
+		// make sure the line endings are recognized irrespective of the OS
+		ini_set('auto_detect_line_endings', true);
+
 		// get column names and row count
 		$row = 0;
 		$columns = 0;
-		if (($handle = fopen($file, "r")) !== FALSE) {
-			
+		if (($handle = fopen($file, "r")) !== FALSE) {	
+
 			while (($data = fgetcsv($handle, 0, $field_separator, $field_enclosure)) !== FALSE) {
 				if ($row == 0) {
 					// get column names from header row

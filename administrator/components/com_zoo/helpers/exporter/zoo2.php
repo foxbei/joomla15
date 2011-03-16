@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zoo2.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -18,7 +18,7 @@ class ExportHelperZoo2 extends ExportHelper{
 	}
 	
 	public function export() {
-		
+
 		if (!$this->_application = Zoo::getApplication()) {
 			throw new ExportHelperException('No application selected.');
 		}
@@ -28,21 +28,25 @@ class ExportHelperZoo2 extends ExportHelper{
 		$frontpage->name  = 'Root';
 		$frontpage->alias = '_root';
 		$frontpage->description = $this->_application->description;
-				
+		
 		// export categories
 		$categories = $this->_application->getCategories();
 		$categories[0] = $frontpage;
-		foreach ($categories as $category) {			
-			$this->_addCategory($this->_categoryToXML($category, $categories));	
+		foreach ($categories as $category) {
+			$this->_addCategory($this->_categoryToXML($category, $categories));
 		}
+
+		$this->categories = $categories;
 
 		// export items
 		$types = $this->_application->getTypes();
 		$item_table = YTable::getInstance('item');
 		foreach ($types as $type) {
 			$items = $item_table->getByType($type->id, $this->_application->id);
-			foreach ($items as $item) {				
+			foreach ($items as $key => $item) {
 				$this->_addItem($type->name, $this->_itemToXML($item));
+				$item->unsetElementData();
+				unset($items[$key]);				
 			}
 		}
 
@@ -106,17 +110,22 @@ class ExportHelperZoo2 extends ExportHelper{
 				$attributes[$attribute] = $item->$attribute;
 			}
 		}		
-		$attributes['author'] = JFactory::getUser($item->created_by)->username;
-		
+		$attributes['author'] = JFactory::getUser($item->created_by)->username;				
+
 		$item_xml = $this->_buildItem($item->alias, $item->name, $attributes);
 
 		foreach ($item->getRelatedCategoryIds() as $category_id) {
-			if (!$alias = CategoryHelper::translateIDToAlias($category_id)) {
+			$alias = '';
+			if (empty($category_id)) {
 				$alias = '_root';
+			} else if (isset($this->categories[$category_id])) {				
+				$alias = $this->categories[$category_id]->alias;
 			}
-			$this->_addItemCategory($item_xml, $alias);
+			if (!empty($alias)) {
+				$this->_addItemCategory($item_xml, $alias);
+			}
 		}
-		
+
 		foreach ($item->getTags() as $tag) {
 			$this->_addItemTag($item_xml, $tag);
 		}
@@ -128,7 +137,7 @@ class ExportHelperZoo2 extends ExportHelper{
 				$this->_addItemData($item_xml, $element_xml);
 			}
 		}
-		
+
 		$metadata = array();
 		foreach ($item->getParams()->get('metadata.', array()) as $key => $value) {
 			$metadata[preg_replace('/^metadata\./', '', $key)] = $value;
@@ -144,7 +153,7 @@ class ExportHelperZoo2 extends ExportHelper{
 				$item_xml->replaceChild(YXMLElement::create('item', ItemHelper::translateIDToAlias((string)$related_item_xml), true), $related_item_xml);
 			}
 		}
-		
+
 		return $item_xml;
 	}
 	

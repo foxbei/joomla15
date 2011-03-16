@@ -2,7 +2,8 @@
 
 ALTER TABLE `#__zoo_category`
 	ADD UNIQUE `ALIAS_INDEX` (`alias`),
-	ADD INDEX `PUBLISHED_INDEX` (`published`);
+	ADD INDEX `PUBLISHED_INDEX` (`published`),
+	ADD INDEX `APPLICATIONID_ID_INDEX` (`published`, `id`);
 
 -- --------------------------------------------------------
 
@@ -30,6 +31,8 @@ ALTER TABLE `#__zoo_item`
 	ADD INDEX `APPLICATIONID_INDEX` (`application_id`),
 	ADD INDEX `TYPE_INDEX` (`type`),
 	ADD INDEX `MULTI_INDEX` (`application_id`, `access`, `state`, `publish_up`, `publish_down`),
+	ADD INDEX `MULTI_INDEX2` (`id`, `access`, `state`, `publish_up`, `publish_down`),
+	ADD INDEX `ID_APPLICATION_INDEX` (`id`, `application_id`),
 	ADD FULLTEXT `SEARCH_FULLTEXT` (`name`);
 
 -- --------------------------------------------------------

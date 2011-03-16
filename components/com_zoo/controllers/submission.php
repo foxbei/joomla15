@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      submission.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -50,7 +50,7 @@ class SubmissionController extends YController {
 	*/
 	public function __construct($default = array()) {
 		parent::__construct($default);
-        
+
         $this->item_id = JRequest::getInt('item_id');
 
         // get submission info from Request
@@ -76,14 +76,14 @@ class SubmissionController extends YController {
             $this->renderer = new ItemRenderer();
             $this->renderer->addPath(array($this->template->getPath(), ZOO_SITE_PATH));
 
-        }      
+        }
 
 	}
 
     public function mysubmissions() {
 
         try {
-            
+
             $this->_checkConfig();
 
 			if ($this->user->get('aid', 0) < 1) {
@@ -161,8 +161,8 @@ class SubmissionController extends YController {
                 $this->form = new ItemForm();
                 $this->form->config(array('submission' => $this->submission, 'item' => $this->item, 'elements_config' => $this->elements_config));
                 $this->form->setIgnoreErrors(true);
-                $this->form->bindItem(); 
-				
+                $this->form->bindItem();
+
             }
 
             // build cancel url
@@ -170,7 +170,7 @@ class SubmissionController extends YController {
                 $this->cancel_url = RouteHelper::getMySubmissionsRoute($this->submission);
 				$text = $this->item->id ? JText::_('Edit Submission') : JText::_('Add Submission');
 				$this->pathway->addItem($text);
-            }		
+            }
 
             if ($this->submission->isInTrustedMode()) {
                 // most used tags
@@ -195,11 +195,13 @@ class SubmissionController extends YController {
         YRequest::checkToken() or jexit('Invalid Token');
 
         // init vars
-        $post	   = JRequest::get('post');
-		$db		   = YDatabase::getInstance();
-		$tzoffset  = JFactory::getConfig()->getValue('config.offset');
-		$now	   = JFactory::getDate();
-		$now->setOffset($tzoffset);		
+        $post	    = JRequest::get('post');
+		$db		    = YDatabase::getInstance();
+		$tzoffset   = JFactory::getConfig()->getValue('config.offset');
+		$now	    = JFactory::getDate();
+		$now->setOffset($tzoffset);
+		$msg	    = '';
+		$time_valid = true;
 
         try {
 
@@ -213,12 +215,12 @@ class SubmissionController extends YController {
                 throw new YControllerException('You are not allowed to make changes to this item.');
             }
 
-            // get submission params
+            // get default category - only in none trusted mode
             $categories = array();
             if (!$this->submission->isInTrustedMode() && ($category = $this->submission->getForm($this->type->id)->get('category'))) {
                 $categories[] = $category;
             }
-            
+
             // get element data from post
             if (isset($post['elements'])) {
 
@@ -227,7 +229,7 @@ class SubmissionController extends YController {
                     JRequest::setVar('elements', SubmissionHelper::filterData($post['elements']));
                     $post = JRequest::get('post');
                 }
-                
+
                 // merge elements into post
                 $post = array_merge($post, $post['elements']);
             }
@@ -259,6 +261,7 @@ class SubmissionController extends YController {
             $form = new ItemForm(array('submission' => $this->submission, 'item' => $this->item, 'elements_config' => $this->elements_config));
             $form->bind($post);
 
+			// save item if form is valid
             if ($form->isValid()) {
 
                 // set name
@@ -287,12 +290,31 @@ class SubmissionController extends YController {
                 $this->item->modified	 = $now->toMySQL();
                 $this->item->modified_by = $this->user->get('id');
 
-                // set created date
-                if (!$this->item->id) {
-                    $this->item->created 	= $now->toMySQL();
-                    $this->item->created_by = $this->user->get('id');
+				// creating new item
+                if (!$edit) {
+
+					// set created date
+                    $this->item->created		  = $now->toMySQL();
+                    $this->item->created_by		  = $this->user->get('id');
+					$this->item->created_by_alias = '';
+
+					// set publish up - publish down
+					$this->item->publish_up   = $now->toMySQL();
+					$this->item->publish_down = $db->getNullDate();
+
+					// set access
+					$this->item->access = 0;
+
+					// set searchable
+					$this->item->searchable = 1;
+
+					// set params
+					$this->item->params = $this->item->getParams()
+						->set('config.enable_comments', true)
+						->set('config.primary_category', 0)->toString();
+
                 }
-                
+
                 if ($this->submission->isInTrustedMode()) {
 
                     // set state
@@ -339,38 +361,37 @@ class SubmissionController extends YController {
                     $this->item->setTags($tags);
 
                 } else {
-
-					// set publish up
-					$this->item->publish_up = $now->toMySQL();
-
 					// spam protection - user may only submit items every SubmissionController::TIME_BETWEEN_PUBLIC_SUBMISSIONS seconds
-					if (empty($this->item->id)) {
+					if (!$edit) {
 						$timestamp = $this->session->get('ZOO_LAST_SUBMISSION_TIMESTAMP');
 						$now = time();
 						if ($now < $timestamp + SubmissionController::TIME_BETWEEN_PUBLIC_SUBMISSIONS) {
+
+							$this->addFormToSession($form);
+							$time_valid = false;
+
 							throw new SubmissionControllerException('You are submitting to fast, please try again in a few moments.');
 						}
 						$this->session->set('ZOO_LAST_SUBMISSION_TIMESTAMP', $now);
-					}					
+					}
 
+					// set state
 					$this->item->state = 0;
+
 				}
 
                 // save item
                 YTable::getInstance('item')->save($this->item);
 
-                // save category relations - only if not editing in none trusted mode
+                // save category relations - only if editing in trusted mode
 				if (!$edit || $this->submission->isInTrustedMode()) {
-					CategoryHelper::saveCategoryItemRelations($this->item, $categories);
+					CategoryHelper::saveCategoryItemRelations($this->item->id, $categories);
 				}
 
                 // set redirect message
-				if ($this->submission->isInTrustedMode()) {
-					$msg = JText::_('Thanks for your submission.');
-				} else {
-					$msg = JText::_('Thanks for your submission. It will be reviewed before being posted on the site.');
-				}
+				$msg = $this->submission->isInTrustedMode() ? JText::_('Thanks for your submission.') : JText::_('Thanks for your submission. It will be reviewed before being posted on the site.');
 
+			// add form to session if form is not valid
             } else {
 
                 $this->addFormToSession($form);
@@ -393,9 +414,9 @@ class SubmissionController extends YController {
             }
 
         }
-        
+
         // redirect to mysubmissions
-        if ($this->redirect == 'mysubmissions' && $form && $form->isValid()) {			
+        if ($this->redirect == 'mysubmissions' && $form && $form->isValid() && $time_valid) {
             $link = RouteHelper::getMySubmissionsRoute($this->submission);
         // redirect to edit form
         } else {
@@ -428,7 +449,7 @@ class SubmissionController extends YController {
             // is current user the item owner and does the user have sufficient user rights
             if ($item->id && (!$item->canAccess($this->user) || $item->created_by != $this->user->id)) {
                 throw new YControllerException('You are not allowed to make changes to this item.');
-            }           
+            }
 
             $table->delete($item);
 
@@ -443,7 +464,7 @@ class SubmissionController extends YController {
             // add exception details, for super administrators only
             if ($this->user->superadmin) {
                 JError::raiseWarning(0, (string) $e);
-            }         
+            }
 
 		}
 

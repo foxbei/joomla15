@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      _comments.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -12,6 +12,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 // add js and css
+JHTML::script('jquery.cookie.js', ZOO_ADMIN_URI.'libraries/jquery/plugins/cookie/');
 JHTML::script('comment.js', 'media/zoo/assets/js/');
 JHTML::stylesheet('comments.css', 'media/zoo/assets/css/');
 
@@ -39,5 +40,7 @@ $css[] = $params->get('registered_users_only') && $active_author->isGuest() ? 'n
 </div>
 
 <script type="text/javascript">
-	new Zoo.Comment({ cookiePrefix: '<?php echo CommentHelper::COOKIE_PREFIX; ?>', cookieLifetime: '<?php echo CommentHelper::COOKIE_LIFETIME; ?>' });
+	jQuery(function($){
+		$('#comments').Comment({ cookiePrefix: '<?php echo CommentHelper::COOKIE_PREFIX; ?>', cookieLifetime: '<?php echo CommentHelper::COOKIE_LIFETIME; ?>' });
+	});
 </script>

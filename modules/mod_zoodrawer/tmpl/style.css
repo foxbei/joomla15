@@ -1,0 +1,80 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+a:focus { outline: none; }
+
+div.yoo-drawer { 
+	position: relative;
+}
+
+div.yoo-drawer ul.list {
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	overflow: hidden;
+}
+ 
+div.yoo-drawer ul.list li.item {
+	margin: 0px;
+	padding: 0px;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+}
+
+/*
+ * ZOO layout positions
+ */
+
+/* position: media */
+.yoo-drawer .layout-default div.media-top { margin-bottom: 15px; }
+
+.yoo-drawer .layout-default div.media-left {
+	margin-right: 15px;
+	float: left;
+}
+
+.yoo-drawer .layout-default div.media-right {
+	margin-left: 15px;
+	float: right;
+}
+
+.yoo-drawer .layout-default div.media-middle,
+.yoo-drawer .layout-default div.media-bottom { margin-top: 15px; }
+
+.yoo-drawer .layout-default div.media > img,
+.yoo-drawer .layout-default div.media > object,
+.yoo-drawer .layout-default div.media > embed { display: inline-block; }
+
+/* position: title */
+.yoo-drawer .layout-default h3.title {
+	margin: 0px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: normal;
+	letter-spacing: 0px;
+}
+
+.yoo-drawer .layout-default h3.title a { text-decoration: none; }
+
+/* position: meta */
+.yoo-drawer .layout-default p.meta {
+	margin: 0px;
+	font-size: 11px;
+	color: #969696;
+	line-height: 13px;
+	font-style: italic;
+}
+
+/* position: description */
+.yoo-drawer .layout-default div.description { margin: 10px 0px 0px 0px; }
+
+.yoo-drawer .layout-default div.description > div { margin-top: 5px; }
+.yoo-drawer .layout-default div.description > div:first-child { margin-top: 0px; }
+
+/* position: links */
+.yoo-drawer .layout-default p.links { margin: 7px 0px 0px 0px; }
+
+.yoo-drawer .layout-default p.links span a:after {
+	content: " »";
+	font-size: 14px;
+}

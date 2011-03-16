@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>ZOO Carousel</name>
+	<author>YOOtheme</author>
+	<creationDate>January 2011</creationDate>
+	<copyright>Copyright (C) 2007 - 2011 YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.3.1</version>
+	<description>Carousel module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_zoocarousel.ini</language>
+	</languages>
+	<files>
+		<filename module="mod_zoocarousel">mod_zoocarousel.php</filename>
+		<filename>mod_zoocarousel.css.php</filename>
+		<filename>mod_zoocarousel.js</filename>
+		<filename>mod_zoocarousel.xml</filename>
+		<filename>changelog.php</filename>
+		<folder>elements</folder>
+		<folder>renderer</folder>
+		<folder>tmpl</folder>
+	</files>
+	<params addpath="/modules/mod_zoocarousel/elements">
+		<param name="theme" type="filename" default="" label="Theme" description="Visual style" path="/tmpl/" />
+		<param name="layout" type="filename" default="default" label="Layout" description="The Item Layout" path="/renderer/item/" />
+		<param name="media_position" type="list" default="left" label="Media Position" description="MEDIAPOSITION_DESCRIPTION">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="top">Top</option>
+			<option value="middle">Middle</option>
+			<option value="bottom">Bottom</option>
+		</param>
+		<param name="application" type="zooapplication" default="" label="Items" description="APPLICATION_DESCRIPTION" categories="true" frontpage="true" types="true" />
+		<param name="subcategories" type="radio" default="0" label="Include Subcategories" description="SUBCATEGORY_DESCRIPTION">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="count" type="text" default="4" size="5" label="Item Count" description="Maximum number of items to display" />
+		<param name="order" type="list" default="" label="Item Order" description="Order that the items will be displayed in">
+			<option value="">Latest first</option>
+			<option value="date">Latest last</option>
+			<option value="alpha">Alphabetical</option>
+			<option value="ralpha">Reverse Alphabetical</option>
+			<option value="hits">Most Hits</option>
+			<option value="rhits">Least Hits</option>
+			<option value="random">Random</option>
+		</param>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Module Class Suffix" />
+	</params>
+	<params group="advanced">
+		<param name="module_width" type="text" default="400" label="Module width (px)" description="Width of the whole module" />
+		<param name="module_height" type="text" default="200" label="Module height (px)" description="Height of the whole module" />
+		<param name="tab_width" type="text" default="200" label="Tab width (px)" description="TAB_WIDTH_DESCRIPTION" />
+		<param name="autoplay" type="list" default="on" label="Autoplay" description="Changing between items automatically">
+			<option value="on">On</option>
+			<option value="once">Only once</option>
+			<option value="off">Off</option>
+		</param>
+		<param name="slide_interval" type="text" default="10000" label="Slide interval (ms)" description="SLIDE_INTERVAL_DESCRIPTION" />
+		<param name="transition_duration" type="text" default="700" label="Transition duration (ms)" description="TRANSITION_DURATION_DESCRIPTION" />
+		<param name="transition_effect" type="list" default="scroll" label="Transition effect" description="TRANSITION_EFFECT_DESCRIPTION">
+			<option value="scroll">Scroll</option>
+			<option value="fade">Fade</option>
+			<option value="crossfade">Crossfade</option>
+		</param>
+		<param name="control_panel" type="list" default="top" label="Control panel" description="Hide/Position the control panel">
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+			<option value="none">None</option>
+		</param>
+		<param name="rotate_action" type="list" default="click" label="Rotate action" description="Action behavior of the control panel">
+			<option value="click">Click</option>
+			<option value="mouseover">Mouse over</option>
+			<option value="none">None</option>
+		</param>
+		<param name="rotate_duration" type="text" default="200" label="Rotate duration (ms)" description="ROTATE_DURATION_DESCRIPTION" />
+		<param name="rotate_effect" type="list" default="scroll" label="Rotate effect" description="ROTATE_EFFECT_DESCRIPTION">
+			<option value="scroll">Scroll</option>
+			<option value="fade">Fade</option>
+			<option value="crossfade">Crossfade</option>			
+		</param>
+		<param name="buttons" type="list" default="1" label="Buttons" description="Hide/Show the next and previous buttons">
+			<option value="0">Hide</option>
+			<option value="1">Show</option>
+		</param>
+	</params>
+</install>

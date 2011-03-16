@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>ZOO Maps</name>
+	<author>YOOtheme</author>
+	<creationDate>January 2011</creationDate>
+	<copyright>Copyright (C) 2007 - 2011 YOOtheme GmbH</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
+	<assetsLicense>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</assetsLicense>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+	<version>2.3.1</version>
+	<description>Maps module for ZOO developed by YOOtheme (http://www.yootheme.com)</description>
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_zoomaps.ini</language>
+	</languages>
+	<files>
+		<filename module="mod_zoomaps">mod_zoomaps.php</filename>
+		<filename>mod_zoomaps.xml</filename>
+		<filename>mod_zoomaps.js</filename>
+		<filename>changelog.php</filename>
+		<folder>elements</folder>
+		<folder>renderer</folder>	
+		<folder>tmpl</folder>	
+	</files>
+	<params addpath="/modules/mod_zoomaps/elements">
+		<param name="layout" type="filename" default="" label="Layout" description="The Item Layout" path="/renderer/item/" />
+		<param name="media_position" type="list" default="middle" label="Media Position" description="MEDIAPOSITION_DESCRIPTION">
+			<option value="top">Top</option>
+			<option value="middle">Middle</option>
+			<option value="bottom">Bottom</option>
+		</param>
+		<param name="application" type="zooapplication" default="" label="Items" description="APPLICATION_DESCRIPTION" categories="true" frontpage="true" types="true" />
+		<param name="subcategories" type="radio" default="0" label="Include Subcategories" description="SUBCATEGORY_DESCRIPTION">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="count" type="text" default="20" size="5" label="Item Count" description="Maximum number of items to display" />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Module Class Suffix" />
+	</params>
+	<params group="advanced">
+		<param name="location" type="text" default="" label="Location" size="50" description="LOCATION_DESCRIPTION" />
+		<param name="marker_onload" type="radio" default="1" label="Show marker" description="Show marker on load">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="marker_popup" type="radio" default="0" label="Marker popup on load" description="Show marker popup on load">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>			
+		<param name="marker_text" type="textarea" default="" label="Marker text" rows="5" cols="40" description="Marker text" />
+		<param name="main_icon" type="list" default="red-dot" label="Marker icon" description="Select a marker icon">
+			<option value="red-dot">Red dot</option>
+			<option value="orange-dot">Orange dot</option>
+			<option value="yellow-dot">Yellow dot</option>
+			<option value="pink-dot">Pink dot</option>
+			<option value="blue-dot">Blue dot</option>
+			<option value="ltblue-dot">Lightblue dot</option>
+			<option value="green-dot">Green dot</option>
+			<option value="purple-dot">Purple dot</option>
+			<option value="red-pushpin">Red pushpin</option>
+			<option value="ylw-pushpin">Yellow pushpin</option>
+			<option value="pink-pushpin">Pink pushpin</option>
+			<option value="blue-pushpin">Blue pushpin</option>
+			<option value="ltblu-pushpin">Lightblue pushpin</option>
+			<option value="grn-pushpin">Green pushpin</option>
+			<option value="purple-pushpin">Purple pushpin</option>
+		</param>
+		<param name="other_icon" type="list" default="blue-dot" label="Item marker icon" description="Select a marker icon for the item markers">
+			<option value="red-dot">Red dot</option>
+			<option value="orange-dot">Orange dot</option>
+			<option value="yellow-dot">Yellow dot</option>
+			<option value="pink-dot">Pink dot</option>
+			<option value="blue-dot">Blue dot</option>
+			<option value="ltblue-dot">Lightblue dot</option>
+			<option value="green-dot">Green dot</option>
+			<option value="purple-dot">Purple dot</option>
+			<option value="red-pushpin">Red pushpin</option>
+			<option value="ylw-pushpin">Yellow pushpin</option>
+			<option value="pink-pushpin">Pink pushpin</option>
+			<option value="blue-pushpin">Blue pushpin</option>
+			<option value="ltblu-pushpin">Lightblue pushpin</option>
+			<option value="grn-pushpin">Green pushpin</option>
+			<option value="purple-pushpin">Purple pushpin</option>
+		</param>	
+		<param name="zoom_level" type="text" default="13" label="Map zoom level" description="Define map zoom level" />
+		<param name="map_controls" type="list" default="2" label="Map zoom controls" description="Show map zoom controls">
+			<option value="0">None</option>
+			<option value="1">Small</option>
+			<option value="2">Large</option>
+		</param>	
+		<param name="scroll_wheel_zoom" type="radio" default="1" label="Map scroll wheel zoom" description="Enable/Disable map scroll wheel zooming">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="map_type" type="list" default="0" label="Map type on load" description="Define the default map type">
+			<option value="0">Normal</option>
+			<option value="1">Satellite</option>
+			<option value="2">Hybrid</option>
+		</param>
+		<param name="type_controls" type="radio" default="1" label="Map type controls" description="Show map type controls">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="geocode_cache" type="radio" default="1" label="Geocode caching" description="Optimizes marker loading with cached geocode data">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="directions" type="radio" default="1" label="Show directions" description="Show directions input field">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>
+		<param name="directions_dest_update" type="radio" default="0" label="Directions destination update" description="Updates the directions destination to the previously clicked marker">
+			<option value="1">Yes</option>
+			<option value="0">No</option>
+		</param>		
+		<param name="locale" type="text" default="en" label="Directions language" description="Directions language - fill 'auto', to use users preferred browser language." />
+		<param name="module_width" type="text" default="500" label="Module width (px)" description="Width of the module" />
+		<param name="module_height" type="text" default="400" label="Module height (px)" description="Height of the module" />
+	</params>
+</install>

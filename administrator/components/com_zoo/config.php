@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      config.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -35,9 +35,6 @@ define('ZOO_TABLE_RATING', '#__zoo_rating');
 define('ZOO_TABLE_SEARCH', '#__zoo_search_index');
 define('ZOO_TABLE_SUBMISSION', '#__zoo_submission');
 define('ZOO_TABLE_TAG', '#__zoo_tag');
-define('ZOO_DEBUG', true);
-
-
 
 // register classes
 JLoader::register('Application', ZOO_ADMIN_PATH.'/classes/application.php');
@@ -85,3 +82,9 @@ JLoader::register('Element', ZOO_ADMIN_PATH.'/elements/element/element.php');
 
 // add jhtml path
 JHTML::addIncludePath(ZOO_ADMIN_PATH.'/helpers');
+
+// load jQuery, if not loaded before
+if (!JFactory::getApplication()->get('jquery')) {
+	JFactory::getApplication()->set('jquery', true);
+	JHTML::script('jquery.js', ZOO_ADMIN_URI.'libraries/jquery/');
+}

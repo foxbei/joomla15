@@ -1,0 +1,21 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.yootools-black div.default div.yoo-accordion {
+	border: 1px solid #323232;
+}
+
+.yootools-black div.default div.yoo-accordion dt.toggler {
+	background: url(tmpl/default/black/images/item_header.png) 0 0 repeat-x;
+}
+
+.yootools-black div.default div.yoo-accordion dt:hover.toggler, .yootools-black div.default div.yoo-accordion dt.sfhover {
+	background: url(tmpl/default/black/images/item_header.png) 0 -30px repeat-x;
+}
+
+.yootools-black div.default div.yoo-accordion dd div.article {
+	border-bottom: 1px solid #000000;
+}
+
+.yootools-black div.default div.yoo-accordion dd.last div.article {
+	border-bottom: none;
+}

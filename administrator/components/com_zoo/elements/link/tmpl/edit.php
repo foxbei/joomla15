@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -29,8 +29,7 @@ $id = 'elements['.$element.']['.$index.']';
 
 		<div class="advanced options">
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][<?php echo $index; ?>][text]"><?php echo JText::_('Text'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][text]', $text, 'size="60" maxlength="255" title="'.JText::_('Text').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][text]', $text, 'size="60" maxlength="255" title="'.JText::_('Text').'" placeholder="'.JText::_('Text').'"'); ?>
 			</div>
 
 			<div class="row">
@@ -39,19 +38,12 @@ $id = 'elements['.$element.']['.$index.']';
 			</div>
 
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][<?php echo $index; ?>][custom_title]"><?php echo JText::_('Title'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][custom_title]', $title, 'size="60" maxlength="255" title="'.JText::_('Title').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][custom_title]', $title, 'size="60" maxlength="255" title="'.JText::_('Title').'" placeholder="'.JText::_('Title').'"'); ?>
 			</div>
 
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][<?php echo $index; ?>][rel]"><?php echo JText::_('Rel'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][rel]', $rel, 'size="60" maxlength="255" title="'.JText::_('Rel').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$element.']['.$index.'][rel]', $rel, 'size="60" maxlength="255" title="'.JText::_('Rel').'" placeholder="'.JText::_('Rel').'"'); ?>
 			</div>
 		</div>
 	</div>
-	
-	<script type="text/javascript">
-		new Zoo.EditElement({element: '<?php echo $id; ?>'});
-	</script>
-
 </div>

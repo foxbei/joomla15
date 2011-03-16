@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zooitemauthor.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -32,6 +32,6 @@ class JElementZooItemAuthor extends JElement
 
         $options[] = JHTML::_('select.option',  'NO_CHANGE', '- '. JText::_( 'No Change' ) .' -' );
 
-		return JHTML::_('zoo.authorList', $options, $control_name.'['.$name.']',  null, 'value', 'text', $value, false, false, $show_registered_users = false);
+		return JHTML::_('zoo.authorList', $options, $control_name.'['.$name.']',  null, 'value', 'text', $value, false, false, false);
 	}
 }

@@ -2,31 +2,31 @@
 
 <form id="new-default" action="index.php" method="post" name="adminForm" accept-charset="utf-8">
 
-<?php echo $this->partial('menu'); ?>
+	<?php echo $this->partial('menu'); ?>
 
-<div class="box-bottom">
-		
-	<div class="application-list">
-	
-		<h2><?php echo JText::_('SELECT_APP_TO_CREATE_INSTANCE'); ?></h2>
-	
-		<?php foreach ($this->applications as $application) : ?>
-			<a href="<?php echo JRoute::_($this->baseurl.'&task=add&group='.$application->getGroup()); ?>">
-				<span>
-					<img src="<?php echo $application->getIcon();?>">					
-					<?php $metadata = $application->getMetaData(); ?>
-					<?php echo $metadata['name']; ?>
-				</span>
-			</a>
-		<?php endforeach; ?>
+	<div class="box-bottom">
+
+		<div class="application-list">
+
+			<h2><?php echo JText::_('SELECT_APP_TO_CREATE_INSTANCE'); ?></h2>
+
+			<?php foreach ($this->applications as $application) : ?>
+				<a href="<?php echo JRoute::_($this->baseurl.'&task=add&group='.$application->getGroup()); ?>">
+					<span>
+						<img src="<?php echo $application->getIcon(); ?>" alt="<?php echo $application->getGroup(); ?>" />
+						<?php $metadata = $application->getMetaData(); ?>
+						<?php echo $metadata['name']; ?>
+					</span>
+				</a>
+			<?php endforeach; ?>
+		</div>
+
 	</div>
-	
-</div>
-	
-<input type="hidden" name="option" value="<?php echo $this->option; ?>" />
-<input type="hidden" name="controller" value="<?php echo $this->controller; ?>" />
-<input type="hidden" name="task" value="" />
-<?php echo JHTML::_('form.token'); ?>
+
+	<input type="hidden" name="option" value="<?php echo $this->option; ?>" />
+	<input type="hidden" name="controller" value="<?php echo $this->controller; ?>" />
+	<input type="hidden" name="task" value="" />
+	<?php echo JHTML::_('form.token'); ?>
 
 </form>
 

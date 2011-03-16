@@ -1,0 +1,36 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* position: media */
+.yoo-maps .layout-default div.media-top { margin-bottom: 10px; }
+.yoo-maps .layout-default div.media-middle,
+.yoo-maps .layout-default div.media-bottom { margin-top: 15px; }
+
+/* position: title */
+.yoo-maps .layout-default h3.title {
+	margin: 0px;
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: normal;
+	letter-spacing: 0px;
+}
+
+.yoo-maps .layout-default h3.title a { text-decoration: none; }
+
+/* position: meta */
+.yoo-maps .layout-default p.meta {
+	margin: 0px;
+	font-size: 11px;
+	color: #969696;
+	line-height: 13px;
+	font-style: italic;
+}
+
+/* position: description/links */
+.yoo-maps .layout-default div.description .element,
+.yoo-maps .layout-default div.description .element-textarea > *,
+.yoo-maps .layout-default p.links { margin: 7px 0px 0px 0px; }
+
+.yoo-maps .layout-default p.links span a:after {
+	content: " »";
+	font-size: 14px;
+}

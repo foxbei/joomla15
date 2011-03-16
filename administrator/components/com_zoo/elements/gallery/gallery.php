@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      gallery.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -85,8 +85,15 @@ class ElementGallery extends Element {
 
 		// load lightbox
 		if ($parameter->get('load_lightbox', 0)) {
-			JHTML::script('slimbox_packed.js', 'administrator/components/com_zoo/elements/gallery/assets/lightbox/');
-			JHTML::stylesheet('slimbox.css', 'administrator/components/com_zoo/elements/gallery/assets/lightbox/css/');
+			// add javascript and css
+			if (JPluginHelper::isEnabled('system', 'mtupgrade')) {
+				JHTML::script('slimbox_packed.js', 'administrator/components/com_zoo/elements/gallery/assets/lightbox/');
+				JHTML::stylesheet('slimbox.css', 'administrator/components/com_zoo/elements/gallery/assets/lightbox/css/');
+			} else {
+				JHTML::script('slimbox_packed.js', 'administrator/components/com_zoo/elements/gallery/assets/mootools_old/lightbox/');
+				JHTML::stylesheet('slimbox.css', 'administrator/components/com_zoo/elements/gallery/assets/mootools_old/lightbox/css/');
+			}
+			
 		}
 
 		// init template vars

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zooinstall.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -46,10 +46,10 @@ class ZooInstall {
 
 					$table = $result[1];
 
-					// drop existing indexes
+					// get existing indexes
 					$indexes = $db->queryObjectList('SHOW INDEX FROM ' . $table);
 
-					// remove existing indexes
+					// drop existing indexes
 					$removed = array();
 					foreach ($indexes as $index) {
 						if (in_array($index->Key_name, $removed)) {
@@ -133,6 +133,7 @@ class ZooInstall {
 						}
 			
 				    	$extensions[] = array(
+							'id' => $ext->attributes('name'),
 							'name' => $ext->data(),
 							'type' => $ext->name(),
 							'folder' => $folder,
@@ -150,6 +151,19 @@ class ZooInstall {
 			if (is_dir($extensions[$i]['folder'])) {
 				if (@$extensions[$i]['installer']->install($extensions[$i]['folder'])) {
 					$extensions[$i]['status'] = $extensions[$i]['update'] ? 2 : 1;
+					if ($extensions[$i]['status'] == 1) {
+						switch ($extensions[$i]['id']) {
+							case 'mod_zooquickicon':
+								$query = "UPDATE #__modules, (SELECT MAX(ordering) +1 as ord FROM #__modules WHERE position = ".$db->quote('icon').") tt"
+									." SET published = 1, position = ".$db->quote('icon').", ordering = tt.ord"
+									." WHERE module = 'mod_zooquickicon'";
+								$db->query($query);
+								break;
+							case 'zoosearch':
+								$db->query('UPDATE #__plugins SET published = 1 WHERE element =  '.$db->quote($extensions[$i]['id']));
+								break;
+						}
+					}
 				} else {
 					$error = true;
 					break;
@@ -227,6 +241,6 @@ class ZooInstall {
 		
 		<?php
 		
-	}	
+	}
 	
 }

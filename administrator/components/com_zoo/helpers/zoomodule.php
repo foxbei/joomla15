@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zoomodule.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -42,13 +42,37 @@ class ZooModuleHelper {
 
 		// init vars
 		$table = YTable::getInstance('item');
-		$items = array();
-	
-		if ($item = $table->get((int) $id)) {
-			$items[] = $item;
-		}
 
-		return $items;
+		// get database
+		$db = $table->getDBO();
+
+		// get user from session, if not set
+		$user = JFactory::getUser();
+
+		// get user access id
+		$access_id = $user->get('aid', 0);
+
+		// get date
+		$date = JFactory::getDate();
+		$now  = $db->Quote($date->toMySQL());
+		$null = $db->Quote($db->getNullDate());
+
+		// set query options
+		$conditions =
+		     "a.id = ".(int) $id
+			." AND a.access <= ".(int) $access_id
+			." AND a.state = 1"
+			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
+			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")";
+
+		$options = array(
+			'select' => 'a.*',
+			'from' => ZOO_TABLE_ITEM.' AS a',
+			'conditions' => array($conditions)
+		);
+
+		return $table->all($options);
+
 	}
 	
 	public static function getItemsByCategory($app, $categories, $ordering, $limit) {
@@ -69,9 +93,7 @@ class ZooModuleHelper {
 		$db = $table->getDBO();
 
 		// get user from session, if not set
-		if (empty($user)) {
-			$user = JFactory::getUser();
-		}
+		$user = JFactory::getUser();
 
 		// get user access id
 		$access_id = $user->get('aid', 0);

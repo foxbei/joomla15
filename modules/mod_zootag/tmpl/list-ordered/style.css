@@ -1,0 +1,16 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-tag.list-ordered > ol {
+	margin: 0px;
+	padding: 0px;
+	list-style-position: inside;
+	font-weight: bold;
+}
+
+.zoo-tag.list-ordered > ol > li {}
+.zoo-tag.list-ordered > ol > li:first-child {}
+.zoo-tag.list-ordered > ol > li.odd {}
+.zoo-tag.list-ordered > ol > li.even {}
+
+/* tag */
+.zoo-tag.list-ordered a { font-weight: normal; }

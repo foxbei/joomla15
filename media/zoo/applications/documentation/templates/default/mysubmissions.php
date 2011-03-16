@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      mysubmissions.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -18,7 +18,7 @@ if (strtolower(substr($GLOBALS['mainframe']->getTemplate(), 0, 3)) != 'yoo') {
 JHTML::stylesheet('zoo.css', $this->template->getURI().'/assets/css/');
 
 // include syntaxhighlighter
-JHTML::script('Lighter.js', $this->template->getURI().'/assets/js/lighter/');
+JHTML::script('jquery.beautyOfCode.js', $this->template->getURI().'/assets/js/');
 
 $css_class = $this->application->getGroup().'-'.$this->template->name;
 
@@ -41,8 +41,11 @@ $css_class = $this->application->getGroup().'-'.$this->template->name;
 	</div>
 
 	<script type="text/javascript">
-		window.addEvent('domready', function(){
-			$$('pre').light({altLines: 'hover'});
+		jQuery(function($) {
+			$.beautyOfCode.init({
+			  theme: 'Default',
+			  brushes: ['Vb', 'Sql', 'Scala', 'Ruby', 'Python', 'Perl', 'JavaFX', 'Java', 'Erlang', 'Css', 'Cpp', 'Xml', 'JScript', 'CSharp', 'Plain', 'Php']
+			});
 		});
 	</script>
 

@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -33,8 +33,7 @@ $id = 'elements['.$element.']';
 		<div class="title options">
 
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][title]"><?php echo JText::_('Title'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][title]', $title, 'maxlength="255" title="'.JText::_('Title').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][title]', $title, 'maxlength="255" title="'.JText::_('Title').'" placeholder="'.JText::_('Title').'"'); ?>
 			</div>
 
 		</div>
@@ -42,8 +41,7 @@ $id = 'elements['.$element.']';
 		<div class="link options">
 
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][link]"><?php echo JText::_('Link'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][link]', $link, 'size="60" maxlength="255" title="'.JText::_('Link').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][link]', $link, 'size="60" maxlength="255" title="'.JText::_('Link').'" placeholder="'.JText::_('Link').'"'); ?>
 			</div>
 
 			<div class="row">
@@ -52,8 +50,7 @@ $id = 'elements['.$element.']';
 			</div>
 
 			<div class="row">
-				<label for="elements[<?php echo $element; ?>][rel]"><?php echo JText::_('Rel'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][rel]', $rel, 'size="60" maxlength="255" title="'.JText::_('Rel').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$this->identifier.'][rel]', $rel, 'size="60" maxlength="255" title="'.JText::_('Rel').'" placeholder="'.JText::_('Rel').'"'); ?>
 			</div>
 		</div>
 
@@ -62,15 +59,6 @@ $id = 'elements['.$element.']';
 			<div class="row">
 				<?php echo JHTML::_('control.text', 'elements['.$element.'][lightbox_image]', $lightbox_image, 'class="image-select" size="60" style="width:200px;margin-right:5px;" title="'.JText::_('Lightbox image').'"'); ?>
 			</div>
-
 		</div>
-
 	</div>
-
-    <script type="text/javascript">
-        window.addEvent('domready', function(){
-			new Zoo.EditElement({element: '<?php echo $id; ?>'});
-        });
-    </script>
-
 </div>

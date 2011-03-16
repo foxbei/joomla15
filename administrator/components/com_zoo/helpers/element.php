@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      element.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -47,30 +47,6 @@ class JHTMLElement {
         $attribs = $multiselect ? 'size="'.max(min(count($options), 10), 3).'" multiple="multiple"' : '';
         
         return JHTML::_('select.genericlist', $options, $name, $attribs, 'value', 'text', $selected);	
-	}
-
-	public function calendar($value, $name, $id, $format = '%Y-%m-%d', $attribs = null)
-	{
-		JHTML::_('behavior.calendar'); //load the calendar behavior
-
-		if (is_array($attribs)) {
-			$attribs = JArrayHelper::toString( $attribs );
-		}
-	
-		$html =  '<input style="width: 110px" type="text" name="'.$name.'" id="'.$id.'" value="'.htmlspecialchars($value, ENT_COMPAT, 'UTF-8').'" '.$attribs.' />'
-				. '<img style="vertical-align:middle; margin:-2px 0 0 5px;" class="calendar" src="'.JURI::root(true).'/templates/system/images/calendar.png" alt="calendar" id="'.$id.'_img" />';
-
-		$javascript = 'Calendar.setup({
-				        inputField     :    "'.$id.'",     	// id of the input field
-				        ifFormat       :    "'.$format.'",  // format of the input field
-				        button         :    "'.$id.'_img",  // trigger for the calendar (button ID)
-				        align          :    "Tl",           // alignment (defaults to "Bl")
-				        singleClick    :    true,
-				        showsTime	   :	true
-	    })';
-		
-		$javascript  = "<script type=\"text/javascript\">\n// <!--\n$javascript\n// -->\n</script>\n";
-		return $html.$javascript;
 	}
 
 }
@@ -238,38 +214,39 @@ class ElementHelper {
 			Object - element object
 	*/
 	public static function loadElement($type, $paths = array()) {
-		$false   = false;
-		
-		settype($paths, 'array');
-		foreach ($paths as $key => $path) {
-			$paths[$key] = $path.'/'.$type;
-		}
-		if (!in_array(ZOO_ADMIN_PATH.'/elements/'.$type, $paths)) {
-			$paths[] = ZOO_ADMIN_PATH.'/elements/'.$type;
-		}
-
-		// register element class
-		JLoader::register('Element', ZOO_ADMIN_PATH.'/elements/element/element.php');
 
 		// load element class
 		$elementClass = 'Element'.$type;
+
 		if (!class_exists($elementClass)) {
-			
+
+			// register element class
+			JLoader::register('Element', ZOO_ADMIN_PATH.'/elements/element/element.php');
+
+			$paths = (array) $paths;
+			foreach ($paths as $key => $path) {
+				$paths[$key] = $path.'/'.$type;
+			}
+			if (!in_array(ZOO_ADMIN_PATH.'/elements/'.$type, $paths)) {
+				$paths[] = ZOO_ADMIN_PATH.'/elements/'.$type;
+			}
+
 			$file = JFilterInput::clean(str_replace('_', DS, strtolower(substr($type, 0, 1)) . substr($type, 1)).'.php', 'path');
 
 			if ($elementFile = JPath::find($paths, $file)) {
 				require_once $elementFile;
 			} else {
-				return $false;
+				return false;
 			}
+
+			if (!class_exists($elementClass)) {
+				return false;
+			}
+
 		}
 
-		if (!class_exists($elementClass)) {
-			return $false;
-		}
-		
 		$testClass = new ReflectionClass($elementClass);
-		
+
 		if ($testClass->isAbstract()) {
 			return false;
 		}
@@ -277,6 +254,7 @@ class ElementHelper {
 		$element = new $elementClass();
 
 		return $element;
+
 	}
 
 	/*

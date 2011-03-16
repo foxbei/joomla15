@@ -1,9 +1,9 @@
 <?php defined('_JEXEC') or die('Restricted access'); 
 
+JHTML::_('behavior.tooltip');
+
 // add script
 JHTML::script('type.js', 'administrator/components/com_zoo/assets/js/');
-
-JHTML::_('behavior.tooltip');
 
 ?>
 
@@ -66,8 +66,8 @@ JHTML::_('behavior.tooltip');
 </form>
 
 <script type="text/javascript">
-	window.addEvent('domready', function() {
-		new Zoo.EditElements({ url: '<?php echo JRoute::_('index.php?option='.$this->option.'&controller='.$this->controller.'&group='.$this->application->getGroup(), false); ?>', msgNoElements: '<?php echo JText::_('NO_ELEMENTS_DEFINED'); ?>', msgDeletelog: '<?php echo JText::_('DELETE_ELEMENT'); ?>' });
+	jQuery(function($){
+		$('#manager-editelements').EditElements({ url: '<?php echo JRoute::_($this->baseurl, false); ?>', msgNoElements: '<?php echo JText::_('NO_ELEMENTS_DEFINED'); ?>', msgDeletelog: '<?php echo JText::_('DELETE_ELEMENT'); ?>' });
 	});
 </script>
 

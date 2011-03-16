@@ -2,16 +2,16 @@
 /**
 * @package   ZOO Component
 * @file      submission.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-$id = 'elements['.$element.']';
+$id = 'elements'.$element;
 
 ?>
 
@@ -57,8 +57,7 @@ $id = 'elements['.$element.']';
 		<div class="advanced options">
 
 			<div class="row short download-limit">
-				<label for="elements[<?php echo $element; ?>][download_limit]"><?php echo JText::_('Download limit'); ?></label>
-				<?php echo JHTML::_('control.text', 'elements['.$element.'][download_limit]', ($upload ? $download_limit : ''), 'maxlength="255" title="'.JText::_('Download limit').'"'); ?>
+				<?php echo JHTML::_('control.text', 'elements['.$element.'][download_limit]', ($upload ? $download_limit : ''), 'maxlength="255" title="'.JText::_('Download limit').'" placeholder="'.JText::_('Download limit').'"'); ?>
 			</div>
 
 		</div>
@@ -66,10 +65,9 @@ $id = 'elements['.$element.']';
     <?php endif; ?>
 
     <script type="text/javascript">
-        window.addEvent('domready', function(){
-			new Zoo.EditElement({element: '<?php echo $id; ?>'});
-            new Zoo.DownloadSubmission({element: '<?php echo $id; ?>'});
-        });
+		jQuery(function($){
+			$('#<?php echo $id; ?>').DownloadSubmission();
+		});
     </script>
 
 </div>

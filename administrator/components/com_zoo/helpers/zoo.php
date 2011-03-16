@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      zoo.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -73,14 +73,14 @@ class ZooHelper {
             }
 
 		}
-		
+
 		if (is_file($thumbfile)) {
 			return $thumbfile;
 		}
-		
+
 		return $file;
-	}		
-	
+	}
+
 	/*
 		Function: triggerContentPlugins
 			Trigger joomla content plugins on given text.
@@ -101,8 +101,19 @@ class ZooHelper {
 		$article       = JTable::getInstance('content');
 		$article->text = $text;
 
+		// disable loadmodule plugin on feed view
+		if (JFactory::getDocument()->getType() == 'feed') {
+			$plugin = JPluginHelper::getPlugin('content', 'loadmodule');
+			$pluginParams = new JParameter($plugin->params);
+			if ($pluginParams->get('enabled', 1)) {
+				// expression to search for
+				$regex = '/{loadposition\s*.*?}/i';
+				$article->text = preg_replace($regex, '', $article->text);
+			}
+		}
+
 		$dispatcher->trigger('onPrepareContent', array(&$article, &$params, 0));
-		
+
 		return $article->text;
 	}
 
@@ -169,18 +180,64 @@ class ZooHelper {
 class JHTMLZoo {
 
 	/*
+    	Function: calendar
+    	  Get zoo datepicker.
+
+	   Returns:
+	      Returns zoo datepicker html string.
+ 	*/
+	public static function calendar($value, $name, $id, $attribs = null)	{
+
+		if (!defined('ZOO_CALENDAR_SCRIPT_DECLARATION')) {
+			define('ZOO_CALENDAR_SCRIPT_DECLARATION', true);
+
+			JHTML::script('date.js', 'administrator/components/com_zoo/assets/js/');
+
+			$translations = array(
+				'closeText' => 'Done',
+				'currentText' => 'Today',
+				'dayNames' => array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+				'dayNamesMin' => array('Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'),
+				'dayNamesShort' => array('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'),
+				'monthNames' => array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+				'monthNamesShort' => array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'),
+				'prevText' => 'Prev',
+				'nextText' => 'Next',
+				'weekHeader' => 'Wk',
+				'appendText' => '(yyyy-mm-dd)'
+			);
+
+			foreach ($translations as $key => $translation) {
+				$translations[$key] = is_array($translation) ? array_map(create_function('$text', 'return JText::_($text);'), $translation) : JText::_($translation);
+			}
+
+			$javascript = 'jQuery(function($) { $("body").Calendar({ translations: '.json_encode($translations).' }); });';
+
+			JFactory::getDocument()->addScriptDeclaration($javascript);			
+
+		}
+
+		if (is_array($attribs)) {
+			$attribs = JArrayHelper::toString($attribs);
+		}
+
+		return '<input style="width: 110px" type="text" name="'.$name.'" id="'.$id.'" value="'.htmlspecialchars($value, ENT_COMPAT, 'UTF-8').'" '.$attribs.' />'
+			.'<img src="'.JURI::root(true).'/templates/system/images/calendar.png'.'" class="zoo-calendar" />';
+	}
+
+	/*
     	Function: image
-    	  Get image resource info. 
+    	  Get image resource info.
 
 	   Returns:
 	      Array - Image info
  	*/
-	function image($image, $width = null, $height = null) {
+	public static function image($image, $width = null, $height = null) {
 
 		$resized_image = ZooHelper::resizeImage(JPATH_ROOT.DS.$image, $width, $height);
 		$inner_path    = trim(str_replace('\\', '/', preg_replace('/^'.preg_quote(JPATH_ROOT, '/').'/i', '', $resized_image)), '/');
 		$path 		   = JPATH_ROOT.'/'.$inner_path;
-		
+
 		if (is_file($path) && $size = getimagesize($path)) {
 
 			$info['path'] 	= $path;
@@ -189,7 +246,7 @@ class JHTMLZoo {
 			$info['width'] 	= $size[0];
 			$info['height'] = $size[1];
 			$info['width_height'] = sprintf('width="%d" height="%d"', $info['width'], $info['height']);
-		
+
 			return $info;
 		}
 
@@ -200,8 +257,8 @@ class JHTMLZoo {
 		Function: categoryList
 			Returns category select list html string.
 	*/
-	function categoryList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false) {
-		
+	public static function categoryList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false) {
+
 		// set options
 		if (is_array($options)) {
 			reset($options);
@@ -210,8 +267,7 @@ class JHTMLZoo {
 		}
 
 		// get category tree list
-		$tree = CategoryHelper::buildTree($application->id, $application->getCategories());
-		$list = CategoryHelper::buildTreeList(0, $tree, array(), '-&nbsp;', '.&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;');
+		$list = CategoryHelper::buildTreeList(0, $application->getCategoryTree(), array(), '-&nbsp;', '.&nbsp;&nbsp;&nbsp;', '&nbsp;&nbsp;');
 
 		// create options
 		foreach ($list as $category) {
@@ -226,8 +282,8 @@ class JHTMLZoo {
 		Function: layoutList
 			Returns layout select list html string.
 	*/
-	function layoutList($application, $type_id, $layout_type, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false) {
-		
+	public static function layoutList($application, $type_id, $layout_type, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = NULL, $idtag = false, $translate = false) {
+
 		// set options
 		if (is_array($options)) {
 			reset($options);
@@ -252,14 +308,14 @@ class JHTMLZoo {
 
 		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
 
-	}	
+	}
 
  	/*
     	Function: typeList
     		Returns type select list html string.
  	*/
-	function typeList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false, $filter = array()) {
-		
+	public static function typeList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false, $filter = array()) {
+
 		if (is_array($options)) {
 			reset($options);
 		} else {
@@ -271,15 +327,15 @@ class JHTMLZoo {
 				$options[] = JHTML::_('select.option', $type->id, JText::_($type->name));
 			}
 		}
-		
-		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);			
+
+		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
 	}
 
  	/*
     	Function: authorList
     		Returns author select list html string.
  	*/
-    function authorList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false, $show_registered_users = true) {
+    public static function authorList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false, $show_registered_users = true) {
 		$query = 'SELECT DISTINCT u.id AS value, u.name AS text'
 			    .' FROM #__users AS u'
                 . ' WHERE u.block = 0'
@@ -292,19 +348,19 @@ class JHTMLZoo {
     	Function: itemAuthorList
     		Returns author select list html string.
  	*/
-	function itemAuthorList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public static function itemAuthorList($options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
 		$query = 'SELECT DISTINCT u.id AS value, u.name AS text'
 			    .' FROM '.ZOO_TABLE_ITEM.' AS i'
 			    .' JOIN #__users AS u ON i.created_by = u.id';
-			
-		return self::queryList($query, $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);		
+
+		return self::queryList($query, $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
 	}
 
  	/*
     	Function: itemList
     		Returns item select list html string.
  	*/
-	function itemList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public static function itemList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
 		$query = 'SELECT DISTINCT c.item_id as value, a.name as text'
 			   	.' FROM '.ZOO_TABLE_COMMENT.' AS c'
 			   	.' LEFT JOIN '.ZOO_TABLE_ITEM. ' AS a ON c.item_id = a.id'
@@ -316,22 +372,22 @@ class JHTMLZoo {
 		} else {
 			$options = array($options);
 		}
-	
+
 		$db = YDatabase::getInstance();
 		$rows = $db->queryAssocList($query);
-		
+
 		foreach ($rows as $row) {
 			$options[] = JHTML::_('select.option', $row['value'], $row['text']);
 		}
 
-		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);		
+		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
 	}
 
   	/*
     	Function: accessLevel
     		Returns user access select list.
  	*/
-	public function accessLevel($selected = null, $exclude = array()) {
+	public static function accessLevel($selected = null, $exclude = array()) {
 
         if (is_array($exclude)) {
 			reset($exclude);
@@ -358,21 +414,21 @@ class JHTMLZoo {
     	Function: itemAuthorList
     		Returns author select list html string.
  	*/
-	function commentAuthorList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public static function commentAuthorList($application, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
 		$query = "SELECT DISTINCT c.author AS value, c.author AS text"
 			    ." FROM ".ZOO_TABLE_COMMENT." AS c"
 			    .' LEFT JOIN '.ZOO_TABLE_ITEM. ' AS a ON c.item_id = a.id'
 				." WHERE c.author <> ''"
 				." AND a.application_id = " . $application->id
 				." ORDER BY c.author";
-		return self::queryList($query, $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);		
+		return self::queryList($query, $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
 	}
-	
+
  	/*
     	Function: queryList
 			Returns select list html string.
  	*/
-	function queryList($query, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public static function queryList($query, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
 
 		if (is_array($options)) {
 			reset($options);
@@ -382,16 +438,16 @@ class JHTMLZoo {
 
 		$db = YDatabase::getInstance();
 		$list = $db->queryObjectList($query);
-		
+
 		$options = array_merge($options, $list);
-		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);		
-	}	
+		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
+	}
 
  	/*
     	Function: arrayList
 			Returns select list html string.
  	*/
-	function arrayList($array, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
+	public static function arrayList($array, $options, $name, $attribs = null, $key = 'value', $text = 'text', $selected = null, $idtag = false, $translate = false) {
 
 		if (is_array($options)) {
 			reset($options);
@@ -400,17 +456,17 @@ class JHTMLZoo {
 		}
 
 		$options = array_merge($options, JHTMLZoo::listOptions($array));
-		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);		
-	}	
+		return JHTML::_('select.genericlist', $options, $name, $attribs, $key, $text, $selected, $idtag, $translate);
+	}
 
  	/*
     	Function: selectOptions
     		Returns select option as JHTML compatible array.
  	*/
-	function listOptions($array, $value = 'value', $text = 'text') {
-		
+	public static function listOptions($array, $value = 'value', $text = 'text') {
+
 		$options = array();
-		
+
 		if (is_array($array)) {
 			foreach ($array as $val => $txt) {
 				$options[] = JHTML::_('select.option', strval($val), $txt, $value, $text);

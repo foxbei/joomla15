@@ -2,20 +2,21 @@
 /**
 * @package   ZOO Component
 * @file      _submission.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
+JHTML::script('jquery-ui.custom.min.js', ZOO_ADMIN_URI.'libraries/jquery/');
+JHTML::stylesheet('jquery-ui.custom.css', ZOO_ADMIN_URI.'libraries/jquery/');
 JHTML::stylesheet('submission.css', 'media/zoo/assets/css/');
-JHTML::script('observer.js', 'media/zoo/assets/js/');
 JHTML::script('submission.js', 'media/zoo/assets/js/');
-JHTML::script('observer.js', 'administrator/components/com_zoo/assets/js/');
-JHTML::script('element.js', 'administrator/components/com_zoo/assets/js/');
+JHTML::script('placeholder.js', ZOO_ADMIN_URI.'assets/js/');
+JHTML::script('item.js', ZOO_ADMIN_URI.'assets/js/');
 
 if ($this->submission->showTooltip()) {
 	JHTML::_('behavior.tooltip');
@@ -62,3 +63,9 @@ if ($this->submission->showTooltip()) {
 	<?php echo JHTML::_('form.token'); ?>
 
 </form>
+
+<script type="text/javascript">
+	jQuery(function($){
+		$('#item-submission').EditItem();
+	});
+</script>

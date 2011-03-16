@@ -1,0 +1,64 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+a:focus { outline: none; }
+
+/*
+ * ZOO layout positions
+ */
+
+.yoo-scroller .layout-default.align-center { text-align: center; }
+.yoo-scroller .layout-default.align-center div.rating-container { margin: auto; }
+
+/* position: media */
+.yoo-scroller .layout-default div.media-top { margin-bottom: 10px; }
+
+.yoo-scroller .layout-default div.media-left {
+	margin-right: 15px;
+	float: left;
+}
+
+.yoo-scroller .layout-default div.media-right {
+	margin-left: 15px;
+	float: right;
+}
+
+.yoo-scroller .layout-default div.media-middle,
+.yoo-scroller .layout-default div.media-bottom { margin-top: 15px; }
+
+.yoo-scroller .layout-default div.media > img,
+.yoo-scroller .layout-default div.media > object,
+.yoo-scroller .layout-default div.media > embed { display: inline-block; }
+
+/* position: title */
+.yoo-scroller .layout-default h3.title {
+	margin: 0px;
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: normal;
+	letter-spacing: 0px;
+}
+
+.yoo-scroller .layout-default h3.title a { text-decoration: none; }
+
+/* position: meta */
+.yoo-scroller .layout-default p.meta {
+	margin: 0px;
+	font-size: 11px;
+	color: #969696;
+	line-height: 13px;
+	font-style: italic;
+}
+
+/* position: description */
+.yoo-scroller .layout-default div.description { margin: 5px 0px 0px 0px; }
+
+.yoo-scroller .layout-default div.description > div { margin-top: 5px; }
+.yoo-scroller .layout-default div.description > div:first-child { margin-top: 0px; }
+
+/* position: links */
+.yoo-scroller .layout-default p.links { margin: 7px 0px 0px 0px; }
+
+.yoo-scroller .layout-default p.links span a:after {
+	content: " »";
+	font-size: 14px;
+}

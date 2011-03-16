@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      item.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -227,7 +227,7 @@ class ItemTable extends YTable {
 		Returns:
 			Array - Array of items
 	*/
-	public function findAll($application_id = false, $published = false, $user = null, $options = array()){
+	public function findAll($application_id = false, $published = false, $user = null, $options = array()) {
 
 		// get database
 		$db = $this->getDBO();
@@ -253,7 +253,7 @@ class ItemTable extends YTable {
 			." AND (publish_up = ".$null." OR publish_up <= ".$now.")"
 			." AND (publish_down = ".$null." OR publish_down >= ".$now.")": "");
 		
-		return $this->find('all', array_merge(compact('conditions'), $options));		
+		return $this->find('all', array_merge(compact('conditions'), $options));
 	}
 
 	/*
@@ -394,7 +394,52 @@ class ItemTable extends YTable {
 			.(($limit ? " LIMIT ".(int)$offset.",".(int)$limit : ""));
 
 		return $this->_queryObjectList($query);
-	}			
+	}
+
+	/*
+		Function: getItemCountFromCategory
+			Method to retrieve items count of a category.
+
+		Parameters:
+			$category_id - Category id(s)
+
+		Returns:
+			Array - Array of items
+	*/
+	public function getItemCountFromCategory($application_id, $category_id, $published = false, $user = null){
+
+		// get database
+		$db = $this->getDBO();
+
+		// get user from session, if not set
+		if (empty($user)) {
+			$user = JFactory::getUser();
+		}
+
+		// get user access id
+		$access_id = $user->get('aid', 0);
+
+		// get dates
+		$date = JFactory::getDate();
+		$now  = $db->Quote($date->toMySQL());
+		$null = $db->Quote($db->getNullDate());
+
+		$query = "SELECT a.*"
+			." FROM ".$this->getTableName()." AS a"
+			." LEFT JOIN ".ZOO_TABLE_CATEGORY_ITEM." AS b ON a.id = b.item_id"
+			." WHERE a.application_id = ".(int) $application_id
+			." AND b.category_id ".(is_array($category_id) ? " IN (".implode(",", $category_id).")" : " = ".(int) $category_id)
+			." AND a.access <= ".(int) $access_id
+			.($published == true ? " AND a.state = 1"
+			." AND (a.publish_up = ".$null." OR a.publish_up <= ".$now.")"
+			." AND (a.publish_down = ".$null." OR a.publish_down >= ".$now.")": "")
+			." GROUP BY a.id";
+
+		$db->query($query);
+
+		return $db->getNumRows();
+
+	}
 
 	/*
 		Function: search

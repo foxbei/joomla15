@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Search
 * @file      changelog.php
-* @version   2.1.0
+* @version   2.3.0
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 

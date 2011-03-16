@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      edit.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -15,16 +15,7 @@ $id = 'elements['.$element.']';
 ?>
 
 <div id="<?php echo $id; ?>">
-
     <div class="row">
-        <label for="elements[<?php echo $element; ?>][location]"><?php echo JText::_('Location'); ?></label>
-        <?php echo JHTML::_('control.text', 'elements['.$element.'][location]', $location, 'maxlength="255" title="'.JText::_('Location').'"'); ?>
+        <?php echo JHTML::_('control.text', 'elements['.$element.'][location]', $location, 'maxlength="255" title="'.JText::_('Location').'" placeholder="'.JText::_('Location').'"'); ?>
     </div>
-
-    <script type="text/javascript">
-        window.addEvent('domready', function(){
-			new Zoo.EditElement({element: '<?php echo $id; ?>'});
-        });
-    </script>
-
 </div>

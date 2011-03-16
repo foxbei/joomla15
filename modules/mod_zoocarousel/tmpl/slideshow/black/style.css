@@ -1,0 +1,18 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* buttons */
+.yootools-black div.slideshow div.yoo-carousel .prev a {
+	background: url(tmpl/slideshow/black/images/button_prev.png) 0 -32px no-repeat; 
+}
+
+.yootools-black div.slideshow div.yoo-carousel .next a {
+	background: url(tmpl/slideshow/black/images/button_next.png) 0 -32px no-repeat; 
+}
+
+.yootools-black div.slideshow div.yoo-carousel .prev a:hover {
+	background: url(tmpl/slideshow/black/images/button_prev.png) 0 45% no-repeat; 
+}
+
+.yootools-black div.slideshow div.yoo-carousel .next a:hover {
+	background: url(tmpl/slideshow/black/images/button_next.png) 0 45% no-repeat; 
+}

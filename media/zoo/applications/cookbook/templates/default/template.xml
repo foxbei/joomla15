@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <template>
 	<name>Default</name>
-	<version>2.2.0</version>
-	<creationDate>November 2010</creationDate>
+	<version>2.3.0</version>
+	<creationDate>December 2010</creationDate>
 	<author>YOOtheme</author>
 	<authorEmail>info@yootheme.com</authorEmail>
 	<authorUrl>http://www.yootheme.com</authorUrl>
-    <copyright>Copyright (C) 2007 - 2010 YOOtheme GmbH</copyright>
+    <copyright>Copyright (C) 2007 - 2011 YOOtheme GmbH</copyright>
     <license></license>
 	<description>Default template for the Cookbook Directory App</description>
 	<params group="category">

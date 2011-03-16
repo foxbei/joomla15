@@ -2,9 +2,9 @@
 /**
 * @package   ZOO Component
 * @file      tag.php
-* @version   2.2.0 November 2010
+* @version   2.3.6 March 2011
 * @author    YOOtheme http://www.yootheme.com
-* @copyright Copyright (C) 2007 - 2010 YOOtheme GmbH
+* @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
 */
 
@@ -16,6 +16,8 @@ class TagController extends YController {
 
 	public function display() {
 
+		jimport('joomla.html.pagination');
+
 		// get application
 		$app = Zoo::getApplication();
 
@@ -25,21 +27,32 @@ class TagController extends YController {
 		ZooHelper::toolbarHelp();
 
 		JHTML::_('behavior.tooltip');
-				
+
 		// get request vars
 		$state_prefix     = $this->option.'_'.$app->id.'.tags.';		
 		$filter_order	  = $this->joomla->getUserStateFromRequest($state_prefix.'filter_order', 'filter_order', '', 'cmd');
 		$filter_order_Dir = $this->joomla->getUserStateFromRequest($state_prefix.'filter_order_Dir', 'filter_order_Dir', 'desc', 'word');
+		$limit		      = $this->joomla->getUserStateFromRequest('global.list.limit', 'limit', $this->joomla->getCfg('list_limit'), 'int');
+		$limitstart		  = $this->joomla->getUserStateFromRequest($state_prefix.'limitstart', 'limitstart', 0,	'int');
 		$search	          = $this->joomla->getUserStateFromRequest($state_prefix.'search', 'search', '', 'string');
 		$search			  = JString::strtolower($search);
 		
 		// is filtered ?
-		$this->is_filtered = !empty($search);		
+		$this->is_filtered = !empty($search);
+
+		// in case limit has been changed, adjust limitstart accordingly
+		$limitstart = ($limit != 0 ? (floor($limitstart / $limit) * $limit) : 0);
 		
 		// get data
 		$filter     = ($filter_order) ? $filter_order . ' ' . $filter_order_Dir : '';
-		$this->tags = YTable::getInstance('tag')->getAll($app->id, $search, '', $filter);
-		
+
+		$count = (int) YTable::getInstance('tag')->count($app->id, $search);
+		$limitstart = $limitstart > $count ? floor($count / $limit) * $limit : $limitstart;
+
+		$this->tags = YTable::getInstance('tag')->getAll($app->id, $search, '', $filter, $limitstart, $limit);
+
+		$this->pagination = new JPagination($count, $limitstart, $limit);
+
 		// table ordering and search filter
 		$this->lists['order_Dir'] = $filter_order_Dir;
 		$this->lists['order']     = $filter_order;		

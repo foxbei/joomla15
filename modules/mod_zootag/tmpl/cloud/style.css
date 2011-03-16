@@ -1,0 +1,31 @@
+/* Copyright (C) 2007 - 2011 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+.zoo-tag.cloud > ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-align: center;
+}
+
+.zoo-tag.cloud > ul > li {
+	display: inline;
+	line-height: 20px;
+	vertical-align: middle;
+}
+
+/* tag */
+.zoo-tag.cloud a { white-space: nowrap; }
+
+.zoo-tag.cloud > ul > li.weight1 a { font-size: 11px; color: #2D63A0; }
+.zoo-tag.cloud > ul > li.weight2 a { font-size: 12px; color: #2E63A1; }
+.zoo-tag.cloud > ul > li.weight3 a { font-size: 13px; color: #336DAC; }
+.zoo-tag.cloud > ul > li.weight4 a { font-size: 14px; color: #3976B7; }
+.zoo-tag.cloud > ul > li.weight5 a { font-size: 15px; color: #3E80C2; }
+.zoo-tag.cloud > ul > li.weight6 a { font-size: 16px; color: #4489CE; }
+.zoo-tag.cloud > ul > li.weight7 a { font-size: 18px; color: #4993D9; }
+.zoo-tag.cloud > ul > li.weight8 a { font-size: 20px; color: #4F9CE4; }
+.zoo-tag.cloud > ul > li.weight9 a { font-size: 23px; color: #54A6EF; letter-spacing: -1px; }
+.zoo-tag.cloud > ul > li.weight10 a { font-size: 26px; color: #5AAFFA; letter-spacing: -1px; }
+
+
+
