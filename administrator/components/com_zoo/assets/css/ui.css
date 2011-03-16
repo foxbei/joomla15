@@ -194,7 +194,7 @@ input[type='radio'] { border: none; }
 	color: #969696;
 	text-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0);
 	white-space: nowrap;
-	min-width: 20px;
+	min-width: 5px;
 	overflow: hidden;
 }
 

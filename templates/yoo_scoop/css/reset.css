@@ -1,0 +1,151 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * Browser Reset
+ */
+
+ 
+ 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+	margin: 0; 
+	padding: 0;
+}
+
+fieldset, img { border: 0; }
+
+ 
+a:focus { outline: none; }
+
+ 
+ 
+html {
+	height: 100%;
+	margin-bottom: 1px;
+}
+
+/*
+ * New standard values
+ */
+
+/* paragraph */
+p {	margin: 10px 0px 15px 0px; }
+
+/* lists */
+ul, ol, dl { margin: 1em 0; padding-left: 30px }
+dl { margin: 1em 0; }
+dd { padding-left: 40px; }
+
+/* tables */
+td, th { padding: 1px; }
+
+/* forms */
+ 
+fieldset { border: 1px solid #c8c8c8; }
+legend { background: #ffffff; }
+textarea, input[type='text'], input[type='password'], select { border: 1px solid #c8c8c8; background: #ffffff; }
+textarea:hover, input[type='text']:hover, input[type='password']:hover, select:hover { border-color: #aaaaaa; }
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus { border-color: #8c8c8c; outline: 2px solid #dcdcdc; }
+input[type='button'], input[type='submit'], input[type='checkbox'], input[type='image'], input[type='radio'], input[type='reset'], select, button { cursor: pointer; }
+input[type='hidden'] { display: none; }
+
+fieldset { padding: 0 1em 1em 1em; }
+legend { padding: 0 .8em 0 .8em; }
+textarea, input[type='text'], input[type='password'] { padding: .1em 0 .1em .4em; }
+option { padding: 0 0 .1em .4em; }
+form div { margin: .8em 0 .8em 0; }
+button, input[type='button'], input[type='submit'] { padding: .2em .3em .2em .1em; line-height: 100%; }
+
+/* links */
+a:link, a:visited { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* headings */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: bold;
+	margin-bottom: 5px;
+	line-height: 100%;
+}
+
+h1 { font-size: 300%; }
+h2 { font-size: 250%; }
+h3 { font-size: 200%; }
+h4 { font-size: 175%; }
+h5 { font-size: 150%; }
+h6 { font-size: 125%; }
+
+/* horizontal rule */
+hr {
+	margin: 15px 0px 15px 0px;
+	display: block;
+	background: #c8c8c8;
+	height: 1px;
+	border: none;
+}
+
+/* blockquotes */
+blockquote {
+	margin: 10px 0 10px 15px;
+	padding: 0px 0px 0px 0px;
+	font-style: italic;
+	font-size: 130%
+}
+
+blockquote:first-letter {
+	font-size: 150%
+}
+
+/* preformatted text elements */
+pre {
+	margin: 10px 0 10px 0px;
+	padding: 5px 0 5px 10px;
+	border: 1px dotted #aab4be;
+	border-left: 20px solid #b4b4b4;
+	background: #fafafa;
+	font-size: 90%;
+	color: #2E8B57;
+	font-family: "Courier New", Courier, monospace;
+	/* Browser specific (not valid) styles to make preformatted text wrap */
+	/* white-space: pre-wrap;       /* css-3 */
+	/* white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+}
+
+/* acronym */
+acronym, abbr {
+	border-bottom: 1px dashed #969696;
+	cursor: help;
+	font-variant: small-caps;
+	text-transform: lowercase;
+}
+
+/*
+ * black styling
+ * remove comments for dark colored templates
+ */
+
+/*
+fieldset { border: 1px solid #323232; }
+legend { background: #141414; }
+textarea, input[type='text'], input[type='password'], select { border: 1px solid #323232; background: #141414; color: #646464; }
+textarea:hover, input[type='text']:hover, input[type='password']:hover, select:hover { border-color: #464646; }
+textarea:focus, input[type='text']:focus, input[type='password']:focus, select:focus { border-color: #646464; outline: 2px solid #282828; }
+
+hr {
+	background: #323232;
+	color: #323232;
+}
+
+blockquote {
+	border-top: 1px solid #323232;
+	border-bottom: 1px solid #323232;
+}
+
+pre {
+	border: 1px dotted #3c3c50;
+	border-left: 20px solid #323232;
+	background: #232328;
+}
+
+acronym, abbr {
+	border-bottom: 1px dashed #969696;
+}
+*/

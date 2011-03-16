@@ -80,19 +80,10 @@ jQuery(function($) {
 		if (options) {
 			if (options.group == 'info') {
 				if (erroronly) return;
-				$.pnotify({
-					pnotify_title: options.title,
-					pnotify_text: options.text,
-					pnotify_type: "notice"
-				});
+				// notify
 				return;
-			} else if (options.group == 'error'){
-				$.pnotify({
-					pnotify_title: options.title,
-					pnotify_text: options.text,
-					pnotify_type: "error",
-					pnotify_hide: false
-				});
+			} else if (options.group == 'error') {
+				alert(options.title+'-'+options.text);
 				return;
 			}
 		}
@@ -133,7 +124,7 @@ jQuery(function($) {
 
 			var $this = this;
 			this.nav = nav;
-			this.spans = nav.find('li.level1 > a > span');
+			this.spans = nav.find('li.level1 > .level1 > span');
 
 			// store spans initial state
 			this.widths = [], this.padding_lefts = [], this.padding_rights = [];

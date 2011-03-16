@@ -1,0 +1,43 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * This CSS file is for customization purpose only
+ */ 
+
+#logo a.logo-icon {
+	display: block;
+	width: 250px;
+	height: 75px;
+	background: url(../../../images/yootheme/logo.png) 0 0 no-repeat;
+}
+
+.wrapper-glass #logo a.logo-icon { background-image: url(../../../images/yootheme/logo_glass.png); }
+.wrapper-black #logo a.logo-icon { background-image: url(../../../images/yootheme/logo_black.png); }
+.wrapper-wood #logo a.logo-icon { background-image: url(../../../images/yootheme/logo_wood.png); }
+
+/* first menu tab on menuright position */
+#menu .right .last .level1,
+#menu .right .last .level1 span.bg { background: url(../images/menu_level1_item_green.png) 0 0 no-repeat; }
+
+#menu .right .last a.level1 span.bg,
+#menu .right .last span.level1 span.bg {
+	color: #ffffff;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+	background-position: 100% -60px;
+}
+
+#menu .right li.last.level1:hover .level1,
+#menu .right li.last.level1.remain .level1,
+#menu .right li.last.level1.active .level1 { background-position: 0 -120px; }
+
+#menu .right li.last.level1:hover .level1 span.bg,
+#menu .right li.last.level1.remain .level1 span.bg,
+#menu .right li.last.level1.active .level1 span.bg { background-position: 100% -180px; }
+
+/* demo content */
+.iconbox { 
+	padding: 10px;
+	border: 1px solid #dcdcdc;
+	background: #ffffff;
+	overflow:hidden; 
+}

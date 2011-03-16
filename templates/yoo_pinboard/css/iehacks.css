@@ -1,0 +1,90 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+ 
+
+ 
+/* clearing & floating */
+/* http://www.positioniseverything.net/easyclearing.html */
+/* http://www.456bereastreet.com/archive/200603/new_clearing_method_needed_for_ie7/#comment28 */
+.clearfix { display: inline-block }  
+.clearfix { display: block }         
+* html .clearfix { height: 1% }      
+
+ 
+* html .floatbox { width:100% }
+
+ 
+.ie_fix_floats { 
+	width: 100%;
+	padding: 0 1px 0 1px;   
+	margin: 0 -1px 0 -1px;  
+	overflow: hidden;
+}
+
+ 
+html { height: auto; margin-bottom:0; }
+
+ 
+body { position:relative }           
+* html body { position:static }      
+#middle { position: relative }       
+
+ 
+/* Peekaboo Bug  */
+/* http://www.positioniseverything.net/explorer/peekaboo.html */
+/* * html #left { position:relative } */  
+/* * html #right { position:relative } */  
+/* * html #main { position:relative } */
+
+ 
+/* Escaping Floats Bug, force hasLayout */
+/* http://www.positioniseverything.net/explorer/escape-floats.html */
+body { height: 1% }
+div.wrapper, #header, #top, #middle, #bottom { zoom:1 }          
+div.wrapper { height: 1% }                                       
+
+ 
+/* Doubled Float Margins */
+/* http://www.positioniseverything.net/explorer/doubled-margin.html */
+* html #left { display: inline }
+* html #right { display: inline }
+
+* html .float-left { display:inline; }
+* html .float-right { display:inline; }
+
+ 
+/* Italics bugs in IE 5.x and IE 6 */
+/* http://www.positioniseverything.net/explorer/italicbug-ie.html */
+* html #left_container { overflow: visible; }
+* html #right_container { overflow: visible; }
+* html #main_container { overflow: visible; }
+* html i, * html em { overflow: visible; display:inline-block; }
+
+ 
+/* Expanding Box Problem */
+/* http://www.positioniseverything.net/explorer/expandingboxbug.html */
+* html #left_container { word-wrap: break-word; }
+* html #right_container { word-wrap: break-word; }
+* html #main_container { word-wrap: break-word; }
+
+ 
+ 
+ 
+
+
+
+ 
+/* Italics bugs in IE 5.x and IE 6 */
+/* http://www.positioniseverything.net/explorer/italicbug-ie.html */
+* html textarea { overflow:scroll; overflow-x: hidden; }
+* html input { overflow: hidden; }
+
+ 
+/* IE/Win Guillotine Bug */
+/* http://www.positioniseverything.net/explorer/guillotine.html */
+/* http://www.thestyleworks.de/tut-art/ie7.shtml */
+* html body a, * html body a:hover { background-color: transparent; }
+
+ 
+/* List-Numbering Bug */
+body ol li { display:list-item; }

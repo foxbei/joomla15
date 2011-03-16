@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>yoo_pinboard</name>
+	<version>5.5.1</version>
+	<creationDate>October 2010</creationDate>
+	<author>YOOtheme</author>
+	<authorEmail>info@yootheme.com</authorEmail>
+	<authorUrl>http://www.yootheme.com</authorUrl>
+    <copyright>Copyright (C) 2007 - 2010 YOOtheme GmbH</copyright>
+    <license>YOOtheme Proprietary Use License (http://www.yootheme.com/license)</license>
+	<description>Pinboard is the February 2009 theme of the YOOtheme club. It is based on YOOtheme's Warp CMS theme framework. NOTE: It is not free or public. This theme is for members of the YOOtheme club only.</description>
+	<files>
+		<filename>checksums</filename>
+		<filename>apple_touch_icon.png</filename>
+		<filename>changelog.php</filename>
+		<filename>component.php</filename>
+		<filename>config.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.php</filename>
+		<filename>params.ini</filename>
+		<filename>raw.php</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>presets.php</filename>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>html</folder>
+		<folder>layouts</folder>
+		<folder>warp</folder>
+		<folder>images</folder>
+	</files>
+	<positions>
+		<position>absolute</position>
+		<position>search</position>
+		<position>logo</position>
+		<position>menu</position>
+		<position>banner</position>
+		<position>toolbar</position>
+		<position>header</position>
+		<position>breadcrumbs</position>
+		<position>top</position>
+		<position>topblock</position>
+		<position>left</position>
+		<position>right</position>
+		<position>maintop</position>
+		<position>contentleft</position>
+		<position>contentright</position>
+		<position>contenttop</position>
+		<position>contentbottom</position>
+		<position>mainbottom</position>
+		<position>bottom</position>
+		<position>bottomblock</position>
+		<position>footer</position>
+		<position>content1</position>
+		<position>content2</position>
+		<position>content3</position>
+		<position>content4</position>
+		<position>content5</position>
+		<position>content6</position>
+		<position>content7</position>
+		<position>content8</position>
+		<position>content9</position>
+		<position>debug</position>
+	</positions>
+	<params addpath="/templates/yoo_pinboard/warp/systems/joomla.1.5/elements">
+	    <param name="presets" type="preset" label="Presets" description="Presets" default="{}" />
+        <param name="allow_dynamic_preset" type="radio" default="1" label="Allow dynamic preset" description="Allow dynamic preset.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="colorHeader" type="list" default="default" label="Header Color" description="Used color for template header">
+			<option value="default">Stripes 1</option>
+			<option value="stripes2">Stripes 2</option>
+			<option value="fabricstripes">Fabric Stripes</option>
+			<option value="plaster">Plaster</option>
+			<option value="retro">Retro</option>
+			<option value="cherry">Cherry</option>
+			<option value="concrete">Concrete</option>
+			<option value="beige">Beige Stripes</option>
+			<option value="blue">Blue Stripes</option>
+			<option value="grass">Grass Stripes</option>
+			<option value="green">Green Stripes</option>
+			<option value="lemon">Lemon Stripes</option>
+			<option value="pink">Pink Stripes</option>
+			<option value="red">Red Stripes</option>
+			<option value="yellow">Yellow Stripes</option>
+		</param>
+		<param name="colorMenubar" type="list" default="default" label="Menubar Color" description="Used color for template menubar">
+			<option value="default">Wood</option>
+			<option value="varnish">Varnish</option>
+			<option value="plastic">Plastic</option>
+		</param>
+		<param name="colorBody" type="list" default="default" label="Body Color" description="Used color for template body">
+			<option value="default">Corkboard</option>
+			<option value="fabricboard">Fabricboard</option>
+			<option value="chalkboard">Chalkboard</option>
+			<option value="pressboard">Pressboard</option>		
+			<option value="steelboard">Steelboard</option>
+		</param>
+		<param name="template_width" type="text" size="10" default="860" label="Template Width" description="Set the template width in pixels" />
+		<param name="layout" type="list" default="left" label="Layout Style" description="Left column is aligned to the left/right">
+			<option value="left">Left</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="date" type="radio" default="1" label="Show Date" description="Show/Hide the date">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="compression" type="list" default="1" label="Compression" description="Select the compression mode: Minify and combine templates css and javascript into a single file. Compress these files with gzip. Use Data URIs instead of images to remove all image file requests.">
+			<option value="0">None</option>
+			<option value="1">Combination + Minify</option>
+			<option value="2">Combination + Minify + Gzip</option>
+			<option value="3">Combination + Minify + Gzip + Data URIs</option>
+		</param>
+		<param name="@spacer" type="spacer" />
+	    <param name="verify" type="verify" label="Verify Files" description="Detects and shows all template file modifications" />
+	</params>
+</install>

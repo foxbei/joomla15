@@ -2,7 +2,7 @@
 /**
 * @package   ZOO Component
 * @file      changelog.php
-* @version   2.3.6 March 2011
+* @version   2.3.7 March 2011
 * @author    YOOtheme http://www.yootheme.com
 * @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -15,6 +15,12 @@ defined('_JEXEC') or die('Restricted access');
 
 Changelog
 ------------
+
+2.3.7
+# fixed import/export of RelatedCategories Element
+- removed pnotify script
+# fixed bug with changing type identifier
+# fixed bug with menu item resizing
 
 2.3.6
 ^ updated jQuery UI to 1.8.10

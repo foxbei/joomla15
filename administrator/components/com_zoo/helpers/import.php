@@ -2,7 +2,7 @@
 /**
 * @package   ZOO Component
 * @file      import.php
-* @version   2.3.6 March 2011
+* @version   2.3.7 March 2011
 * @author    YOOtheme http://www.yootheme.com
 * @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -73,6 +73,39 @@ class ImportHelper {
 							CategoryHelper::saveCategoryItemRelations($item->id, $values);
 						}
 					}
+
+					// sanitize relatedcategories elements aliases
+					foreach($items as $item) {
+						$changed = false;
+						foreach ($item->getElements() as $element) {
+							if ($element->getElementType() == 'relatedcategories') {
+								$relatedcategories = $element->getElementData()->get('category', array());
+								$new_related_categories = array();
+								foreach ($relatedcategories as $relatedcategory) {
+									if (isset($categories[$relatedcategory])) {
+										$new_related_categories[] = $categories[$relatedcategory]->id;
+									}
+								}
+								$element->getElementData()->set('category', $new_related_categories);
+								$changed = true;
+							}
+						}
+
+						if ($changed) {
+							try {
+
+								YTable::getInstance('item')->save($item);
+								$item->unsetElementData();
+
+							} catch (YException $e) {
+
+								JError::raiseNotice(0, JText::_('Error Importing Item').' ('.$e.')');
+
+							}
+						}
+
+					}
+
 				}
 
 				return true;

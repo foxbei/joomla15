@@ -1,0 +1,399 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * Page
+ */
+ 
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 150%;
+	color: #646464;
+}
+
+body.yoopage {
+	background: url(../images/page_bg.jpg) 50% 0 repeat;
+}
+
+/* center page */
+div.wrapper {
+	margin: auto; 
+}
+
+/*
+ * Layout
+ */
+
+div#absolute {
+	position: absolute;
+	z-index: 15;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+div#page-header {
+	background: url(../images/page_header_bg.jpg) 50% 0 repeat;
+}
+
+div#page-header div.page-header-t {
+	background: url(../images/page_header_t.png) 50% 0 repeat-x;
+}
+
+div#page-header div.page-header-b {
+	background: url(../images/page_header_b.png) 50% 100% repeat-x;
+}
+
+div#header {
+	width: auto;  
+	height: 230px;
+	padding: 0px 0px 0px 0px;
+	position: relative;
+	z-index: 10;
+	clear: both;  
+}
+
+div#toolbar {
+	width: auto;  
+	height: 25px;
+	padding: 0px 0px 0px 0px;
+	clear: both;  
+	overflow: hidden;
+	font-size: 85%;
+	line-height: 250%;
+}
+
+div#date {
+	margin: 0px 10px 0px 0px;
+	float: left;
+	color: #ffffff;
+}
+
+div#topmenu {
+	margin: 0px 10px 0px 0px;
+	float: left;
+}
+
+div#headerbar {
+	width: auto;  
+	height: 155px;
+	padding: 0px 0px 0px 0px;
+	clear: both;  
+	overflow: hidden;
+}
+
+div#menu {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	height: 45px;
+	padding-top: 6px;
+	z-index: 11;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+div#logo {
+	position: absolute;
+	top: 40px;
+	left: 0px;
+}
+
+div#search {
+	position: absolute;
+	bottom: -64px;
+	right: 0px;
+	width: 143px;  
+	height: 46px;
+	padding: 18px 0px 0px 19px;
+	background: url(../images/searchbox_bg.png) 0 0 no-repeat;
+}
+
+div#banner {
+	position: absolute;
+	top: 250px;
+	right: -15px;
+	width: 0px;
+	z-index: 3;
+}
+
+div#page-body {
+	padding-top: 50px;
+	background: url(../images/page_body_t.png) 50% 0 repeat-x;
+}
+
+div#top {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	clear: both;  
+}
+
+div#top .topbox {
+	margin-top: 15px;
+}
+
+div#middle {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 15px 0px 15px 0px;
+	clear: both;  
+}
+
+div#middle .background {
+	min-height: 200px;
+	 
+	 
+	 
+	 
+}
+
+ 
+div#middle .background {
+	background: none;
+}
+
+div#breadcrumbs {
+	margin: 0px 0px 0px 0px;
+	height: 30px;
+	overflow: hidden;
+	font-family: "Courier New", Courier, monospace;
+}
+
+div#breadcrumbs a, div#breadcrumbs span {
+	display: block;
+	height: 30px;
+	padding: 0px 15px 0px 10px;
+	background: url(../images/breadcrumb_item.png) 100% 100% no-repeat;
+	float: left;
+	line-height: 25px;
+}
+
+div#breadcrumbs a {
+	text-decoration: underline;
+}
+
+ 
+.left div#middle .background {
+	background: none;
+}
+
+ 
+.right div#middle .background {
+	background: none;
+}
+
+div#left {
+	width: 250px;  
+	 
+}
+
+.left div#middle div#left {
+	float: left;
+}
+
+.right div#middle div#left {
+	float: right;
+}
+
+div#main {
+	width: auto;
+	 
+}
+
+ 
+div#main {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+ 
+.left div#main {
+	margin: 0px 0px 0px 265px;  
+}
+
+ 
+.right div#main {
+	margin: 0px 265px 0px 0px;  
+}
+
+div#main div.main-tr {
+	padding: 0px 100px 0px 0px;
+	background: url(../images/main_tr.png) 100% 0 no-repeat;
+}
+
+div#main div.main-t {
+	padding: 0px 0px 0px 100px;
+	background: #ffffff;
+}
+
+div#main div.main-pin {
+	height: 35px;
+	background: url(../images/main_pin.png) 50% 0 no-repeat;
+}
+
+div#main div.main-r {
+	padding: 0px 10px 0px 0px;
+	background: url(../images/main_r.png) 100% 0 repeat-y;
+}
+
+div#main div.main-m {
+	padding: 0px 20px 20px 20px;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+div#main div.main-bl {
+	background: url(../images/main_bl.png) 0 0 no-repeat;
+}
+
+div#main div.main-br {
+	padding: 0px 100px 0px 100px;
+	background: url(../images/main_br.png) 100% 0 no-repeat;
+}
+
+div#main div.main-b {
+	height: 15px;
+	background: url(../images/main_b.png) 0 0 repeat-x;
+}
+
+body.blog div#main div.main-tr { display: none; }
+body.blog div#main div.main-r { background: none; padding: 0px; }
+body.blog div#main div.main-m { background: none; padding: 0px; }
+body.blog div#main div.main-bl { display: none; }
+
+div#maintop {
+	padding: 0px 0px 15px 0px;
+}
+
+div#mainmiddle {
+	margin: 0px 0px 15px 0px;
+	 
+	 
+}
+
+.showright div#mainmiddle {  
+	background: url(../images/right_bg.png) 100% 0 repeat-y;
+}
+
+body.blog div#mainmiddle {
+	background: none;	
+}
+
+div#right {
+	width: 180px;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	float: right;
+}
+
+div#content {
+	width: auto;
+	 
+}
+
+ 
+div#content {
+	margin: 0px 0px 0px 0px;
+}
+
+ 
+.showright div#content {
+	margin: 0px 210px 0px 0px;  
+}
+
+div#contenttop {
+	margin: 0px 0px 15px 0px;
+}
+
+div#contentbottom {
+	margin: 15px 0px 0px 0px;
+}
+
+div#mainbottom {
+	padding: 0px 0px 0px 0px;
+}
+
+div#bottom {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 15px 0px;
+	clear: both;  
+}
+
+div#bottom .bottomblock {
+	margin-top: 15px;
+	margin-bottom: -15px;
+}
+
+div#footer {
+	width: auto;  
+	min-height: 50px;
+	 
+	margin: 0px 0px 0px 0px;
+	padding: 10px 0px 10px 0px;
+	clear: both;  
+	text-align: center;
+	color: #000000;
+}
+
+div#footer div.footer-bg {
+	display: inline;
+	background: #ffffff;
+}
+
+div#footer a:link, div#footer a:visited {
+	color: #000000;
+}
+
+div#footer a:hover {
+	color: #000000;
+}
+
+div#footer a.anchor {
+	margin: 0px 0px 0px 0px;
+	width: 30px;
+	height: 5px;
+	background: url(../images/footer_anchor.png) 0 0 no-repeat;
+	display: block;
+	float: right;
+	text-decoration: none;
+}
+
+/*
+ * Clearing & Floating
+ */
+
+ 
+ 
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0;  
+	clear: both; 
+	visibility: hidden;
+}
+	
+ 
+.clearfix { display: block; }
+
+ 
+.floatbox { overflow:hidden; }
+
+.float-left { float: left; }
+.float-right { float: right; }
+
+.width15 { width: 14.999%; }
+.width18 { width: 18.333%; }
+.width20 { width: 19.999%; }
+.width23 { width: 22.999%; }
+.width25 { width: 24.999%; }
+.width33 { width: 32.999%; }
+.width34 { width: 33.999%; }
+.width35 { width: 34.999%; }
+.width40 { width: 39.999%; }
+.width46 { width: 45.999%; }
+.width50 { width: 49.999%; }
+.width54 { width: 53.999%; }
+.width65 { width: 64.999%; }
+.width75 { width: 74.999%; }
+.width100 { width: 100%; }

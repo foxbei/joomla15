@@ -1,0 +1,199 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* WRAPPER */
+
+/* wrapper-glass */
+.wrapper-glass div.wrapper-t1,
+.wrapper-glass div.wrapper-t2,
+.wrapper-glass div.wrapper-t3,
+.wrapper-glass div.wrapper-b1,
+.wrapper-glass div.wrapper-b2,
+.wrapper-glass div.wrapper-b3 { background-image: url(../images/wrapper/glass/wrapper_corners.png); }
+.wrapper-glass div.wrapper-1,
+.wrapper-glass div.wrapper-2 { background-image: url(../images/wrapper/glass/wrapper_edges.png); }
+.wrapper-glass div.wrapper-3 { background: url(../images/wrapper/glass/wrapper_bg.png); }
+
+.wrapper-glass #headerbar,
+.wrapper-glass #toolbar,
+.wrapper-glass #footer,
+.wrapper-glass #toolbar .menu li a,
+.wrapper-glass #footer .menu li a {
+	color: #56595A;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+}
+
+.wrapper-glass #toolbar .menu a,
+.wrapper-glass #footer .menu a { background-image: url(../images/wrapper/glass/topmenu_item_bg.png); }
+
+#page.wrapper-glass #toolbar .menu a:hover,
+#page.wrapper-glass #footer .menu a:hover { color: #000000; }
+
+/* wrapper-black */
+.wrapper-black div.wrapper-t1,
+.wrapper-black div.wrapper-t2,
+.wrapper-black div.wrapper-t3,
+.wrapper-black div.wrapper-b1,
+.wrapper-black div.wrapper-b2,
+.wrapper-black div.wrapper-b3 { background-image: url(../images/wrapper/black/wrapper_corners.png); }
+.wrapper-black div.wrapper-1,
+.wrapper-black div.wrapper-2 { background-image: url(../images/wrapper/black/wrapper_edges.png); }
+.wrapper-black div.wrapper-3 { background: url(../images/wrapper/black/wrapper_bg.png); }
+
+.wrapper-black div.wrapper-t2,
+.wrapper-black div.wrapper-b2 { padding: 0 16px 0 16px; }
+
+.wrapper-black #headerbar,
+.wrapper-black #toolbar,
+.wrapper-black #footer,
+.wrapper-black #toolbar .menu li a,
+.wrapper-black #footer .menu li a {
+	color: #BFBFC0;
+	text-shadow: 0 -1px 0 rgba(0,0,0,1);
+}
+
+.wrapper-black #toolbar .menu a,
+.wrapper-black #footer .menu a { background-image: url(../images/wrapper/black/topmenu_item_bg.png); }
+
+.wrapper-black #toolbar .menu a:hover,
+.wrapper-black #footer .menu a:hover { color: #ffffff; }
+
+.wrapper-black #searchbox { background-image: url(../images/wrapper/black/searchbox_bg.png); }
+
+.wrapper-black #searchbox .results {
+	right: 3px;
+	border: none;
+	-webkit-box-shadow: 0 0 3px rgba(0,0,0,1);
+	-moz-box-shadow: 0 0 3px rgba(0,0,0,1);
+	box-shadow: 0 0 3px rgba(0,0,0,1);
+}
+
+/* wrapper-wood */
+.wrapper-wood div.wrapper-t1,
+.wrapper-wood div.wrapper-t2,
+.wrapper-wood div.wrapper-b1,
+.wrapper-wood div.wrapper-b2,
+.wrapper-wood div.wrapper-b3 { background-image: url(../images/wrapper/wood/wrapper_corners.png); }
+.wrapper-wood div.wrapper-t3 { background: url(../images/wrapper/wood/wrapper_top_bg.png) 0 0 repeat-x; }
+.wrapper-wood div.wrapper-1,
+.wrapper-wood div.wrapper-2 { background-image: url(../images/wrapper/wood/wrapper_edges.png); }
+.wrapper-wood div.wrapper-3 { background: #DFD0AC url(../images/wrapper/wood/wrapper_bg.png) 0 0 repeat-x; }
+.wrapper-wood div.wrapper-4 { background: url(../images/wrapper/wood/wrapper_bg.png) 0 100% repeat-x; }
+
+.wrapper-wood #headerbar,
+.wrapper-wood #toolbar,
+.wrapper-wood #footer,
+.wrapper-wood #toolbar .menu li a,
+.wrapper-wood #footer .menu li a {
+	color: #918162;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.wrapper-wood #toolbar .menu a,
+.wrapper-wood #footer .menu a {	background-image: url(../images/wrapper/wood/topmenu_item_bg.png); }
+
+.wrapper-wood #toolbar .menu a:hover,
+.wrapper-wood #footer .menu a:hover { color: #645944; }
+
+.wrapper-wood #searchbox .results {
+	right: 3px;
+	border: none;
+	-webkit-box-shadow: 0 0 3px rgba(100,89,68,0.7);
+	-moz-box-shadow: 0 0 3px rgba(100,89,68,0.7);
+	box-shadow: 0 0 3px rgba(0,0,0,0.7);
+}
+
+
+/* BACKGROUND */
+body.yoopage.background-default.style-red { background-color: #E46C49; }
+body.yoopage.background-default.style-green { background-color: #B8C97C; }
+body.yoopage.background-default.style-brown { background-color: #C6AC8A; }
+body.yoopage.background-default.style-orange { background-color: #FEC576; }
+body.yoopage.background-default.style-black { background-color: #A0AAB4; }
+
+body.yoopage.background-lights.style-default { background: #303c4a url(../images/background/blue/background_lights.jpg) 50% 0; }
+.background-lights.style-default #page-body { background: url(../images/background/blue/background_lights_highlight.jpg) 50% 0 no-repeat; }
+body.yoopage.background-lights.style-red { background: #6f220a url(../images/background/red/background_lights.jpg) 50% 0; }
+.background-lights.style-red #page-body { background: url(../images/background/red/background_lights_highlight.jpg) 50% 0 no-repeat; }
+body.yoopage.background-lights.style-green { background: #4d5525 url(../images/background/green/background_lights.jpg) 50% 0; }
+.background-lights.style-green #page-body { background: url(../images/background/green/background_lights_highlight.jpg) 50% 0 no-repeat; }
+body.yoopage.background-lights.style-brown { background: #473829 url(../images/background/brown/background_lights.jpg) 50% 0; }
+.background-lights.style-brown #page-body { background: url(../images/background/brown/background_lights_highlight.jpg) 50% 0 no-repeat; }
+body.yoopage.background-lights.style-orange { background: #f17e21 url(../images/background/orange/background_lights.jpg) 50% 0; }
+.background-lights.style-orange #page-body { background: url(../images/background/orange/background_lights_highlight.jpg) 50% 0 no-repeat; }
+body.yoopage.background-lights.style-black { background: #2d3237 url(../images/background/black/background_lights.jpg) 50% 0; }
+.background-lights.style-black #page-body { background: url(../images/background/black/background_lights_highlight.jpg) 50% 0 no-repeat; }
+
+body.yoopage.background-stripes.style-default { background: #0c637b url(../images/background/blue/background_stripes.jpg) 50% 0 fixed; }
+body.yoopage.background-stripes.style-red { background: #8b240c url(../images/background/red/background_stripes.jpg) 50% 0 fixed; }
+body.yoopage.background-stripes.style-green { background: #5a6319 url(../images/background/green/background_stripes.jpg) 50% 0 fixed; }
+body.yoopage.background-stripes.style-brown { background: #945c30 url(../images/background/brown/background_stripes.jpg) 50% 0 fixed; }
+body.yoopage.background-stripes.style-orange { background: #e27c21 url(../images/background/orange/background_stripes.jpg) 50% 0 fixed; }
+body.yoopage.background-stripes.style-black { background: #55646e url(../images/background/black/background_stripes.jpg) 50% 0 fixed; }
+
+body.yoopage.background-plasma.style-default { background: #0b1f2a url(../images/background/blue/background_plasma.jpg) 50% 0 no-repeat; }
+body.yoopage.background-plasma.style-red { background: #370606 url(../images/background/red/background_plasma.jpg) 50% 0 no-repeat; }
+body.yoopage.background-plasma.style-green { background: #1f2d02 url(../images/background/green/background_plasma.jpg) 50% 0 no-repeat; }
+body.yoopage.background-plasma.style-brown { background: #3d352c url(../images/background/brown/background_plasma.jpg) 50% 0 no-repeat; }
+body.yoopage.background-plasma.style-orange { background: #451808 url(../images/background/orange/background_plasma.jpg) 50% 0 no-repeat; }
+body.yoopage.background-plasma.style-black { background: #1d2329 url(../images/background/black/background_plasma.jpg) 50% 0 no-repeat; }
+
+body.yoopage.background-ocean { background: #0d2b50 url(../images/background/background_ocean_bg.png) 50% 0 repeat-x; }
+.background-ocean #page-body { background: url(../images/background/background_ocean_img.jpg) 50% 0 no-repeat; }
+
+body.yoopage.background-landscape { background: #f4f5f6 url(../images/background/background_landscape_bg.jpg) 50% 100% repeat-y; }
+.background-landscape #page-body { 
+	padding-bottom: 125px;
+	background: url(../images/background/background_landscape_img.jpg) 50% 100% no-repeat;
+}
+
+/* MIXED */
+.wrapper-glass.background-lights #footer,
+.wrapper-glass.background-lights #footer .menu li a,
+.wrapper-glass.background-plasma #footer,
+.wrapper-glass.background-plasma #footer .menu li a,
+.wrapper-glass.background-landscape #footer,
+.wrapper-glass.background-landscape #footer .menu li a,
+.wrapper-glass.background-ocean #footer,
+.wrapper-glass.background-ocean #footer .menu li a {
+	color: #414343;
+	text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+}
+
+.wrapper-glass.background-lights #footer .menu a,
+.wrapper-glass.background-plasma #footer .menu a,
+.wrapper-glass.background-ocean #footer .menu a { background-image: url(../images/wrapper/glass/footermenu_item_bg.png); }
+.wrapper-glass.background-lights #footer .menu a.first,
+.wrapper-glass.background-plasma #footer .menu a.first,
+.wrapper-glass.background-ocean #footer .menu a.first { background: none; }
+
+.wrapper-black.background-lights #footer .menu a,
+.wrapper-black.background-plasma #footer .menu a,
+.wrapper-black.background-ocean #footer .menu a { background-image: url(../images/wrapper/black/footermenu_item_bg.png); }
+.wrapper-black.background-lights #footer .menu a.first,
+.wrapper-black.background-plasma #footer .menu a.first,
+.wrapper-black.background-ocean #footer .menu a.first { background: none; }
+
+/* FONTS */
+body.font-lucida,
+.font-lucida h1,
+.font-lucida h2,
+.font-lucida h3,
+.font-lucida h4,
+.font-lucida h5,
+.font-lucida h6 { font-family: "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif; }
+
+body.font-georgia,
+.font-georgia h1,
+.font-georgia h2,
+.font-georgia h3,
+.font-georgia h4,
+.font-georgia h5,
+.font-georgia h6 { font-family: Georgia, "Times New Roman", Times, serif; }
+
+body.font-trebuchet,
+.font-trebuchet h1,
+.font-trebuchet h2,
+.font-trebuchet h3,
+.font-trebuchet h4,
+.font-trebuchet h5,
+.font-trebuchet h6 { font-family: "Trebuchet MS", Verdana, Arial, sans-serif; }

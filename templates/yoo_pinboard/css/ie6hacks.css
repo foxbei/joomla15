@@ -1,0 +1,269 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* reset */
+hr {
+	color: #c8c8c8;
+}
+
+/*
+ * layout
+ */
+
+div#page-header {
+	position: relative;
+	z-index: 1;
+}
+
+div#menubar {
+	zoom: 1;  
+}
+
+div#menubar div.menubar-3 {
+	overflow: hidden;
+}
+
+div#banner {
+	right: -135px;
+	width: 120px;
+}
+
+div#breadcrumbs a, div#breadcrumbs span {
+	zoom: 1;
+}
+
+div#middle .background {
+	 
+	height: 200px;  
+}
+
+div#main div.main-t {
+	overflow: hidden;
+}
+
+div#main div.main-m {
+	zoom: 1;
+}
+
+div#main div.main-b {
+	overflow: hidden;
+}
+
+div#footer {
+	height: 50px;  
+	zoom: 1;  
+}
+
+/*
+ * menus
+ */
+
+div#menu li.level1,
+div#menu a.level1, div#menu span.level1 {
+	zoom: 1;
+}
+
+div#menu li.fancy {
+	width: 0px;
+}
+
+div#menu li.fancy div.fancy-3 {
+	overflow: hidden;
+	zoom :1;
+}
+
+/*
+ * modules
+ */
+
+div.module {
+	zoom: 1;  
+}
+
+ 
+#toolbar div.module {
+	width: 0px;
+}
+
+#headerbar div.module {
+	width: 0px;
+}
+
+#toolbar div.mod-blank div.module,
+#headerbar div.mod-blank div.module {
+	overflow: visible;
+}
+
+/* headerbar */
+div.mod-headerbar div.box-2 {
+	zoom: 1;
+}
+
+/* postit2 */
+div.mod-postit2 div.box-2,
+div.mod-postit2 div.box-b3 {
+	zoom: 1;
+}
+
+div.mod-postit2 div.box-t2,
+div.mod-postit2 div.box-b3 {
+	overflow: hidden;
+}
+
+/* polaroid2 */
+div.mod-polaroid2 div.box-t1,
+div.mod-polaroid2 div.box-3 {
+	zoom: 1;
+}
+
+div.mod-polaroid2 div.badge-tape {
+	top: 0px;
+}
+
+div.mod-polaroid2 div.box-t2,
+div.mod-polaroid2 div.box-b3 {
+	overflow: hidden;
+}
+
+div.mod-polaroid2 div.box-4 {
+	font-style: normal;  
+}
+
+div.mod-polaroid2 div.badge-new { top: 13px; }
+div.mod-polaroid2 div.badge-top { top: 13px; }
+div.mod-polaroid2 div.badge-pick { top: 13px; }
+
+/* tile */
+div.mod-tile div.box-t2,
+div.mod-tile div.box-2,
+div.mod-tile div.box-b2 {
+	zoom: 1;
+}
+
+div.mod-tile div.box-t3,
+div.mod-tile div.box-b3  {
+	overflow: hidden;
+}
+
+/* note */
+div.mod-note div.box-1 {
+	zoom: 1;
+}
+
+div.mod-note div.box-t2,
+div.mod-note div.box-b3  {
+	overflow: hidden;
+}
+
+/* cardboard */
+div.mod-cardboard div.box-t3,
+div.mod-cardboard div.box-3,
+div.mod-cardboard div.box-b3 {
+	zoom: 1;
+}
+
+div.mod-cardboard div.box-t3,
+div.mod-cardboard div.box-b3  {
+	overflow: hidden;
+}
+
+/* print */
+div.mod-cardboard div.box-t2,
+div.mod-print div.box-2,
+div.mod-cardboard div.box-b3 {
+	zoom: 1;
+}
+
+div.mod-print div.box-t2,
+div.mod-print div.box-b3  {
+	overflow: hidden;
+}
+
+/* clip */
+div.mod-clip div.box-1 {
+	zoom: 1;
+}
+
+div.mod-clip div.box-t2,
+div.mod-clip div.box-b3  {
+	overflow: hidden;
+}
+
+/* dotted */
+div.mod-dotted h3.header {
+	zoom: 1;
+}
+
+/*
+ * joomla
+ */
+
+div.joomla div.item-t {
+	overflow: hidden;
+}
+
+div.joomla div.item-m {
+	zoom: 1;
+}
+
+div.joomla div.item-b {
+	overflow: hidden;
+}
+
+div.joomla div.teaserarticles {
+	zoom: 1;
+	overflow: hidden;
+}
+
+div.joomla div.headline {
+	zoom: 1;
+}
+
+div.joomla div.item,
+div.joomla div.item-bg {
+	zoom: 1;
+}
+
+div.module-search input {
+	width: 88px;
+}
+
+a.readmore {
+	cursor: pointer;
+}
+
+/*
+ * typography
+ */
+
+ul.arrow li,
+ul.checkbox li,
+ul.check li,
+ul.star li {
+	zoom: 1;
+}
+
+ol.disc {
+	padding: 0px 0px 0px 50px;
+}
+
+ol.disc li {
+	padding-left: 5px;
+	margin: 0px 0px 5px 0px;
+}
+
+hr.dotted {
+	background: none;
+	border: dotted 1px #c8c8c8;
+}
+
+p.dropcap:first-letter {
+	line-height: 100%;
+}
+
+/*
+ * extensions
+ */
+
+.ie6-zoom {
+	zoom: 1;
+}

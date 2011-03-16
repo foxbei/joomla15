@@ -1,0 +1,13 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div#page-body {
+	background: url(../../images/dotted/page_bg.png) 50% 0px repeat;
+}
+
+div.wrapper-l {
+	border-left: none;
+}
+
+div.wrapper-r {
+	border-right: none;
+}

@@ -1,0 +1,33 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* menu */
+div#middle ul.menu a:hover,
+div#middle ul.menu span.separator:hover,
+div#middle ul.menu span.sfhover,
+div#middle ul.menu a.active:hover,
+div#middle ul.menu span.active:hover {
+	border-bottom: 1px solid #ffffff;
+}
+
+/* joomla */
+div#yoo-search input {
+	width: 91px;
+}
+
+/* general */
+ol.disc {
+	padding: 0px 0px 0px 50px;
+}
+
+ol.disc li {
+	padding-left: 5px;
+}
+
+hr.dotted {
+	background: none;
+	border: dotted 1px #c8c8c8;
+}
+
+p.dropcap:first-letter {
+	line-height: 110%;
+}

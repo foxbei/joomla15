@@ -1,0 +1,119 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+#left #form-login fieldset {
+	border: none;
+}
+
+/*
+ * YOOsearch
+ */
+
+#page div.default div.yoo-search div.resultbox {
+	position: absolute;
+	right: 0px;
+	top: 24px;
+	z-index: 20;
+}
+
+#page div.default div.yoo-search div.resultbox-bg {
+	border-left: 1px solid #d7d7c8;
+	border-right: 1px solid #d7d7c8;
+	background: #ffffff;
+}
+
+#page div.default div.yoo-search div.resultbox-bl {
+	background: #d7d7c8;
+}
+
+#page div.default div.yoo-search div.resultbox-br {
+	background: #d7d7c8;
+}
+
+#page div.default div.yoo-search div.resultbox-b {
+	background: #d7d7c8;
+}
+
+#page div.default div.yoo-search div.resultbox-b a:link,
+#page div.default div.yoo-search div.resultbox-b a:visited,
+#page div.default div.yoo-search div.resultbox-b a:hover {
+	color: #323232;
+}
+
+#page div.default div.yoo-search a.search-more {
+	color: #323232;
+}
+
+#page div.default div.yoo-search h3.search-header {
+	background: #d7d7c8;
+	color: #323232;
+}
+
+#page div.default div.yoo-search .resultbox-bg a {
+	background: #ffffff;
+}
+
+#page div.default div.yoo-search .resultbox-bg a:hover {
+	background: #f5f5e6;
+}
+
+#page div.default div.yoo-search span.search-more {
+	background: url(../images/yoosearch/more_icon.png) 0 0 no-repeat;
+}
+
+/*
+ * YOOcarousel: plain
+ */
+
+#page div.plain div.yoo-carousel div.top ul.tabs {
+	height: 25px;
+	border-bottom: 1px solid #dcdcd7;
+	background: none ;
+}
+
+#page div.plain div.yoo-carousel div.top li.item1 {
+}
+
+#page div.plain div.yoo-carousel div.top li {
+	background: #ffffff;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+}
+
+
+#page div.plain div.yoo-carousel div.top ul.tabs li.selected {
+	background: #ffffff;
+	border-left: 1px solid #DCDCD7;
+	border-right: 1px solid #DCDCD7;
+	border-top: 1px solid #DCDCD7;
+}
+
+#page div.plain div.yoo-carousel div.top ul.tabs li a span {
+	height: 24px;
+	background: none;
+	line-height: 25px;
+	letter-spacing: -1px;
+	font-family: Georgia,"Times New Roman",Times,serif;
+	font-weight: normal;
+	font-size: 130%;
+}
+
+#page div.plain div.yoo-carousel div.top ul.tabs li.selected a span {
+	height: 25px;
+}
+
+#page div.plain div.yoo-carousel li a:link,
+#page div.plain div.yoo-carousel li a:visited {
+	color: #323232;
+}
+
+#page div.plain div.yoo-carousel .article {
+	font-size: 100%;
+}
+
+#page div.plain div.yoo-carousel h3 {
+	line-height: 25px;
+	font-size: 130%;
+	letter-spacing: 0px;
+	font-weight: normal;
+}

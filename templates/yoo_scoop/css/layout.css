@@ -1,0 +1,413 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * Page
+ */
+ 
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	line-height: 150%;
+	color: #464646;
+}
+
+body.yoopage {
+	background: #3C372D;
+}
+
+/* center page */
+div.wrapper {
+	margin: auto; 
+}
+
+/*
+ * Layout
+ */
+
+div#absolute {
+	position: absolute;
+	z-index: 15;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+div#page-header {
+	background: #3C372D;
+}
+
+div#toolbar {
+	position: relative;
+	width: auto;  
+	height: 30px;
+	padding: 0px 145px 0px 15px;
+	clear: both;  
+	overflow: hidden;
+	line-height: 250%;
+}
+
+div#topmenu {
+	margin: 0px 10px 0px 0px;
+	float: left;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+div#page-body {
+	background: #ffffff;
+}
+
+div.wrapper-bg {
+	padding: 15px 0px 15px 0px;
+	background: #ffffff;
+}
+
+div.wrapper-l {
+	border-left: 1px solid #DCDCD7;
+}
+
+div.wrapper-r {
+	padding: 0px 14px 0px 14px;
+	border-right: 1px solid #DCDCD7;
+}
+
+div#header {
+	width: auto;  
+	height: 190px;
+	padding: 0px 0px 0px 0px;
+	position: relative;
+	z-index: 10;
+	clear: both;  
+}
+
+div#logobar {
+	width: 350px;
+	height: 128px;
+	margin: auto;
+	border-top: 1px solid #D7D7D2;
+	border-bottom: 1px solid #D7D7D2;
+	clear: both;  
+	overflow: hidden;
+}
+
+div#logo {
+	height: 103px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 350%;
+	line-height: 100%;
+	text-transform: uppercase;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div#date {
+	height: 24px;
+	border-top: 1px solid #D7D7D2;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 24px;
+	text-align: center;
+	color: #BE4238;
+	font-weight: bold;
+	font-style: italic;
+}
+
+body.green div#date { color: #7BA46C; }
+body.pink div#date { color: #B165A3; }
+body.orange div#date { color: #D68636; }
+body.blue div#date { color: #5296B7; }
+body.yellow div#date { color: #ADA83F; }
+body.lilac div#date { color: #655A9E; }
+body.turquoise div#date { color: #619A99; }
+body.black div#date { color: #C83232; }
+
+div#menubar {
+	width: auto;  
+	margin: 10px 0px 0px 0px;
+	padding: 1px 0px 1px 0px;
+	border-top: 1px solid #D7D7C8;
+	border-bottom: 1px solid #D7D7C8;
+	background: #ffffff;
+	clear: both;  
+}
+
+div#menubar div.menubar-2 {
+	height: 46px;
+	background: #E6E6D2;
+}
+
+div#menu {
+	position: absolute;
+	top: 142px;
+	left: 0px;
+	z-index: 11;
+	height: 46px;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif
+}
+
+div#search {
+	position: absolute;
+	top: -39px;
+	right: -15px;
+	z-index: 12;
+	width: 120px;  
+}
+
+div#banner {
+	position: absolute;
+	top: 0px;
+	right: -30px;
+	width: 0px;
+	z-index: 3;
+}
+
+div#header-left {
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	width: 200px;
+}
+
+div#header-right {
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	width: 200px;
+	text-align: right;
+}
+
+div#header-left ul,
+div#header-right ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+div#header-left li,
+div#header-right li {
+	display: block;
+}
+
+div#header-left li a,
+div#header-right li a {
+	display: inline-block;
+	padding: 0px 5px 0px 5px;
+	color: #323232;
+	font-size: 11px;
+	font-style: italic;
+}
+
+div#header-left li a:hover,
+div#header-right li a:hover {
+	color: #ffffff;
+	background: #323232;
+	text-decoration: none;
+}
+
+div#top {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	clear: both;  
+}
+
+div#top .topbox {
+	margin-top: 15px;
+}
+
+div#middle {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 15px 0px 15px 0px;
+	clear: both;  
+}
+
+div#middle .background {
+	min-height: 200px;
+	 
+	 
+	 
+	 
+}
+
+ 
+div#middle .background {
+	background: none;
+}
+
+ 
+.left div#middle .background {
+	background: url(../images/left_bg_l.png) 0 0 repeat-y;
+}
+
+ 
+.right div#middle .background {
+	background: url(../images/left_bg_r.png) 100% 0 repeat-y;
+}
+
+div#left {
+	width: 210px;  
+	 
+}
+
+.left div#middle div#left {
+	float: left;
+}
+
+.right div#middle div#left {
+	float: right;
+}
+
+div#main {
+	width: auto;
+	 
+}
+
+ 
+div#main {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+ 
+.left div#main {
+	margin: 0px 0px 0px 240px;  
+}
+
+ 
+.right div#main {
+	margin: 0px 240px 0px 0px;  
+}
+
+div#maintop {
+	padding: 0px 0px 15px 0px;
+}
+
+div#mainmiddle {
+	margin: 0px 0px 15px 0px;
+	 
+	 
+}
+
+.showright div#mainmiddle {  
+	background: url(../images/right_bg.png) 100% 0 repeat-y;
+}
+
+div#right {
+	width: 180px;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	float: right;
+}
+
+div#content {
+	width: auto;
+	 
+}
+
+ 
+div#content {
+	margin: 0px 0px 0px 0px;
+}
+
+ 
+.showright div#content {
+	margin: 0px 210px 0px 0px;  
+}
+
+div#contenttop {
+	margin: 0px 0px 15px 0px;
+}
+
+div#breadcrumbs {
+	margin-bottom: 10px;
+	font-size: 85%;
+}
+
+div#contentbottom {
+	margin: 15px 0px 0px 0px;
+}
+
+div#mainbottom {
+	padding: 0px 0px 0px 0px;
+}
+
+div#bottom {
+	width: auto;  
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 15px 0px;
+	clear: both;  
+}
+
+div#bottom .bottomblock {
+	margin-top: 15px;
+	margin-bottom: -15px;
+}
+
+div#footer {
+	position: relative;
+	width: auto;  
+	min-height: 30px;
+	 
+	margin: 0px 0px 0px 0px;
+	padding: 10px 0px 10px 0px;
+	clear: both;  
+	text-align: center;
+	color: #ffffff;
+}
+
+div#footer a:link, div#footer a:visited {
+	color: #ffffff;
+}
+
+div#footer a:hover {
+	color: #ffffff;
+}
+
+div#footer a.anchor {
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	width: 30px;
+	height: 5px;
+	background: url(../images/footer_anchor_white.png) 0 0 no-repeat;
+	display: block;
+	text-decoration: none;
+}
+
+/*
+ * Clearing & Floating
+ */
+
+ 
+ 
+.clearfix:after {
+	content: "."; 
+	display: block; 
+	height: 0;  
+	clear: both; 
+	visibility: hidden;
+}
+	
+ 
+.clearfix { display: block; }
+
+ 
+.floatbox { overflow:hidden; }
+
+.float-left { float: left; overflow: hidden; }
+.float-right { float: right; overflow: hidden; }
+
+.width15 { width: 14.999%; }
+.width18 { width: 18.333%; }
+.width20 { width: 19.999%; }
+.width23 { width: 22.999%; }
+.width25 { width: 24.999%; }
+.width33 { width: 32.999%; }
+.width34 { width: 33.999%; }
+.width35 { width: 34.999%; }
+.width40 { width: 39.999%; }
+.width46 { width: 45.999%; }
+.width50 { width: 49.999%; }
+.width54 { width: 53.999%; }
+.width65 { width: 64.999%; }
+.width75 { width: 74.999%; }
+.width100 { width: 100%; }

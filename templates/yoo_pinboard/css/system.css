@@ -1,0 +1,686 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * global CSS
+ * not inside joomla CSS class
+ */
+
+/* readmore button */
+p.readmore {
+	overflow: hidden;
+}
+
+a.readmore {
+	width: 100px;
+	height: 20px;
+	background: transparent url(../images/readmore.png) 0 0 no-repeat; /* ie6png:crop */
+	display: block;
+	float: left;
+	line-height: 20px;
+	text-indent: 25px;
+	font-size: 90%;
+}
+
+a.readmore:link, a.readmore:visited {
+	color: #9C5B59;
+	text-decoration: none;
+}
+
+a.readmore:hover {
+	background: transparent url(../images/readmore.png) 0 -20px no-repeat;
+	color: #660000;
+	text-decoration: none;
+}
+
+body.yoopage a.readmore:link, body.yoopage a.readmore:visited { color: #9C5B59; }
+body.yoopage a.readmore:hover { color: #660000; }
+
+/* tooltips */
+.tool-tip {
+	float: left;
+	background: #ffc;
+	border: 1px solid #D4D5AA;
+	padding: 5px;
+	max-width: 200px;
+	color: #323232;
+}
+
+.tool-title {
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	font-weight: bold;
+	margin-top: -15px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	background: url(../../system/images/selector-arrow.png) no-repeat;
+}
+
+.tool-text {
+	font-size: 100%;
+	margin: 0;
+}
+
+/*
+ * general
+ * used by Jommla core components
+ */
+
+div.joomla h1 {
+	letter-spacing: -1px;
+}
+
+div.joomla h2,
+div.joomla h3,
+div.joomla h4,
+div.joomla h5 {
+	letter-spacing: -1px;
+}
+
+div.joomla h1.pagetitle {
+}
+
+div.joomla div.description {
+	margin: 10px 0px 10px 0px;
+	overflow: hidden;
+}
+
+div.joomla div.description img.left {
+	margin-right: 15px;
+	float: left;
+}
+
+div.joomla div.description img.right {
+	margin-left: 15px;
+	float: right;
+}
+
+div.joomla div.filter {
+	margin: 10px 0px 10px 0px;
+}
+
+div.joomla th {
+	padding: 5px 5px 5px 5px;
+	background: #ebebeb;
+	border-bottom: 1px solid #b4b4b4;
+	font-weight : bold;
+}
+
+div.joomla tr.even td {
+	padding: 5px 5px 5px 5px;
+	background: #f0f0f0;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+div.joomla tr.odd td {
+	padding: 5px 5px 5px 5px;
+	background: #fafafa;
+	border-bottom: 1px solid #dcdcdc;
+}
+
+ 
+div.joomla span.number {
+	color: #969696;
+	font-style: italic;
+}
+
+/*
+ * com_content
+ * blog layout (frontpage, category, section)
+ * sub selectors: blog
+ */
+ 
+div.joomla div.blog-description {  
+	margin: 0px 0px 20px 0px;
+}
+ 
+div.joomla div.blog div.description {  
+	margin: 10px 0px 15px 0px;
+	padding-bottom: 20px;
+}
+
+div.joomla div.leadingarticles {
+	overflow: hidden;
+}
+
+div.joomla div.teaserarticles {
+	overflow: hidden;
+}
+
+div.joomla div.item {
+	margin-bottom: 15px;
+}
+
+div.joomla div.item-tr {
+	padding: 0px 100px 0px 0px;
+	background: url(../images/main_tr.png) 100% 0 no-repeat;
+}
+
+div.joomla div.item-t {
+	padding: 0px 0px 0px 100px;
+	background: #ffffff;
+}
+
+div.joomla div.item-pin {
+	height: 35px;
+	background: url(../images/main_pin.png) 50% 0 no-repeat;
+}
+
+div.joomla div.item-r {
+	padding: 0px 10px 0px 0px;
+	background: url(../images/main_r.png) 100% 0 repeat-y;
+}
+
+div.joomla div.item-m {
+	padding: 0px 20px 20px 20px;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+div.joomla div.item-bl {
+	background: url(../images/main_bl.png) 0 0 no-repeat;
+}
+
+div.joomla div.item-br {
+	padding: 0px 100px 0px 100px;
+	background: url(../images/main_br.png) 100% 0 no-repeat;
+}
+
+div.joomla div.item-b {
+	height: 15px;
+	background: url(../images/main_b.png) 0 0 repeat-x;
+}
+
+div.joomla div.multicolumns div.item {
+	margin: 0px 15px 15px 15px;
+}
+
+div.joomla div.multicolumns div.first div.item {
+	margin-left: 0px;
+}
+
+div.joomla div.multicolumns div.last div.item {
+	margin-right: 0px;
+}
+
+div.joomla div.morearticles {
+	margin: 10px 0px 10px 0px;
+}
+
+div.joomla div.pagination {
+	text-align: center;
+}
+
+div.joomla div.pagination span {
+	background: #ffffff;
+	color: #000000;
+}
+
+div.joomla div.pagination p.results {
+	margin: 0px;
+}
+
+/*
+ * com_content
+ * list layout (frontpage, category, section)
+ * sub selectors: sectionlist, categorylist
+ */
+
+/*
+ * com_content
+ * article layout
+ * sub seletors: article
+ */
+
+div.joomla div.headline {
+	overflow: hidden;
+}
+
+div.joomla h1.title {
+	float: left;
+}
+
+div.joomla div.multicolumns h1.title {
+	font-size: 200%;
+	letter-spacing: -1px;
+}
+
+div.joomla span.icon {
+	display: block;
+	margin-top: 10px;
+	float: right;
+}
+
+div.joomla div.multicolumns span.icon {
+	margin-top: 5px;
+}
+
+div.joomla span.edit {
+	margin-left: 10px;
+	float: left;
+}
+
+div.joomla span.pdf {
+	margin-right: 5px;
+}
+
+div.joomla span.print {
+	margin-right: 5px;
+}
+
+div.joomla span.email {
+}
+
+div.joomla span.printscreen {
+}
+
+div.joomla p.iteminfo {
+	margin: 0px 0px 15px 0px;
+}
+
+div.joomla p.articleinfo {
+}
+
+div.joomla p.articleinfo span.modified,
+div.joomla p.articleinfo span.author,
+div.joomla p.articleinfo span.created,
+div.joomla p.articleinfo span.url {
+	display: block;
+	font-size: 95%;
+}
+
+div.joomla p.articleinfo span.author {
+	color: #969696;
+	font-style: italic;
+}
+
+div.joomla p.articleinfo span.created {
+	font-weight: bold;
+}
+
+/*
+ * com_content
+ * editing an article
+ * sub seletors: edit-article
+ */
+
+div.joomla div.edit-article fieldset {
+	margin-bottom: 30px;
+}
+
+div.joomla div.edit-article fieldset div {
+	overflow: hidden;
+}
+
+div.joomla div.edit-article label.label-left {
+	display: block;
+	width: 150px;
+	float: left;
+}
+
+div.joomla div.edit-article div.save {
+	margin: 0px;
+	float: right;
+}
+
+div.joomla div.edit-article div#editor-xtd-buttons {
+	margin-bottom: 0px;
+	overflow: hidden;
+}
+
+div.joomla div.edit-article div#editor-xtd-buttons div {
+	margin: 0px;
+}
+
+div.joomla div.edit-article div#editor-xtd-buttons div.button2-left {
+	margin-right: 5px;
+}
+
+div.joomla div.edit-article div#editor-xtd-buttons a:link,
+div.joomla div.edit-article div#editor-xtd-buttons a:visited,
+div.joomla div.edit-article div#editor-xtd-buttons a:hover {
+	color: #323232;
+}
+
+/*
+ * com_weblinks
+ * sub seletors: weblinks
+ */
+
+div.joomla div.weblinks fieldset {
+}
+
+div.joomla div.weblinks fieldset div {
+	overflow: hidden;
+}
+
+div.joomla div.weblinks label.label-left {
+	display: block;
+	width: 150px;
+	float: left;
+}
+
+/*
+ * com_search
+ * sub seletors: search
+ */
+
+div.joomla div.search p.info {
+	margin: 0px;
+	color: #969696;
+	font-style: italic;
+}
+
+div.joomla div.search span.highlight {
+	background: #ffffaa;
+}
+
+/*
+ * com_poll
+ * sub seletors: poll
+ */
+
+div.joomla div.poll fieldset {
+	margin: 15px 0px 10px 0px;
+}
+
+/*
+ * com_contact
+ * sub seletors: contact
+ */
+
+div.joomla div.contact h1 {
+	margin-bottom: 0px;
+	font-size: 250%;
+	font-weight: normal;
+	letter-spacing: -1px;
+}
+
+div.joomla div.contact h2 {
+	margin-bottom: 10px;
+	font-size: 120%;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 0px;
+}
+
+div.joomla div.contact div.image {
+	float: right;
+}
+
+div.joomla div.contact table {
+	margin-bottom: 10px;
+}
+
+div.joomla div.contact label.label-top {
+	display: block;
+}
+
+/*
+ * com_user
+ * sub seletors: user
+ */
+
+div.joomla div.user label.label-left,
+div.joomla div.user span.label-left  {
+	display: block;
+	width: 130px;
+	float: left;
+}
+
+/*
+ * mod_search
+ */
+
+div.module-search {
+	width: 120px;
+	height: 18px;
+	padding: 0px;
+	margin: 0px;
+	background: url(../images/search_bg.png) 0 0 no-repeat;
+}
+
+div.module-search input {
+	width: 93px;
+	height: 14px;
+	padding: 2px 2px 2px 7px;
+	border: none;
+	outline: none;
+	background: none;
+	float: left;
+	color: #646464;
+	font-size: 80%;
+}
+
+div.module-search input:focus {
+	outline: none;
+}
+
+div.module-search button {
+	width: 18px;
+	height: 18px;
+	padding: 0px;
+	border: none;
+	background: url(../images/search_button.png) 0 0 no-repeat;
+	cursor: pointer;
+	text-indent: 100px;
+	line-height: 0px;
+}
+
+div.module-search:hover{
+	background: url(../images/search_bg.png) 0 -18px no-repeat;
+}
+
+div.module-search:hover input {
+	color: #000000;
+}
+
+div.module-search input:focus {
+	color: #000000;
+}
+
+/*
+ * legacy Joomla styling only for third party components
+ */
+
+.contentheading,
+.componentheading {
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 5px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 250%;
+	line-height: 100%;
+	font-weight: bold;
+	color: #c8001e;
+	letter-spacing: -1px;
+}
+
+/*
+ * Joomla! system CSS file: system.css
+ */
+ 
+/* OpenID icon style */
+input.system-openid {
+   background: url(http://openid.net/login-bg.gif) no-repeat;
+   background-color: #fff;
+   background-position: 0 50%;
+   color: #000;
+   padding-left: 18px;
+}
+
+
+/* Unpublished */
+.system-unpublished {
+background: #e8edf1;
+border-top: 4px solid #c4d3df;
+border-bottom: 4px solid #c4d3df;
+}
+
+/* System Messages */
+#system-message    { margin-bottom: 10px; padding: 0;}
+#system-message dt { font-weight: bold; }
+#system-message dd { margin: 0; font-weight: bold; text-indent: 30px; padding: 0;}
+#system-message dd ul { color: #0055BB; margin-bottom: 10px; list-style: none; padding: 10px; border-top: 3px solid #84A7DB; border-bottom: 3px solid #84A7DB;}
+
+/* System Standard Messages */
+#system-message dt.message { display: none; }
+#system-message dd.message {  }
+
+/* System Error Messages */
+#system-message dt.error { display: none; }
+#system-message dd.error ul { color: #c00; background-color: #E6C0C0; border-top: 3px solid #DE7A7B; border-bottom: 3px solid #DE7A7B;}
+
+/* System Notice Messages */
+#system-message dt.notice { display: none; }
+#system-message dd.notice ul { color: #c00; background: #EFE7B8; border-top: 3px solid #F0DC7E; border-bottom: 3px solid #F0DC7E;}
+
+/* Debug */
+#system-debug     { color: #ccc; background-color: #fff; padding: 10px; margin: 10px; }
+#system-debug div { font-size: 11px;}
+
+/*
+ * Joomla! system CSS file: general.css
+ */
+ 
+ /* Form validation */
+.invalid { border-color: #ff0000; }
+label.invalid { color: #ff0000; }
+
+/* Buttons */
+#editor-xtd-buttons {
+	padding: 5px;
+}
+
+.button2-left,
+.button2-right,
+.button2-left div,
+.button2-right div {
+	float: left;
+}
+
+.button2-left a,
+.button2-right a,
+.button2-left span,
+.button2-right span {
+	display: block;
+	height: 22px;
+	float: left;
+	line-height: 22px;
+	font-size: 11px;
+	color: #666;
+	cursor: pointer;
+}
+
+.button2-left span,
+.button2-right span {
+	cursor: default;
+	color: #999;
+}
+
+.button2-left .page a,
+.button2-right .page a,
+.button2-left .page span,
+.button2-right .page span {
+	padding: 0 6px;
+}
+
+.page span {
+	color: #000;
+	font-weight: bold;
+}
+
+.button2-left a:hover,
+.button2-right a:hover {
+	text-decoration: none;
+	color: #0B55C4;
+}
+
+.button2-left a,
+.button2-left span {
+	padding: 0 24px 0 6px;
+}
+
+.button2-right a,
+.button2-right span {
+	padding: 0 6px 0 24px;
+}
+
+.button2-left {
+	background: url(../../system/images/j_button2_left.png) no-repeat;
+	float: left;
+	margin-left: 5px;
+}
+
+.button2-right {
+	background: url(../../system/images/j_button2_right.png) 100% 0 no-repeat;
+	float: left;
+	margin-left: 5px;
+}
+
+.button2-left .image {
+	background: url(../../system/images/j_button2_image.png) 100% 0 no-repeat;
+}
+
+.button2-left .readmore {
+	background: url(../../system/images/j_button2_readmore.png) 100% 0 no-repeat;
+}
+
+.button2-left .pagebreak {
+	background: url(../../system/images/j_button2_pagebreak.png) 100% 0 no-repeat;
+}
+
+/* Tooltips */
+div.tooltip {
+	float: left;
+	background: #ffc;
+	border: 1px solid #D4D5AA;
+	padding: 5px;
+	max-width: 200px;
+}
+
+div.tooltip h4 {
+	padding: 0;
+	margin: 0;
+	font-size: 95%;
+	font-weight: bold;
+	margin-top: -15px;
+	padding-top: 15px;
+	padding-bottom: 5px;
+	background: url(../../system/images/selector-arrow.png) no-repeat;
+}
+
+div.tooltip p {
+	font-size: 90%;
+	margin: 0;
+}
+
+/* Caption fixes */
+.img_caption .left {
+	float: left;
+	margin-right: 1em;
+}
+
+.img_caption .right {
+	float: right;
+	margin-left: 1em;
+}
+
+.img_caption .left p {
+	clear: left;
+	text-align: center;
+}
+
+.img_caption .right p {
+	clear: right;
+	text-align: center;
+}
+
+/* Calendar */
+a img.calendar {
+	width: 16px;
+	height: 16px;
+	margin-left: 3px;
+	background: url(../../system/images/calendar.png) no-repeat;
+	cursor: pointer;
+	vertical-align: middle;
+}

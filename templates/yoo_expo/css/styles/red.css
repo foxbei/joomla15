@@ -1,0 +1,55 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* layout */
+#footer a.anchor { background-image: url(../../images/styles/red/footer_anchor.png); }
+
+/* typography */
+h2,
+h4,
+h6,
+a:link,
+a:visited { color: #D85732; }
+a:hover { color: #56595A; }
+
+ul.links li { background-image: url(../../images/styles/red/typography/list_links.png); }
+#page ul.links li a:hover { color: #D85732; }
+
+/* menus */
+#menu li.active .level1 span.bg,
+#menu a.level2:hover span.bg { color: #D85732; }
+#menu a.level3 span.bg,
+#menu span.level3 span.bg { background-image: url(../../images/styles/red/menu_level3_item.png); }
+
+div.mod-box ul.menu a.current span.bg,
+div.mod-box ul.menu a:hover span.bg,
+div.mod-box ul.menu span:hover span.bg { color: #D85732; }
+
+div.mod-box ul.menu li.parent .level1 span.bg { background-image: url(../../images/styles/red/submenu_level1_item_parent.png); }
+div.mod-box ul.menu li.level2 span.bg { background-image: url(../../images/styles/red/submenu_level2_item.png); }
+	
+/* modules */
+div.mod-headline h3.header,
+div.mod-headline h3.header span.header-2,
+div.mod-headline h3.header span.header-3,
+div.mod-headline h3.header span.header-4 { background-image: url(../../images/styles/red/module_headline_bg.png); }
+
+/* system */
+#system .item > .date {	background-image: url(../../images/styles/red/system_date.png); }
+
+#searchbox .results li.result.selected,
+#searchbox .results li.result.selected h3,
+#searchbox .results li.more-results:hover { color: #D85732; }
+
+#searchbox .results li.more-results { background-image: url(../../images/styles/red/searchbox_more_results.png); }
+
+.pagination a { color: #56595A; }
+.pagination a:hover { color: #D85732; }
+
+a.readmore {
+	color: #646566;
+	background-image: url(../../images/styles/red/readmore.png);
+}
+
+/* extensions*/
+#yoo-zoo.blog-expo .items div.pos-date,
+#yoo-zoo.blog-expo .item div.pos-date {	background-image: url(../../images/styles/red/system_date.png); }

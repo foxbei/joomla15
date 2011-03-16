@@ -1,0 +1,22 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+div#page-body {
+	background: #B45046;
+}
+
+body.green div#page-body { background: #97AF82; }
+body.pink div#page-body { background: #B995B1; }
+body.orange div#page-body { background: #D1934E; }
+body.blue div#page-body { background: #639FB7; }
+body.yellow div#page-body { background: #AEAC57; }
+body.lilac div#page-body { background: #87829D; }
+body.turquoise div#page-body { background: #789696; }
+body.black div#page-body { background: #3C372D; }
+
+div.wrapper-l {
+	border-left: none;
+}
+
+div.wrapper-r {
+	border-right: none;
+}

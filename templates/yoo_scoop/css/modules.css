@@ -1,0 +1,530 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * module headers
+ */
+
+/* reset header for all modules */
+div.module h3.header {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: 140%;
+	color: #323232;
+	font-weight: normal;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/* header span's */
+div.module span.header-2,
+div.module span.header-3 {
+	display: block;
+}
+
+/*
+ * space for adjoining modules
+ */
+
+.separator div.module {
+	margin: 0px 15px 0px 0px;
+}
+
+#left div.module,
+#right div.module {
+	margin: 0px 0px 15px 0px;
+}
+
+#top .topblock div.module {
+	margin: 15px 0px 0px 0px;
+}
+
+#bottom .bottomblock div.module {
+	margin: 0px 0px 15px 0px;
+}
+
+/*
+ * styling for special positions
+ */
+
+div#toolbar div.module {
+	margin-left: 20px;
+	float: right;
+}
+
+div#headerbar div.module {
+	margin-left: 20px;
+	float: right;
+}
+
+/*
+ * badge styling for all modules
+ */
+ 
+div.module {
+	position: relative;
+}
+ 
+div.module div.badge-new {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_new.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-top {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_top.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-pick {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_pick.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-sticker-new,
+div.module div.badge-sticker-hot,
+div.module div.badge-sticker-top {
+	position: absolute;
+	top: -15px;
+	right: -5px;
+	width: 50px;
+	height: 50px;
+	z-index: 1;
+}
+
+div.module div.badge-sticker-new { background: url(../images/module_badge_sticker_new.png) 0 0 no-repeat; }
+div.module div.badge-sticker-hot { background: url(../images/module_badge_sticker_hot.png) 0 0 no-repeat; }
+div.module div.badge-sticker-top { background: url(../images/module_badge_sticker_top.png) 0 0 no-repeat; }
+
+/*
+ * module: blank
+ */
+ 
+div.mod-blank div.module {
+	overflow: hidden;
+}
+
+div.mod-blank h3.module {
+	height: 20px;
+	line-height: 20px;
+}
+
+/*
+ * module: grey
+ */
+ 
+div.mod-grey div.box-1 {
+	padding: 10px 15px 10px 15px;
+	background: #F5F5E6;
+	overflow: hidden;
+}
+
+div.mod-grey h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+/*
+ * module: black
+ */
+ 
+div.mod-black div.box-1 {
+	padding: 10px 15px 10px 15px;
+	background: #3C372D;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+div.mod-black h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+	color: #ffffff;
+}
+
+div.mod-black a:link, div.mod-black a:visited {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+div.mod-black a:hover {
+	color: #ffffff;
+	text-decoration: line-through;
+}
+
+/*
+ * module: color
+ */
+ 
+div.mod-color div.box-1 {
+	padding: 10px 15px 10px 15px;
+	background: #B45046;
+	color: #ffffff;
+	overflow: hidden;
+}
+
+body.green div.mod-color div.box-1 { background: #97AF82; }
+body.pink div.mod-color div.box-1 { background: #B995B1; }
+body.orange div.mod-color div.box-1 { background: #D1934E; }
+body.blue div.mod-color div.box-1 { background: #639FB7; }
+body.yellow div.mod-color div.box-1 { background: #AEAC57; }
+body.lilac div.mod-color div.box-1 { background: #87829D; }
+body.turquoise div.mod-color div.box-1 { background: #789696; }
+body.black div.mod-color div.box-1 { background: #3C372D; }
+
+div.mod-color h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+	color: #ffffff;
+}
+
+div.mod-color a:link, div.mod-color a:visited {
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+div.mod-color a:hover {
+	color: #ffffff;
+	text-decoration: line-through;
+}
+
+/*
+ * module: coloredborder
+ */
+ 
+div.mod-coloredborder div.box-1 {
+	padding: 10px 15px 10px 10px;
+	border-left: 10px solid #B45046;
+	background: #F5F5E6;
+	overflow: hidden;
+}
+
+body.green div.mod-coloredborder div.box-1 { border-left-color: #97AF82; }
+body.pink div.mod-coloredborder div.box-1 { border-left-color: #B995B1; }
+body.orange div.mod-coloredborder div.box-1 { border-left-color: #D1934E; }
+body.blue div.mod-coloredborder div.box-1 { border-left-color: #639FB7; }
+body.yellow div.mod-coloredborder div.box-1 { border-left-color: #AEAC57; }
+body.lilac div.mod-coloredborder div.box-1 { border-left-color: #87829D; }
+body.turquoise div.mod-coloredborder div.box-1 { border-left-color: #789696; }
+body.black div.mod-coloredborder div.box-1 { border-left-color: #3C372D; }
+
+div.mod-coloredborder h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+/*
+ * module: border
+ */
+ 
+div.mod-border div.box-1 {
+	padding: 9px 14px 9px 14px;
+	border: 1px solid #DCDCD7;
+	overflow: hidden;
+}
+
+div.mod-border h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+/*
+ * module: frame
+ */
+ 
+div.mod-frame div.box-1 {
+	padding: 5px;
+	background: #F5F5E6;
+}
+
+div.mod-frame div.box-2 {
+	padding: 9px 14px 9px 14px;
+	border: 1px solid #DCDCD7;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+div.mod-frame h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+div.mod-frame div.badge-new,
+div.mod-frame div.badge-top,
+div.mod-frame div.badge-pick {
+	top: 5px;
+	right: 5px;
+}
+
+/*
+ * module: header
+ */
+ 
+div.mod-header div.box-1 {
+	padding: 1px 0px 1px 0px;
+	border-top: 1px solid #D7D7C8;
+	border-bottom: 1px solid #D7D7C8;
+	background: #ffffff;
+}
+
+div.mod-header div.box-2 {
+	padding: 10px 15px 10px 15px;
+	background: #E6E6D2;
+	overflow: hidden;
+	color: #464646;
+}
+
+div.mod-header h3.header {
+	height: 30px;
+	margin: -10px -15px 5px -15px;
+	background: #D7D7C8;
+	font-size: 140%;
+	line-height: 30px;
+	text-indent: 15px;
+	letter-spacing: -1px;
+}
+
+/* menu */
+div.mod-menu div.box-1 {
+	padding-bottom: 0px;
+}
+
+div.mod-menu div.box-2 {
+	padding: 0px 0px 0px 0px;
+	overflow: visible;
+}
+
+div.mod-menu div.box-3 {
+	margin: 0px -5px 0px -5px;
+}
+
+div.mod-menu h3.header {
+	margin: 0px 5px 0px 5px;
+}
+
+/*
+ * module: hover
+ */
+ 
+div.mod-hover div.box-1 {
+	padding-bottom: 15px;
+	background: url(../images/line_h.png) 0 100% repeat-x;
+}
+
+div.mod-hover div.box-2 {
+	padding: 5px 5px 5px 5px;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+div.mod-hover h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+/*
+ * module: dottedborder
+ */
+ 
+div.mod-dottedborder div.box-1 {
+	background: url(../images/line_h.png) 0 0 repeat-x;
+}
+
+div.mod-dottedborder div.box-2 {
+	background: url(../images/line_h.png) 0 100% repeat-x;
+}
+
+div.mod-dottedborder div.box-3 {
+	background: url(../images/line_v.png) 0 0 repeat-y;
+}
+
+div.mod-dottedborder div.box-4 {
+	padding: 10px 15px 10px 15px;
+	background: url(../images/line_v.png) 100% 0 repeat-y;
+	overflow: hidden;
+}
+
+div.mod-dottedborder h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+/*
+ * module: dotted
+ */
+ 
+div.mod-dotted div.module {
+	padding: 0px 0px 15px 0px;
+}
+
+div.mod-dotted div.box-1 {
+	overflow: hidden;
+}
+
+div.mod-dotted h3.header {
+	margin: 0px 0px 3px 0px;
+	padding:0px 0px 6px 0px;
+	background: url(../images/module_dotted_header.png) 0 100% repeat-x;
+	font-size: 140%;
+	letter-spacing: -1px;
+}
+
+div.mod-dotted h3.header span.color {
+	color: #141414;
+}
+
+
+/*
+ * module: polaroid
+ */
+
+div.mod-polaroid div.badge-tape {
+	position: absolute;
+	top: -13px;
+	left: 50%;
+	width: 114px;
+	height: 38px;
+	margin-left: -57px;
+	background: url(../images/module_polaroid_tape.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.mod-polaroid div.box-1 {
+	margin-top: 13px;
+	padding: 10px 10px 5px 10px;
+	border-top: 1px solid #C8C8C8;
+	border-left: 1px solid #C8C8C8;
+	border-right: 1px solid #C8C8C8;
+	background: #ffffff url(../images/module_polaroid_bg.png) 0 100% repeat-x;
+	overflow: hidden;
+}
+
+div.mod-polaroid div.box-2 {
+	margin-bottom: 5px;
+	background: #000000;
+}
+
+div.mod-polaroid div.box-3 {
+	padding: 10px 15px 10px 15px;
+	overflow: hidden;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: #C8C8C8;
+}
+
+div.mod-polaroid div.box-b1 {
+	background: url(../images/module_polaroid_bl.png) 0 0 no-repeat;
+}
+
+div.mod-polaroid div.box-b2 {
+	padding: 0px 70px 0px 70px;
+	background: url(../images/module_polaroid_br.png) 100% 0 no-repeat;
+}
+
+div.mod-polaroid div.box-b3 {
+	height: 5px;
+	background: url(../images/module_polaroid_b.png) 0 0 repeat-x;
+}
+
+div.mod-polaroid h3.header {
+	height: 25px;
+	margin: 0px 0px 0px 0px;
+	font-size: 140%;
+	line-height: 25px;
+	text-align: center;
+	letter-spacing: -1px;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: #323232;
+}
+
+/*
+ * module: postit
+ */
+
+div.mod-postit div.box-1 {
+	border-top: 1px solid #F2F2F2;
+	border-left: 1px solid #F2F2F2;
+	border-right: 1px solid #F2F2F2;
+	background: #FFFFAA;
+}
+
+div.mod-postit div.box-2 {
+	padding: 15px 15px 0px 15px;
+	overflow: hidden;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+div.mod-postit div.box-b1 {
+	background: url(../images/module_postit_bl.png) 0 0 no-repeat;
+}
+
+div.mod-postit div.box-b2 {
+	padding: 0px 90px 0px 60px;
+	background: url(../images/module_postit_br.png) 100% 0 no-repeat;
+}
+
+div.mod-postit div.box-b3 {
+	height: 40px;
+	background: url(../images/module_postit_b.png) 0 0 repeat-x;
+}
+
+div.mod-postit h3.header {
+	height: 30px;
+	margin: -15px -15px 5px -15px;
+	background: #FFFFDA;
+	font-size: 140%;
+	line-height: 30px;
+	text-indent: 15px;
+	letter-spacing: -1px;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+
+/*
+ * module: tab
+ */
+ 
+div.mod-tab div.module {
+	padding: 25px 0px 0px 0px;
+}
+
+div.mod-tab div.box-1 {
+	padding: 14px 15px 10px 15px;
+	border-top: 1px solid #DCDCD7;
+}
+
+div.mod-tab h3.header {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 25px;
+	padding: 0px 15px 0px 15px;
+	border-top: 1px solid #DCDCD7;
+	border-left: 1px solid #DCDCD7;
+	border-right: 1px solid #DCDCD7;
+	background: #ffffff;
+	line-height: 25px;
+	font-size: 130%;
+	letter-spacing: -1px;
+}

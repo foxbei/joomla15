@@ -2,7 +2,7 @@
 /**
 * @package   ZOO Component
 * @file      type.php
-* @version   2.3.6 March 2011
+* @version   2.3.7 March 2011
 * @author    YOOtheme http://www.yootheme.com
 * @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -342,18 +342,21 @@ class Type {
 				throw new TypeException('Writing type xml file failed');
 			}
 		}
-		
+
 		// rename related items
 		if ($rename) {
-			$table = YTable::getInstance('item');
-			
+
 			// get database
-			$db = $table->getDBO();
-			
+			$db = YDatabase::getInstance();
+
+			$group = $this->getApplication()->getGroup();
+
 			// update childrens parent category
-			$query = "UPDATE ".$table->getTableName()
-			    	." SET type=".$db->quote($this->identifier)
-				    ." WHERE type=".$db->quote($old_identifier);
+			$query = "UPDATE ".ZOO_TABLE_ITEM." as a, ".ZOO_TABLE_APPLICATION." as b"
+			    	." SET a.type=".$db->quote($this->identifier)
+				    ." WHERE a.type=".$db->quote($old_identifier)
+					." AND a.application_id=b.id"
+					." AND b.application_group=".$db->quote($group);
 			$db->query($query);
 		}
 						

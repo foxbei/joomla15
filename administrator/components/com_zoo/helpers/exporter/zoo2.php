@@ -2,7 +2,7 @@
 /**
 * @package   ZOO Component
 * @file      zoo2.php
-* @version   2.3.6 March 2011
+* @version   2.3.7 March 2011
 * @author    YOOtheme http://www.yootheme.com
 * @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -151,6 +151,14 @@ class ExportHelperZoo2 extends ExportHelper{
 		if ($related_item_xmls) {
 			foreach ($related_item_xmls as $related_item_xml) {
 				$item_xml->replaceChild(YXMLElement::create('item', ItemHelper::translateIDToAlias((string)$related_item_xml), true), $related_item_xml);
+			}
+		}
+
+		// sanitize relatedcategories elements
+		$related_categories_xmls = $item_xml->xpath('data/relatedcategories/category');
+		if ($related_categories_xmls) {
+			foreach ($related_categories_xmls as $related_categories_xml) {
+				$item_xml->replaceChild(YXMLElement::create('category', CategoryHelper::translateIDToAlias((string)$related_categories_xml), true), $related_categories_xml);
 			}
 		}
 

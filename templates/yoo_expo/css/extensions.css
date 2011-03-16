@@ -1,0 +1,170 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+#left #form-login fieldset,
+#right #form-login fieldset { border: none; }
+
+/*
+ * YOOtweet
+ */
+
+/* single */
+#header div.single div.yoo-tweet {
+	min-width: 200px;
+	max-width: 400px;
+}
+
+#header div.single div.yoo-tweet p {
+	margin-top: 0px;
+	text-align: center;
+}
+
+/* bubble */
+#page div.bubble div.yoo-tweet { margin: 0px -10px 0px -10px; }
+ 
+#page div.bubble div.yoo-tweet ul li > div { margin: 0px 10px 0px 10px; }
+
+#page div.bubble div.yoo-tweet div.bubble-t1,
+#page div.bubble div.yoo-tweet div.bubble-t2,
+#page div.bubble div.yoo-tweet div.bubble-t3,
+#page div.bubble div.yoo-tweet div.bubble-1,
+#page div.bubble div.yoo-tweet div.bubble-2,
+#page div.bubble div.yoo-tweet div.bubble-b1 { background: none; }
+
+#page div.bubble div.yoo-tweet div.bubble-t2,
+#page div.bubble div.yoo-tweet div.bubble-2 { padding: 0px; }
+
+#page div.bubble div.yoo-tweet div.bubble-t3 { height: 0px; }
+
+#page div.bubble div.yoo-tweet div.bubble-3 { 
+	padding: 15px;
+	border: 1px solid #E1E1E2;
+	border-bottom: none;
+}
+
+#page div.bubble div.yoo-tweet div.bubble-b2 { 
+	padding: 0px 0px 0px 35px;
+	background: url(../images/yootweet/bubble_corners.png) 0 0 no-repeat;
+}
+
+#page div.bubble div.yoo-tweet div.bubble-b3 {
+	height: 15px;
+	background: url(../images/yootweet/bubble_corners.png) 0 -20px repeat-x;
+}
+
+#page div.bubble div.yoo-tweet div.meta a.image { margin: 0px 7px 0px 0px; }
+
+/*
+ *  ZOO comment bubble vertical styling
+ */
+ 
+#page .zoo-comment.bubble-angled-vl div.bubble { padding-left: 2px; }
+
+#page .zoo-comment.bubble-angled-vl div.bubble-arrow { background: url(../images/zoo/bubble_arrow.png) 0 0 no-repeat; }
+ 
+#page .zoo-comment.bubble-angled-vl div.bubble-t1,
+#page .zoo-comment.bubble-angled-vl div.bubble-t2,
+#page .zoo-comment.bubble-angled-vl div.bubble-t3,
+#page .zoo-comment.bubble-angled-vl div.bubble-1,
+#page .zoo-comment.bubble-angled-vl div.bubble-2,
+#page .zoo-comment.bubble-angled-vl div.bubble-b1,
+#page .zoo-comment.bubble-angled-vl div.bubble-b2,
+#page .zoo-comment.bubble-angled-vl div.bubble-b3 { background: none; }
+
+#page .zoo-comment.bubble-angled-vl div.bubble-t2,
+#page .zoo-comment.bubble-angled-vl div.bubble-b2 { padding: 0px; }
+
+#page .zoo-comment.bubble-angled-vl div.bubble-2 { padding-right: 0px; }
+
+#page .zoo-comment.bubble-angled-vl div.bubble-t3,
+#page .zoo-comment.bubble-angled-vl div.bubble-b3 { height: 0px; }
+
+#page .zoo-comment.bubble-angled-vl div.bubble-3 { 
+	padding: 15px;
+	border: 1px solid #E1E1E2;
+}
+
+/*
+ * ZOO pure blog template
+ */
+
+#yoo-zoo.blog-pure .item h3 {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#yoo-zoo.blog-pure .item div.pos-author,
+#yoo-zoo.blog-pure .author div.box { 
+	border-left: 1px solid;
+	border-right: 1px solid;
+	border-color: #E1E1E2;
+	background-color: #ffffff;
+}
+
+#yoo-zoo.blog-pure .item div.pos-related li a,
+#yoo-zoo.blog-pure .item div.pos-author h4.sub-pos-title a { text-decoration: none; }
+
+#yoo-zoo.blog-pure .item div.pos-author h3 {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #E1E1E2;
+}
+
+#yoo-zoo div#comments .comment-head {
+	border-color: #E1E1E2;
+	background-color: #FFFFFF;
+} 
+
+/*
+ * YOOlogin
+ */
+
+ 
+/* quick */
+#header span.quick span.yoo-login {}
+
+#header span.quick span.yoo-login span.login { width: 231px; }
+
+#header span.quick span.yoo-login span.login span.login-button-text,
+#header span.quick span.yoo-login span.login span.login-button-icon { margin-right: 0px; }
+
+#header span.quick span.yoo-login span.login span.lostpassword, 
+#header span.quick span.yoo-login span.login span.lostusername,
+#header span.quick span.yoo-login span.login span.registration { margin-top: 5px; }
+
+#header span.quick span.yoo-login span.logout {
+	margin-top: 10px;
+	overflow: visible;
+}
+
+#header span.quick span.yoo-login span.logout span.logout-button-text,
+#header span.quick span.yoo-login span.logout span.logout-button-icon { margin-right: 0px; }
+
+/* nifty quick */
+#header span.niftyquick span.yoo-login {}
+
+#header span.niftyquick span.yoo-login span.login {
+	width: 268px;
+	height: 50px;
+}
+
+#header span.niftyquick span.yoo-login span.login span.login-button { margin-right: 0px; }
+
+#header span.niftyquick span.yoo-login span.login span.lostpassword, 
+#header span.niftyquick span.yoo-login span.login span.lostusername,
+#header span.niftyquick span.yoo-login span.login span.registration { margin-top: 5px; }
+
+#header span.niftyquick span.yoo-login span.logout {
+	margin-top: 10px;
+	overflow: visible;
+}
+
+#header span.niftyquick span.yoo-login span.logout span.logout-button { margin-right: 0px; }
+
+ 
+#header span.niftyquick span.yoo-login span.login span.username input,
+#header span.niftyquick span.yoo-login span.login span.password input {
+	width: 95%;
+	height: 12px;
+	background: #ffffff;
+	border: 1px solid #ffffff;
+	overflow: hidden;
+}

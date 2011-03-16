@@ -1,0 +1,693 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * module headers
+ */
+
+/* reset header for all modules */
+div.module h3.header {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: 120%;
+	color: #646464;
+	font-weight: normal;
+}
+
+/* header span's */
+div.module span.header-2,
+div.module span.header-3 {
+	display: block;
+}
+
+/*
+ * space for adjoining modules
+ */
+
+.separator div.module {
+	margin: 0px 15px 0px 0px;
+}
+
+#left div.module,
+#right div.module {
+	margin: 0px 0px 25px 0px;
+}
+
+#top .topblock div.module {
+	margin: 15px 0px 0px 0px;
+}
+
+#bottom .bottomblock div.module {
+	margin: 0px 0px 15px 0px;
+}
+
+/*
+ * styling for special positions
+ */
+
+div#toolbar div.module {
+	margin-left: 20px;
+	float: right;
+}
+
+div#headerbar div.module {
+	margin-left: 20px;
+	float: right;
+}
+
+/*
+ * badge styling for all modules
+ */
+ 
+div.module {
+	position: relative;
+}
+ 
+div.module div.badge-new {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_new.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-top {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_top.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-pick {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 39px;
+	height: 39px;
+	background: url(../images/module_badge_pick.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetblack {
+	position: absolute;
+	top: -30px;
+	right: 60px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetblack.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetblack2 {
+	position: absolute;
+	top: -27px;
+	right: 50px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetblack2.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetwhite {
+	position: absolute;
+	top: -24px;
+	right: 40px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetwhite.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetwhite2 {
+	position: absolute;
+	top: -18px;
+	right: 30px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetwhite2.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetorange {
+	position: absolute;
+	top: -20px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetorange.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-magnetsmiley {
+	position: absolute;
+	top: -23px;
+	right: 10px;
+	width: 60px;
+	height: 60px;
+	background: url(../images/module_badge_magnetsmiley.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.module div.badge-pin {
+	position: absolute;
+	top: -15px;
+	left: 50%;
+	width: 44px;
+	height: 55px;
+	margin-left: -22px;
+	background: url(../images/module_badge_pin.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+/*
+ * module: blank
+ */
+ 
+div.mod-blank div.module {
+	overflow: hidden;
+}
+
+div.mod-blank h3.module {
+	height: 20px;
+	line-height: 20px;
+}
+
+/*
+ * module: headerbar (only for header position)
+ */
+ 
+div.mod-headerbar div.module {
+	padding-top: 15px;
+}
+
+div.mod-headerbar div.box-1 {
+	background: url(../images/module_headerbar_l.png) 0 0 no-repeat;
+}
+
+div.mod-headerbar div.box-2 {
+	padding: 0px 25px 0px 25px;
+	background: url(../images/module_headerbar_r.png) 100% 0 no-repeat;
+}
+
+div.mod-headerbar div.box-3 {
+	height: 80px;
+	padding: 30px 5px 30px 10px;
+	background: url(../images/module_headerbar_m.png) 0 0 repeat-x;
+	overflow: hidden;
+}
+
+div.mod-headerbar div.badge-soldier {
+	position: absolute;
+	top: 0;
+	left: -15px;
+	width: 47px;
+	height: 157px;
+	background: url(../images/module_headerbar_soldier.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+/* blank */
+#headermodule div.module-blank {
+	margin: 0px 0px 0px 10px;
+	overflow: hidden;
+	float: right;
+}
+
+/*
+ * module: postit2
+ */
+
+div.mod-postit2 div.box-t1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_postit2_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-postit2 div.box-t2 {
+	height: 5px;
+	background: #F5E586;
+}
+
+div.mod-postit2 div.box-1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_postit2_r.png) 100% 0 repeat-y;
+}
+
+div.mod-postit2 div.box-2 {
+	padding: 10px 15px 0px 15px;
+	background: #FAE989;
+	overflow: hidden;
+	color: #323232;
+}
+
+div.mod-postit2 div.box-b1 {
+	background: url(../images/module_postit2_bl.png) 0 0 no-repeat;
+}
+
+div.mod-postit2 div.box-b2 {
+	padding: 0px 135px 0px 10px;
+	background: url(../images/module_postit2_br.png) 100% 0 no-repeat;
+}
+
+div.mod-postit2 div.box-b3 {
+	height: 35px;
+	background: url(../images/module_postit2_b.png) 0 0 repeat-x;
+}
+
+div.mod-postit2 h3.header {
+	height: 30px;
+	margin: -10px -15px 5px -15px;
+	background: #F5E586;
+	font-size: 150%;
+	line-height: 30px;
+	text-indent: 15px;
+	letter-spacing: -1px;
+	color: #323232;
+}
+
+div.mod-postit2 div.badge-new,
+div.mod-postit2 div.badge-top,
+div.mod-postit2 div.badge-pick {
+	right: 4px;	
+}
+
+/*
+ * module: polaroid2
+ */
+
+div.mod-polaroid2 div.badge-tape {
+	position: absolute;
+	top: -13px;
+	left: 50%;
+	width: 114px;
+	height: 38px;
+	margin-left: -57px;
+	background: url(../images/module_polaroid2_tape.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.mod-polaroid2 div.box-t1 {
+	margin-top: 13px;
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_polaroid2_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-polaroid2 div.box-t2 {
+	height: 13px;
+	background: #FFFFF9;
+}
+
+div.mod-polaroid2 div.box-1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_polaroid2_r.png) 100% 0 repeat-y;
+	overflow: hidden;
+}
+
+div.mod-polaroid2 div.box-2 {
+	padding: 0px 13px 5px 13px;
+	background: #FFFFF9 url(../images/module_polaroid2_bg.png) 0 100% repeat-x;
+}
+
+div.mod-polaroid2 div.box-3 {
+	margin-bottom: 5px;
+	background: #000000;
+}
+
+div.mod-polaroid2 div.box-4 {
+	padding: 10px 15px 10px 15px;
+	overflow: hidden;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: #C8C8C8;
+}
+
+div.mod-polaroid2 div.box-b1 {
+	background: url(../images/module_polaroid2_bl.png) 0 0 no-repeat;
+}
+
+div.mod-polaroid2 div.box-b2 {
+	padding: 0px 10px 0px 10px;
+	background: url(../images/module_polaroid2_br.png) 100% 0 no-repeat;
+}
+
+div.mod-polaroid2 div.box-b3 {
+	height: 5px;
+	background: url(../images/module_polaroid2_b.png) 0 0 repeat-x;
+}
+
+div.mod-polaroid2 h3.header {
+	height: 25px;
+	margin: 0px 0px 0px 0px;
+	font-size: 150%;
+	line-height: 25px;
+	text-align: center;
+	letter-spacing: -1px;
+	font-family: "Comic Sans MS", "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: #323232;
+}
+
+div.mod-polaroid2 div.badge-new,
+div.mod-polaroid2 div.badge-top,
+div.mod-polaroid2 div.badge-pick {
+	right: 4px;	
+}
+
+/*
+ * module: tile
+ */
+
+div.mod-tile div.box-t1 {
+	background: url(../images/module_tile_tl.png) 0 0 no-repeat;
+}
+
+div.mod-tile div.box-t2 {
+	padding: 0px 17px 0px 12px;
+	background: url(../images/module_tile_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-tile div.box-t3 {
+	height: 12px;
+	background: url(../images/module_tile_t.png) 0 0 repeat-x;
+}
+
+div.mod-tile div.box-1 {
+	background: url(../images/module_tile_l.png) 0 0 repeat-y;
+}
+
+div.mod-tile div.box-2 {
+	padding: 0px 10px 0px 5px;
+	background: url(../images/module_tile_r.png) 100% 0 repeat-y;
+}
+
+div.mod-tile div.box-3 {
+	padding: 0px 10px 0px 10px;
+	background: #F5F5F5;
+	overflow: hidden;
+}
+
+div.mod-tile div.box-b1 {
+	background: url(../images/module_tile_bl.png) 0 0 no-repeat;
+}
+
+div.mod-tile div.box-b2 {
+	padding: 0px 17px 0px 12px;
+	background: url(../images/module_tile_br.png) 100% 0 no-repeat;
+}
+
+div.mod-tile div.box-b3 {
+	height: 17px;
+	background: url(../images/module_tile_b.png) 0 0 repeat-x;
+}
+
+div.mod-tile h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 150%;
+	letter-spacing: -1px;
+}
+
+div.mod-tile h3.header span.color {
+	color: #141414;
+}
+
+div.mod-tile div.badge-new,
+div.mod-tile div.badge-top,
+div.mod-tile div.badge-pick {
+	right: 4px;	
+}
+
+/*
+ * module: menu
+ */
+
+div.mod-menu div.box-3 {
+	padding: 0px 10px 15px 10px;
+}
+
+/*
+ * module: note
+ */
+
+div.mod-note div.box-t1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_note_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-note div.box-t2 {
+	height: 23px;
+	background: url(../images/module_note_t.png) 0 0 repeat-x;
+}
+
+div.mod-note div.box-1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_note_r.png) 100% 0 repeat-y;
+}
+
+div.mod-note div.box-2 {
+	padding: 5px 15px 10px 15px;
+	background: url(../images/module_note_bg.png) 0 0 repeat;
+	overflow: hidden;
+}
+
+div.mod-note div.box-b1 {
+	background: url(../images/module_note_bl.png) 0 0 no-repeat;
+}
+
+div.mod-note div.box-b2 {
+	padding: 0px 5px 0px 6px;
+	background: url(../images/module_note_br.png) 100% 0 no-repeat;
+}
+
+div.mod-note div.box-b3 {
+	height: 5px;
+	background: url(../images/module_note_b.png) 0 0 repeat-x;
+}
+
+div.mod-note h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 150%;
+	letter-spacing: -1px;
+	color: #323232;
+}
+
+div.mod-note div.badge-new,
+div.mod-note div.badge-top,
+div.mod-note div.badge-pick {
+	right: 4px;	
+}
+
+div.mod-note div.badge-magnetblack { top: -20px; }
+div.mod-note div.badge-magnetblack2 { top: -17px; }
+div.mod-note div.badge-magnetwhite { top: -14px; }
+div.mod-note div.badge-magnetwhite2 { top: -8px; }
+div.mod-note div.badge-magnetorange { top: -5px; }
+div.mod-note div.badge-magnetsmiley { top: -11px; }
+div.mod-note div.badge-pin { top: -5px; }
+
+/*
+ * module: cardboard
+ */
+
+div.mod-cardboard div.box-t1 {
+	background: url(../images/module_cardboard_tl.png) 0 0 no-repeat;
+}
+
+div.mod-cardboard div.box-t2 {
+	padding: 0px 20px 0px 15px;
+	background: url(../images/module_cardboard_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-cardboard div.box-t3 {
+	height: 10px;
+	background: url(../images/module_cardboard_t.png) 0 0 repeat-x;
+}
+
+div.mod-cardboard div.box-1 {
+	background: url(../images/module_cardboard_l.png) 0 0 repeat-y;
+}
+
+div.mod-cardboard div.box-2 {
+	padding: 0px 20px 0px 15px;
+	background: url(../images/module_cardboard_r.png) 100% 0 repeat-y;
+}
+
+div.mod-cardboard div.box-3 {
+	padding: 5px 0px 0px 5px;
+	background: url(../images/module_cardboard_bg.png) 0 0 repeat;
+	overflow: hidden;
+	color: #323232;
+}
+
+div.mod-cardboard div.box-b1 {
+	background: url(../images/module_cardboard_bl.png) 0 0 no-repeat;
+}
+
+div.mod-cardboard div.box-b2 {
+	padding: 0px 50px 0px 15px;
+	background: url(../images/module_cardboard_br.png) 100% 0 no-repeat;
+}
+
+div.mod-cardboard div.box-b3 {
+	height: 25px;
+	background: url(../images/module_cardboard_b.png) 0 0 repeat-x;
+}
+
+div.mod-cardboard h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 150%;
+	letter-spacing: -1px;
+	color: #323232;
+}
+
+div.mod-cardboard h3.header span.color {
+	color: #000000;
+}
+
+div.mod-cardboard div.badge-new,
+div.mod-cardboard div.badge-top,
+div.mod-cardboard div.badge-pick {
+	right: 4px;	
+}
+
+div.mod-cardboard a:link, div.mod-cardboard a:visited {
+	color: #ffffff;
+}
+
+div.mod-cardboard a:hover {
+	color: #ffffff;
+}
+
+/*
+ * module: dotted
+ */
+ 
+div.mod-dotted div.module {
+	padding: 0px 0px 15px 0px;
+}
+
+div.mod-dotted div.box-1 {
+	overflow: hidden;
+}
+
+div.mod-dotted h3.header {
+	margin: 0px 0px 3px 0px;
+	padding:0px 0px 6px 0px;
+	background: url(../images/module_dotted_header.png) 0 100% repeat-x;
+	font-size: 150%;
+	letter-spacing: -1px;
+}
+
+div.mod-dotted h3.header span.color {
+	color: #141414;
+}
+
+/*
+ * module: print
+ */
+
+div.mod-print div.box-t1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_print_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-print div.box-t2 {
+	height: 5px;
+	background: #F3F1E5;
+}
+
+div.mod-print div.box-1 {
+	background: url(../images/module_print_r.png) 100% 0 repeat-y;
+}
+
+div.mod-print div.box-2 {
+	padding: 0px 39px 0px 34px;
+	background: url(../images/module_print_l.png) 0 0 repeat-y;
+}
+
+div.mod-print div.box-3 {
+	padding: 12px 5px 18px 5px;
+	background: #F3F1E5;
+	overflow: hidden;
+	font-family: "Courier New", Courier, monospace;
+}
+
+div.mod-print div.box-b1 {
+	background: url(../images/module_print_bl.png) 0 0 no-repeat;
+}
+
+div.mod-print div.box-b2 {
+	padding: 0px 10px 0px 10px;
+	background: url(../images/module_print_br.png) 100% 0 no-repeat;
+}
+
+div.mod-print div.box-b3 {
+	height: 5px;
+	background: url(../images/module_print_b.png) 0 0 repeat-x;
+}
+
+div.mod-print h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 150%;
+	letter-spacing: -1px;
+	font-family: "Courier New", Courier, monospace;
+	color: #323232;
+}
+
+/*
+ * module: clip
+ */
+
+div.mod-clip div.badge-paperclip {
+	position: absolute;
+	top: 10px;
+	right: -4px;
+	width: 42px;
+	height: 22px;
+	background: url(../images/module_clip_paperclip.png) 0 0 no-repeat;
+	z-index: 1;
+}
+
+div.mod-clip div.box-t1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_clip_tr.png) 100% 0 no-repeat;
+}
+
+div.mod-clip div.box-t2 {
+	height: 5px;
+	background: #FFF9E7;
+}
+
+div.mod-clip div.box-1 {
+	padding: 0px 5px 0px 0px;
+	background: url(../images/module_clip_r.png) 100% 0 repeat-y;
+}
+
+div.mod-clip div.box-2 {
+	padding: 10px 10px 10px 15px;
+	background: #FFF9E7;
+	overflow: hidden;
+	color: #323232;
+}
+
+div.mod-clip div.box-b1 {
+	background: url(../images/module_clip_bl.png) 0 0 no-repeat;
+}
+
+div.mod-clip div.box-b2 {
+	padding: 0px 10px 0px 10px;
+	background: url(../images/module_clip_br.png) 100% 0 no-repeat;
+}
+
+div.mod-clip div.box-b3 {
+	height: 5px;
+	background: url(../images/module_clip_b.png) 0 0 repeat-x;
+}
+
+div.mod-clip h3.header {
+	margin: 0px 0px 5px 0px;
+	font-size: 150%;
+	letter-spacing: -1px;
+}

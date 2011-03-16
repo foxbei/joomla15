@@ -1,0 +1,92 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+#left #form-login fieldset {
+	border: none;
+}
+
+/*
+ * YOOsearch
+ */
+
+#page div.default div.yoo-search div.resultbox {
+	position: absolute;
+	right: 150px;
+	top: -19px;
+	z-index: 20;
+}
+
+#page div.default div.yoo-search h3.search-header {
+	background: #897c6b;
+	color: #ffffff;
+
+}
+
+#page div.default div.yoo-search div.resultbox-bg {
+	border-left: 1px solid #C8C8C8;
+	border-right: 1px solid #C8C8C8;
+	background: #fffeec;
+}
+
+#page div.default div.yoo-search div.resultbox-bl {
+	background: url(../images/yoosearch/resultbox_bl.png) 0 100% no-repeat;
+}
+
+#page div.default div.yoo-search div.resultbox-br {
+	background: url(../images/yoosearch/resultbox_br.png) 100% 100% no-repeat;
+}
+
+#page div.default div.yoo-search div.resultbox-b {
+	background: url(../images/yoosearch/resultbox_b.png) 0 100% repeat-x;
+}
+
+#page div.default div.yoo-search span.search-more {
+	background: url(../images/yoosearch/more_icon.png) 0 0 no-repeat;
+}
+
+#page div.default div.yoo-search .resultbox-bg a {
+	background: #fffeec;
+}
+
+#page div.default div.yoo-search .resultbox-bg a:hover {
+	background: #F0E4B5;
+}
+
+
+/*
+ * YOOlogin
+ */
+
+ 
+/* quick */
+#headerbar span.quick span.yoo-login { 
+}
+
+#headerbar span.quick span.yoo-login span.login {
+	width: 126px;
+}
+
+#headerbar span.quick span.yoo-login span.login span.username,
+#headerbar span.quick span.yoo-login span.login span.password {
+	margin-bottom: 5px;
+}
+
+#headerbar span.quick span.yoo-login span.login span.login-button-text,
+#headerbar span.quick span.yoo-login span.login span.login-button-icon {
+	margin-right: 0px;
+}
+
+#headerbar span.quick span.yoo-login span.login span.lostpassword, 
+#headerbar span.quick span.yoo-login span.login span.lostusername,
+#headerbar span.quick span.yoo-login span.login span.registration {
+	margin-top: 5px;
+}
+
+#headerbar span.quick span.yoo-login span.logout {
+	margin-top: 10px;
+	overflow: visible;
+}
+
+#headerbar span.quick span.yoo-login span.logout span.logout-button-text,
+#headerbar span.quick span.yoo-login span.logout span.logout-button-icon {
+	margin-right: 0px;
+}

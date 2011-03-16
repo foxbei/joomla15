@@ -1,0 +1,301 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/*
+ * headings
+ */
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-weight: normal;
+}
+
+h1 {
+	color: #BE4238;
+}
+
+#page h1 a {
+	color: #BE4238;
+	text-decoration: none;
+}
+
+h2 {
+	color: #8C9196;
+}
+
+h3 {
+	color: #50555A;
+}
+
+h4 {
+	color: #BE4238;
+}
+
+h5 {
+	color: #6E7378;
+}
+
+h6 {
+	color: #BE4238;
+}
+
+body.green h1, body.green h4, body.green h6, body.green #page-body h1 a { color: #7BA46C; }
+body.pink h1, body.pink h4, body.pink h6, body.pink #page-body h1 a { color: #B165A3; }
+body.orange h1, body.orange h4, body.orange h6, body.orange #page-body h1 a { color: #D68636; }
+body.blue h1, body.blue h4, body.blue h6, body.blue #page-body h1 a { color: #5296B7; }
+body.yellow h1, body.yellow h4, body.yellow h6, body.yellow #page-body h1 a { color: #ADA83F; }
+body.lilac h1, body.lilac h4, body.lilac h6, body.lilac #page-body h1 a { color: #655A9E; }
+body.turquoise h1, body.turquoise h4, body.turquoise h6, body.turquoise #page-body h1 a { color: #619A99; }
+body.black h1, body.black h4, body.black h6, body.black #page-body h1 a { color: #C83232; }
+
+#page h1 a:hover {
+	background: #F5F5E6;
+	border-bottom: 1px solid #C8C8B4;
+}
+
+/*
+ * anchor
+ */
+
+a:link, a:visited {
+	color: #BE4238;
+}
+
+a:hover {
+	color: #BE4238;
+}
+
+body.green a:link, body.green a:visited, body.green a:hover { color: #7BA46C; }
+body.pink a:link, body.pink a:visited, body.pink a:hover { color: #B165A3; }
+body.orange a:link, body.orange a:visited, body.orange a:hover { color: #D68636; }
+body.blue a:link, body.blue a:visited, body.blue a:hover { color: #5296B7; }
+body.yellow a:link, body.yellow a:visited, body.yellow a:hover { color: #ADA83F; }
+body.lilac a:link, body.lilac a:visited, body.lilac a:hover { color: #655A9E; }
+body.turquoise a:link, body.turquoise a:visited, body.turquoise a:hover { color: #619A99; }
+body.black a:link, body.black a:visited, body.black a:hover { color: #C83232; }
+
+a.icon-folder {
+        padding-left: 17px;
+        background: url(../images/typography/icon_folder.png) 0 40% no-repeat;
+}
+
+a.icon-file {
+        padding-left: 17px;
+        background: url(../images/typography/icon_file.png) 0 40% no-repeat;
+}
+
+a.icon-download {
+        padding-left: 17px;
+        background: url(../images/typography/icon_download.png) 0 40% no-repeat;
+}
+
+a.icon-external {
+        padding-left: 17px;
+        background: url(../images/typography/icon_external.png) 0 40% no-repeat;
+}
+
+a.icon-pdf {
+        padding-left: 17px;
+        background: url(../images/pdf_button.png) 0 40% no-repeat;
+}
+
+/*
+ * emphasis
+ */
+
+em.box { 
+	padding: 0px 4px 0px 4px;
+	background: #e6e9eb;
+	border-bottom: 1px dotted #646464;
+	font-style: normal;
+}
+
+/*
+ * unsorted lists
+ */
+
+ul.arrow,
+ul.checkbox,
+ul.check,
+ul.star {
+	margin: 10px 0px 10px 0px;
+	padding-left: 20px;
+	list-style: none;
+}
+
+ul.arrow li,
+ul.checkbox li,
+ul.check li,
+ul.star li {
+	margin: 5px 0px 5px 0px;
+	padding-left: 35px;
+	font-weight: bold;
+	line-height: 26px;  
+}
+
+ul.arrow li { background: url(../images/typography/list_arrow.png) 0 0 no-repeat; }
+ul.checkbox li { background: url(../images/typography/list_checkbox.png) 0 0 no-repeat; }
+ul.check li { background: url(../images/typography/list_check.png) 0 0 no-repeat; }
+ul.star li { background: url(../images/typography/list_star.png) 0 0 no-repeat; }
+
+
+/*
+ * ordered lists
+ */
+
+ol.disc {
+	margin: 10px 0px 10px 0px;
+	padding: 0px 0px 0px 45px;
+	background: url(../images/typography/list_disc.png) 20px 0px repeat-y;
+}
+
+ol.disc li {
+	margin: 5px 0px 5px 0px;
+	padding-left: 10px;
+	font-weight: bold;
+	line-height: 26px;  
+}
+
+/*
+ * horizontal rule
+ */
+ 
+hr.dotted {
+	margin: 15px 0px 15px 0px;
+	display: block;
+	background: url(../images/typography/line_dotted.png) 0 0 repeat-x;
+	height: 1px;
+	border: none;
+}
+
+/*
+ * highlighted div and span tags
+ */
+
+span.note,
+span.info,
+span.alert,
+span.download,
+span.tip {
+	display: block;
+}
+
+div.note, span.note {
+	margin: 10px 0px 10px 0px;
+	padding: 5px 10px 5px 10px;
+	background: #f4f5f6;
+	border-top: 1px dotted #aab4be;
+	border-bottom: 1px dotted #aab4be;
+	text-align:justify;
+}
+
+div.info, span.info,
+div.alert, span.alert,
+div.download, span.download,
+div.tip, span.tip {
+	margin: 10px 0px 10px 0px;
+	padding: 8px 10px 8px 35px;
+}
+
+div.info, span.info {
+	background: #f4f5f6 url(../images/typography/box_info.png) 3px 5px no-repeat;
+	border-top: 1px dotted #aab4be;
+	border-bottom: 1px dotted #aab4be;
+}
+
+div.alert, span.alert {
+	background: #fff5eb url(../images/typography/box_alert.png) 3px 5px no-repeat;
+	border-top: 1px dotted #ffb4a0;
+	border-bottom: 1px dotted #ffb4a0;
+}
+
+div.download, span.download {
+	background: #f5faeb url(../images/typography/box_download.png) 3px 5px no-repeat;
+	border-top: 1px dotted #78be5a;
+	border-bottom: 1px dotted #78be5a;
+}
+
+div.tip, span.tip {
+	background: #fffdeb url(../images/typography/box_tip.png) 3px 5px no-repeat;
+	border-top: 1px dotted #ffc864;
+	border-bottom: 1px dotted #ffc864;
+}
+
+/*
+ * img
+ */
+
+img.border {
+	padding: 9px;
+	border: 1px solid #e6e6e1;
+}
+
+/*
+ * p tag with dropcaps
+ */
+ 
+p.dropcap:first-letter {
+	display: block;
+	margin: 7px 4px 0px 0px;
+	float: left;
+	font-size: 280%;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+/*
+ * blockquotes
+ */
+
+q.blockquote,
+blockquote {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+q.blockquote {
+	display: block;
+}
+
+q.blockquote {
+	margin: 10px 0px 10px 15px;
+	padding: 0px 0px 0px 0px;
+	font-style: italic;
+	font-size: 130%;
+}
+
+q.blockquote:before,
+q.blockquote:after {
+  content: "";
+}
+
+blockquote:first-letter,
+q.blockquote:first-letter,
+blockquote.quotation p:first-letter {
+	font-size: 150%;
+}
+
+blockquote.quotation {
+	margin: 10px 0px 10px 0px;
+	padding: 10px 35px 10px 35px;
+	border: none;
+	background: url(../images/typography/blockquote_start.png) 0 0 no-repeat;
+	text-align:justify;
+}
+
+blockquote.quotation p {
+	margin: 0px -35px -10px 0px;
+	padding: 0px 35px 10px 0px;
+	background: url(../images/typography/blockquote_end.png) 100% 100% no-repeat;
+}
+
+/*
+ * floating boxes
+ */
+
+body .inset-left {
+	margin: 15px 15px 10px 0px;
+	float: left;
+}
+
+body .inset-right {
+	margin: 15px 0px 10px 15px;
+	float: right;
+}

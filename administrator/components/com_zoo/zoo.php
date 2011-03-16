@@ -2,7 +2,7 @@
 /**
 * @package   ZOO Component
 * @file      zoo.php
-* @version   2.3.6 March 2011
+* @version   2.3.7 March 2011
 * @author    YOOtheme http://www.yootheme.com
 * @copyright Copyright (C) 2007 - 2011 YOOtheme GmbH
 * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -19,8 +19,6 @@ JHTML::script('jquery-ui.custom.min.js', ZOO_ADMIN_URI.'libraries/jquery/');
 JHTML::stylesheet('jquery-ui.custom.css', ZOO_ADMIN_URI.'libraries/jquery/');
 JHTML::script('accordionmenu.js', ZOO_ADMIN_URI.'assets/js/');
 JHTML::script('placeholder.js', ZOO_ADMIN_URI.'assets/js/');
-JHTML::script('jquery.pnotify.js', ZOO_ADMIN_URI.'libraries/jquery/plugins/notifier/');
-JHTML::stylesheet('jquery.pnotify.default.css', ZOO_ADMIN_URI.'libraries/jquery/plugins/notifier/');
 JHTML::script('default.js', ZOO_ADMIN_URI.'assets/js/');
 JHTML::stylesheet('ui.css', ZOO_ADMIN_URI.'assets/css/');
 JHTMLBehavior::modal();

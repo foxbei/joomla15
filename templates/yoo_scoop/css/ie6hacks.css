@@ -1,0 +1,193 @@
+/* Copyright (C) 2007 - 2010 YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+/* reset */
+hr {
+	color: #c8c8c8;
+}
+
+/*
+ * layout
+ */
+
+div#menubar {
+	zoom: 1;  
+}
+
+div#menubar div.menubar-2 {
+	overflow: hidden;
+}
+
+div#banner {
+	right: -150px;
+	width: 120px;
+}
+
+div#middle .background {
+	 
+	height: 200px;  
+}
+
+div#footer {
+	height: 50px;  
+	zoom: 1;  
+}
+
+/*
+ * menus
+ */
+
+div#topmenu a span {
+	cursor: pointer;
+}
+
+div#menu a {
+	overflow: hidden;	
+}
+
+div#middle ul.menu a:hover,
+div#middle ul.menu span.separator:hover,
+div#middle ul.menu span.sfhover,
+div#middle ul.menu a.active:hover,
+div#middle ul.menu span.active:hover {
+	border-bottom: 1px solid #ffffff;
+}
+
+/*
+ * modules
+ */
+
+div.module {
+	zoom: 1;  
+}
+
+ 
+#toolbar div.module {
+	width: 0px;
+}
+
+#headerbar div.module {
+	width: 0px;
+}
+
+#toolbar div.mod-blank div.module,
+#headerbar div.mod-blank div.module {
+	overflow: visible;
+}
+
+/* frame */
+div.mod-frame div.box-1 {
+	zoom: 1;
+}
+
+/* hover */
+div.mod-hover div.box-2 {
+	zoom: 1;
+}
+
+/* dottedborder */
+div.mod-dottedborder div.box-1 {
+	zoom: 1;
+}
+
+/* polaroid */
+div.mod-polaroid div.box-2 {
+	zoom: 1;
+}
+
+div.mod-polaroid div.badge-tape {
+	top: 0px;
+}
+
+div.mod-polaroid div.box-b3 {
+	overflow: hidden;
+}
+
+div.mod-polaroid div.box-3 {
+	font-style: normal;  
+}
+
+div.mod-polaroid div.badge-new { top: 13px; }
+div.mod-polaroid div.badge-top { top: 13px; }
+div.mod-polaroid div.badge-pick { top: 13px; }
+
+/* postit */
+div.mod-postit div.box-2 {
+	zoom: 1;
+}
+
+div.mod-postit div.box-b3 {
+	overflow: hidden;
+}
+
+div.mod-postit div.box-2 {
+	font-style: normal;  
+}
+
+/* tab */
+div.mod-tab h3.header {
+	width: 0px;
+	white-space: nowrap;
+
+}
+
+/*
+ * joomla
+ */
+
+div.joomla div.headline {
+	zoom: 1;
+}
+
+div.joomla div.item,
+div.joomla div.item-bg {
+	zoom: 1;
+}
+
+div.module-search input {
+	width: 88px;
+}
+
+a.readmore {
+	cursor: pointer;
+}
+
+a.readmore:hover {
+	background: #E6E6D2;
+}
+
+/*
+ * typography
+ */
+
+ul.arrow li,
+ul.checkbox li,
+ul.check li,
+ul.star li {
+	zoom: 1;
+}
+
+ol.disc {
+	padding: 0px 0px 0px 50px;
+}
+
+ol.disc li {
+	padding-left: 5px;
+	margin: 0px 0px 5px 0px;
+}
+
+hr.dotted {
+	background: none;
+	border: dotted 1px #c8c8c8;
+}
+
+p.dropcap:first-letter {
+	line-height: 100%;
+}
+
+/*
+ * extensions
+ */
+
+.ie6-zoom {
+	zoom: 1;
+}
